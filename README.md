@@ -170,7 +170,7 @@ final-project/
 ### 1. Repoyu Klonla
 
 ```bash
-git clone https://github.com/kullanici-adi/csgo-round-winner.git
+git clone https://github.com/CabikHub/csgo-round-winner.git
 cd csgo-round-winner
 ```
 
