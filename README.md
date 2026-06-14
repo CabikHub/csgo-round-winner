@@ -238,7 +238,7 @@ joblib
 
 ---
 
-## 📚 Kurs Bilgisi
+## 📚 Ders Bilgisi
 
 ```
 Ders    : YBS3259 — Makine Öğrenmesi
