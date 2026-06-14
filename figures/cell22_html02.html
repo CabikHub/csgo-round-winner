@@ -1,0 +1,60 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><script src="https://cdn.plot.ly/plotly-2.32.0.min.js"></script></head><body>
+<style>
+    .section-container-bottom {
+        background: linear-gradient(145deg, #020617 0%, #0f172a 100%);
+        padding: 0 40px 40px 40px;
+        border-radius: 0 0 20px 20px;
+        color: #f8fafc;
+        font-family: 'Inter', sans-serif;
+        box-shadow: 0 15px 25px -5px rgba(0, 0, 0, 0.4);
+        border: 1px solid rgba(14, 165, 233, 0.3);
+        border-top: none;
+    }
+
+    .insight-box-heat {
+        background: linear-gradient(145deg, rgba(236, 72, 153, 0.05) 0%, rgba(236, 72, 153, 0.1) 100%);
+        border: 1px solid rgba(236, 72, 153, 0.3);
+        border-radius: 12px;
+        padding: 20px 25px;
+        margin-top: 15px;
+        display: flex;
+        align-items: flex-start;
+        gap: 18px;
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    }
+
+    .insight-icon-heat {
+        font-size: 1.6rem;
+        background: rgba(236, 72, 153, 0.15);
+        padding: 12px;
+        border-radius: 12px;
+        border: 1px solid rgba(236, 72, 153, 0.2);
+    }
+    
+    .code-tag {
+        color: #f472b6; 
+        background: rgba(244, 114, 182, 0.1); 
+        padding: 2px 6px; 
+        border-radius: 4px; 
+        font-family: 'JetBrains Mono', monospace; 
+        font-size: 0.9em;
+        border: 1px solid rgba(244, 114, 182, 0.2);
+    }
+</style>
+
+<div class="section-container-bottom">
+    
+    <div class="insight-box-heat">
+        <div class="insight-icon-heat">🔍</div>
+        <div>
+            <h4 style="margin: 0 0 10px 0; color: #f8fafc; font-size: 1.05rem; letter-spacing: 0.01em;">Isı Haritası Çözümlemesi</h4>
+            <ul style="margin: 0; padding-left: 20px; color: #cbd5e1; font-size: 0.95rem; line-height: 1.8;">
+                <li><strong style="color: #38bdf8;">Pozitif Kümeler (Neon Mavi):</strong> <span class="code-tag">ct_armor</span> ile <span class="code-tag">ct_helmets</span> veya <span class="code-tag">t_health</span> ile <span class="code-tag">t_players_alive</span> arasında çok güçlü pozitif korelasyonlar yanmaktadır. Bu, ekonominin ve hayatta kalmanın doğrusal hareket ettiğini kanıtlar.</li>
+                <li><strong style="color: #0ea5e9;">Hedef Değişken (Target):</strong> Haritanın en sağ/en alt satırına bakıldığında, <span class="code-tag">target</span> sütunuyla en koyu mavi yanan hücrelerin CT özelliklerine ait olduğu net bir şekilde görülür.</li>
+                <li><strong style="color: #ef4444;">Negatif ve Nötr Kümeler:</strong> Raund skoru (<span class="code-tag">ct_score</span>) ile kalan zaman (<span class="code-tag">time_left</span>) gibi özellikler arasında zayıf/nötr korelasyonlar (karanlık hücreler) vardır. Bu, bu özelliklerin modele "birbirinden bağımsız, benzersiz" bilgiler sunacağı anlamına gelir.</li>
+            </ul>
+        </div>
+    </div>
+
+</div>
+</body></html>

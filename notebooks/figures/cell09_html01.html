@@ -1,0 +1,242 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><script src="https://cdn.plot.ly/plotly-2.32.0.min.js"></script></head><body>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700;800&display=swap');
+    
+    .section-container {
+        background: linear-gradient(145deg, #020617 0%, #0f172a 100%);
+        padding: 40px;
+        border-radius: 20px;
+        color: #f8fafc;
+        font-family: 'Inter', sans-serif;
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05), 0 10px 20px -5px rgba(0, 0, 0, 0.3);
+        border: 1px solid rgba(51, 65, 85, 0.5);
+        margin-bottom: 20px;
+    }
+
+    .section-header {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        margin-bottom: 25px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        padding-bottom: 15px;
+    }
+
+    .section-num {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 1.5rem;
+        font-weight: 800;
+        color: #38bdf8;
+        background: rgba(56, 189, 248, 0.1);
+        padding: 4px 12px;
+        border-radius: 8px;
+        border: 1px solid rgba(56, 189, 248, 0.2);
+    }
+
+    .sub-title {
+        color: #e2e8f0;
+        font-size: 1.25rem;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-top: 30px;
+        margin-bottom: 20px;
+        font-weight: 700;
+    }
+
+    /* Teknik Risk Grid'i */
+    .risk-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 18px;
+    }
+
+    .risk-card {
+        background: rgba(15, 23, 42, 0.6);
+        border: 1px solid rgba(239, 68, 68, 0.2);
+        border-left: 4px solid #ef4444;
+        border-radius: 12px;
+        padding: 20px;
+        transition: transform 0.2s, box-shadow 0.2s;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .risk-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 10px 15px -3px rgba(239, 68, 68, 0.1);
+        background: rgba(30, 41, 59, 0.8);
+    }
+
+    .risk-name { color: #fca5a5; font-size: 1.05rem; font-weight: 700; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+    .risk-desc { color: #cbd5e1; font-size: 0.9rem; line-height: 1.5; margin-bottom: 15px; flex-grow: 1; }
+    
+    .mitigation-box {
+        background: rgba(16, 185, 129, 0.1);
+        border: 1px solid rgba(16, 185, 129, 0.2);
+        padding: 10px 12px;
+        border-radius: 8px;
+        color: #a7f3d0;
+        font-size: 0.85rem;
+        font-family: 'JetBrains Mono', monospace;
+        display: flex;
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+    /* İş / Yorum Riskleri Listesi */
+    .biz-risk-list {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .biz-risk-item {
+        background: rgba(245, 158, 11, 0.05);
+        border: 1px solid rgba(245, 158, 11, 0.2);
+        border-radius: 10px;
+        padding: 15px 20px;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .biz-icon { font-size: 1.5rem; }
+    .biz-text h4 { margin: 0 0 4px 0; color: #fcd34d; font-size: 1rem; font-weight: 700; }
+    .biz-text p { margin: 0; color: #cbd5e1; font-size: 0.9rem; }
+
+    /* Proje Kısıtları (Constraints) */
+    .constraint-panel {
+        background: rgba(56, 189, 248, 0.05);
+        border: 1px solid rgba(56, 189, 248, 0.2);
+        border-radius: 12px;
+        padding: 20px;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+
+    .constraint-item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: #e0f2fe;
+        font-size: 0.95rem;
+    }
+
+    .c-check {
+        background: rgba(16, 185, 129, 0.2);
+        color: #10b981;
+        width: 24px; height: 24px;
+        display: flex; align-items: center; justify-content: center;
+        border-radius: 6px; font-weight: bold;
+    }
+    
+    .c-warn {
+        background: rgba(245, 158, 11, 0.2);
+        color: #f59e0b;
+        width: 24px; height: 24px;
+        display: flex; align-items: center; justify-content: center;
+        border-radius: 6px; font-weight: bold;
+    }
+</style>
+
+<div class="section-container">
+    
+    <div class="section-header">
+        <div class="section-num">5</div>
+        <h2 style="margin: 0; font-size: 1.8rem; font-weight: 800; color: #f8fafc;">Proje Kısıtları ve Risk Yönetimi</h2>
+    </div>
+
+    <div class="sub-title"><span>🛠️</span> 5.1 Teknik Riskler ve Çözüm Yaklaşımlarımız</div>
+    <div class="risk-grid">
+        
+        <div class="risk-card">
+            <div class="risk-name">🚨 Veri Sızıntısı (Leakage)</div>
+            <div class="risk-desc">Silah ve sağlık bilgilerinin round'un bitişine çok yakın bir anı temsil etmesi, modelin geleceği "kopya çekerek" öğrenmesine yol açabilir.</div>
+            <div class="mitigation-box">
+                <span>🛡️</span> <div><b>Önlem:</b> Katı Train/Test split uygulanacak; değişkenlerin zaman boyutu (temporal validation) incelenecek.</div>
+            </div>
+        </div>
+
+        <div class="risk-card">
+            <div class="risk-name">🚨 Aşırı Uyum (Overfitting)</div>
+            <div class="risk-desc">Veri setinin yüksek boyutlu olması (96 farklı özellik), modelin eğitim verisini ezberlemesine neden olabilir.</div>
+            <div class="mitigation-box">
+                <span>🛡️</span> <div><b>Önlem:</b> Cross-validation, regularization (L1/L2) ve Feature Selection (Özellik Seçimi) adımları uygulanacak.</div>
+            </div>
+        </div>
+
+        <div class="risk-card">
+            <div class="risk-name">🚨 Eksik Veri (Missing Data)</div>
+            <div class="risk-desc"><code>time_left</code> (298 kayıp) ve <code>ct_money</code> (500 kayıp) gibi sütunlarda eksiklikler tespit edilmiştir.</div>
+            <div class="mitigation-box">
+                <span>🛡️</span> <div><b>Önlem:</b> Data Preparation fazında dağılıma uygun Imputation (doldurma) stratejisi belirlenecektir.</div>
+            </div>
+        </div>
+
+        <div class="risk-card">
+            <div class="risk-name">🚨 Seyrek Sütunlar (Sparsity)</div>
+            <div class="risk-desc">Pek çok spesifik silah sütunu (örn. ağır makineli tüfekler) verinin büyük kısmında "0" (sıfır) değerine sahiptir.</div>
+            <div class="mitigation-box">
+                <span>🛡️</span> <div><b>Önlem:</b> Feature Engineering aşamasında silahlar gruplanacak veya PCA (Boyut İndirgeme) değerlendirilecektir.</div>
+            </div>
+        </div>
+
+        <div class="risk-card" style="grid-column: 1 / -1;">
+            <div class="risk-name">🚨 Harita (Map) Etkisi</div>
+            <div class="risk-desc">CS:GO'da "de_nuke" CT ağırlıklı iken, "de_dust2" T ağırlıklı olabilir. Haritalar farklı stratejik dinamikler yaratır.</div>
+            <div class="mitigation-box">
+                <span>🛡️</span> <div><b>Önlem:</b> <code>map</code> değişkeni kritik bir Feature olarak kodlanıp (Encoding) modele dahil edilecektir.</div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="sub-title" style="margin-top: 40px;"><span>💼</span> 5.2 İş Modeli ve Yorumlanabilirlik Riskleri</div>
+    <div class="biz-risk-list">
+        <div class="biz-risk-item">
+            <div class="biz-icon">⏳</div>
+            <div class="biz-text">
+                <h4>Zaman Bağımlılığı Kısıtı</h4>
+                <p>Veri seti, round'un sadece anlık bir kesitini (snapshot) temsil eder. Bir round'un başından sonuna kadar olan tüm dinamik akışı (time-series) içermez.</p>
+            </div>
+        </div>
+        <div class="biz-risk-item">
+            <div class="biz-icon">🔄</div>
+            <div class="biz-text">
+                <h4>Meta Değişimi</h4>
+                <p>Oyun yapımcısı (Valve) silah dengelerini güncelledikçe, geçmiş verilere dayanan bu modelin tahmin performansı zamanla eskiyebilir ve güncellenmesi gerekebilir.</p>
+            </div>
+        </div>
+        <div class="biz-risk-item">
+            <div class="biz-icon">🌍</div>
+            <div class="biz-text">
+                <h4>Genelleme Problemi</h4>
+                <p>Model, profesyonel e-spor maç verileriyle eğitilmektedir. Aynı modelin amatör (matchmaking) maçlarına uygulanması durumunda taktiksel farklardan dolayı performans düşüşü yaşanabilir.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="sub-title" style="margin-top: 40px;"><span>📋</span> 5.3 Proje Kısıtları ve Veri Profili</div>
+    <div class="constraint-panel">
+        <div class="constraint-item">
+            <div class="c-check">✓</div>
+            <div>Veri seti <b>~30.000 gözlem</b> içermektedir.</div>
+        </div>
+        <div class="constraint-item">
+            <div class="c-check">✓</div>
+            <div><b>96 özellik (Feature) + 1 Hedef (Target)</b> değişken mevcuttur.</div>
+        </div>
+        <div class="constraint-item">
+            <div class="c-check">✓</div>
+            <div>Hedef sınıf dengesi <b>%49.25 / %50.75</b> ile ideal bir dağılıma sahiptir.</div>
+        </div>
+        <div class="constraint-item">
+            <div class="c-warn">!</div>
+            <div>Silah sütunları çok seyrektir (Sparse data). <b>Feature Engineering</b> aşamasında özel olarak ele alınacaktır.</div>
+        </div>
+    </div>
+
+</div>
+</body></html>

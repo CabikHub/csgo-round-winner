@@ -1,0 +1,122 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><script src="https://cdn.plot.ly/plotly-2.32.0.min.js"></script></head><body>
+<style>
+    .section-container-bottom {
+        background: linear-gradient(145deg, #020617 0%, #0f172a 100%);
+        padding: 0 40px 40px 40px;
+        border-radius: 0 0 20px 20px;
+        color: #f8fafc;
+        font-family: 'Inter', sans-serif;
+        box-shadow: 0 15px 25px -5px rgba(0, 0, 0, 0.4);
+        border: 1px solid rgba(14, 165, 233, 0.3);
+        border-top: none;
+    }
+
+    .stats-table-wrapper {
+        background: rgba(15, 23, 42, 0.6);
+        border-radius: 12px;
+        border: 1px solid rgba(239, 68, 68, 0.2);
+        overflow: hidden;
+        margin-top: 15px;
+    }
+
+    .panel-header {
+        background: rgba(239, 68, 68, 0.1);
+        color: #fca5a5;
+        padding: 12px 20px;
+        font-weight: 600;
+        font-size: 0.95rem;
+        border-bottom: 1px solid rgba(239, 68, 68, 0.2);
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .stats-table {
+        width: 100%;
+        border-collapse: collapse;
+        text-align: left;
+    }
+
+    .stats-table th {
+        padding: 12px 20px;
+        color: #94a3b8;
+        font-size: 0.85rem;
+        font-weight: 600;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        background: rgba(0,0,0,0.2);
+    }
+
+    .stats-table td {
+        padding: 12px 20px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        color: #cbd5e1;
+        font-size: 0.9rem;
+    }
+
+    .stats-table tr:hover td {
+        background: rgba(239, 68, 68, 0.05);
+    }
+
+    .insight-box {
+        background: linear-gradient(145deg, rgba(14, 165, 233, 0.05) 0%, rgba(14, 165, 233, 0.1) 100%);
+        border: 1px solid rgba(14, 165, 233, 0.3);
+        border-radius: 12px;
+        padding: 20px 25px;
+        margin-top: 25px;
+        display: flex;
+        align-items: flex-start;
+        gap: 18px;
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    }
+
+    .insight-icon {
+        font-size: 1.6rem;
+        background: rgba(14, 165, 233, 0.15);
+        padding: 12px;
+        border-radius: 12px;
+        border: 1px solid rgba(14, 165, 233, 0.2);
+    }
+</style>
+
+<div class="section-container-bottom">
+    
+    <div class="stats-table-wrapper">
+        <div class="panel-header"><span>📋</span> Eksik Değer Tespiti & Aksiyon Stratejisi</div>
+        <table class="stats-table">
+            <thead>
+                <tr>
+                    <th>Sütun (Feature)</th>
+                    <th style="text-align: right;">Eksik Sayı</th>
+                    <th style="text-align: right;">Oran</th>
+                    <th style="width: 45%;">Strateji</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td style="font-family: 'JetBrains Mono', monospace; font-weight: 600; color: #f8fafc;">time_left</td>
+                    <td style="text-align: right; color: #ef4444; font-weight: 600;">298</td>
+                    <td style="text-align: right; color: #fca5a5; font-family: 'JetBrains Mono', monospace;">~%0.99</td>
+                    <td style="color: #cbd5e1;"><strong style="color: #38bdf8;">Medyan imputation</strong> (dağılım çarpık değil)</td>
+                </tr>
+                <tr>
+                    <td style="font-family: 'JetBrains Mono', monospace; font-weight: 600; color: #f8fafc;">ct_money</td>
+                    <td style="text-align: right; color: #ef4444; font-weight: 600;">500</td>
+                    <td style="text-align: right; color: #fca5a5; font-family: 'JetBrains Mono', monospace;">~%1.67</td>
+                    <td style="color: #cbd5e1;"><strong style="color: #38bdf8;">Medyan imputation</strong> (yüksek varyans → medyan daha sağlam)</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="insight-box">
+        <div class="insight-icon">🛠️</div>
+        <div>
+            <h4 style="margin: 0 0 8px 0; color: #f8fafc; font-size: 1.05rem; letter-spacing: 0.01em;">Veri Bilimi Çıkarımı: Data Leakage Önlemi</h4>
+            <p style="margin: 0; color: #cbd5e1; font-size: 0.95rem; line-height: 1.6;">
+                Her iki eksik oran da <strong>%2 altında</strong> olduğundan, satır silme (drop) işlemi yerine imputation tercih edilecektir. Veri sızıntısını (Data Leakage) önlemek adına imputation işlemi <strong>pipeline içinde</strong> uygulanacak olup, <code style="color: #0ea5e9; font-family: 'JetBrains Mono', monospace; font-size: 0.85rem;">fit</code> işlemi sadece <code style="color: #0ea5e9; font-family: 'JetBrains Mono', monospace; font-size: 0.85rem;">train</code> seti üzerinde gerçekleştirilecektir.
+            </p>
+        </div>
+    </div>
+
+</div>
+</body></html>

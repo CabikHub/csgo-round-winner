@@ -1,0 +1,161 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><script src="https://cdn.plot.ly/plotly-2.32.0.min.js"></script></head><body>
+<style>
+    .section-container-bottom {
+        background: linear-gradient(145deg, #020617 0%, #0f172a 100%);
+        padding: 0 40px 40px 40px;
+        border-radius: 0 0 20px 20px;
+        color: #f8fafc;
+        font-family: 'Inter', sans-serif;
+        box-shadow: 0 15px 25px -5px rgba(0, 0, 0, 0.4);
+        border: 1px solid rgba(14, 165, 233, 0.3);
+        border-top: none;
+    }
+
+    .grid-panels {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        gap: 20px;
+        margin-top: 10px;
+    }
+
+    .stats-table-wrapper {
+        background: rgba(15, 23, 42, 0.6);
+        border-radius: 12px;
+        border: 1px solid rgba(14, 165, 233, 0.2);
+        overflow: hidden;
+    }
+
+    .panel-header {
+        background: rgba(14, 165, 233, 0.1);
+        color: #38bdf8;
+        padding: 12px 20px;
+        font-weight: 600;
+        font-size: 0.95rem;
+        border-bottom: 1px solid rgba(14, 165, 233, 0.2);
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .stats-table {
+        width: 100%;
+        border-collapse: collapse;
+        text-align: left;
+    }
+
+    .stats-table td {
+        padding: 12px 20px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        color: #cbd5e1;
+        font-size: 0.9rem;
+    }
+
+    .stats-table tr:hover td {
+        background: rgba(14, 165, 233, 0.05);
+    }
+
+    .val-cell {
+        font-family: 'JetBrains Mono', monospace;
+        color: #0ea5e9;
+        font-weight: 700;
+        text-align: right;
+    }
+
+    .tag {
+        background: rgba(56, 189, 248, 0.15);
+        color: #38bdf8;
+        padding: 3px 8px;
+        border-radius: 6px;
+        font-size: 0.8rem;
+        font-family: 'JetBrains Mono', monospace;
+        display: inline-block;
+        margin: 2px;
+        border: 1px solid rgba(56, 189, 248, 0.3);
+    }
+
+    /* YENİ EKLENEN YORUM KUTUSU TASARIMI */
+    .insight-box {
+        background: linear-gradient(145deg, rgba(14, 165, 233, 0.05) 0%, rgba(14, 165, 233, 0.1) 100%);
+        border: 1px solid rgba(14, 165, 233, 0.3);
+        border-radius: 12px;
+        padding: 20px 25px;
+        margin-top: 25px;
+        display: flex;
+        align-items: flex-start;
+        gap: 18px;
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    }
+
+    .insight-icon {
+        font-size: 1.6rem;
+        background: rgba(14, 165, 233, 0.15);
+        padding: 12px;
+        border-radius: 12px;
+        border: 1px solid rgba(14, 165, 233, 0.2);
+    }
+</style>
+
+<div class="section-container-bottom">
+    <div class="grid-panels">
+        <div class="stats-table-wrapper">
+            <div class="panel-header"><span>📋</span> Tür Dağılımı Özeti</div>
+            <table class="stats-table">
+                <tbody>
+                    <tr>
+                        <td>Sayısal (float)</td>
+                        <td class="val-cell">94 Sütun</td>
+                    </tr>
+                    <tr>
+                        <td>Kategorik (str)</td>
+                        <td class="val-cell" style="color: #F59E0B;">2 Sütun</td>
+                    </tr>
+                    <tr>
+                        <td>Boolean</td>
+                        <td class="val-cell" style="color: #22C55E;">1 Sütun</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="stats-table-wrapper">
+            <div class="panel-header"><span>🔤</span> Kategorik Sütun Detayları</div>
+            <table class="stats-table">
+                <tbody>
+                    <tr>
+                        <td style="width: 25%;"><strong>map</strong> <br><span style="font-size: 0.8rem; color: #94a3b8;">(8 eşsiz değer)</span></td>
+                        <td>
+                            <span class="tag">de_dust2</span> <span class="tag">de_mirage</span> <span class="tag">de_nuke</span> 
+                            <span class="tag">de_inferno</span> <span class="tag">de_overpass</span> <span class="tag">de_vertigo</span>
+                            <span class="tag">de_train</span> <span class="tag">de_cache</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>bomb_planted</strong> <br><span style="font-size: 0.8rem; color: #94a3b8;">(2 eşsiz değer)</span></td>
+                        <td>
+                            <span class="tag" style="background: rgba(34, 197, 94, 0.1); color: #22c55e; border-color: rgba(34, 197, 94, 0.3);">False</span> 
+                            <span class="tag" style="background: rgba(34, 197, 94, 0.1); color: #22c55e; border-color: rgba(34, 197, 94, 0.3);">True</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>round_winner</strong> <br><span style="font-size: 0.8rem; color: #94a3b8;">(2 eşsiz değer)</span></td>
+                        <td>
+                            <span class="tag" style="background: rgba(245, 158, 11, 0.1); color: #f59e0b; border-color: rgba(245, 158, 11, 0.3);">CT</span> 
+                            <span class="tag" style="background: rgba(245, 158, 11, 0.1); color: #f59e0b; border-color: rgba(245, 158, 11, 0.3);">T</span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+    <div class="insight-box">
+        <div class="insight-icon">📌</div>
+        <div>
+            <h4 style="margin: 0 0 8px 0; color: #f8fafc; font-size: 1.05rem; letter-spacing: 0.01em;">Analiz Sonucu ve Yorum</h4>
+            <p style="margin: 0; color: #cbd5e1; font-size: 0.95rem; line-height: 1.6;">
+                Veri setinin büyük çoğunluğu (<code style="color: #0ea5e9; font-family: 'JetBrains Mono', monospace; font-size: 0.9rem;">float64</code>) sayısal yapıdadır. Kategorik değişkenler yalnızca <strong>map</strong> (8 farklı harita) ve <strong>bomb_planted</strong> (True/False) ile <strong>round_winner</strong> hedef değişkeninden oluşmaktadır. Bu durum, preprocessing aşamasında encoding yükünün minimal olacağını göstermektedir.
+            </p>
+        </div>
+    </div>
+</div>
+</body></html>

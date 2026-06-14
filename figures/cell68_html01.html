@@ -1,0 +1,43 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><script src="https://cdn.plot.ly/plotly-2.32.0.min.js"></script></head><body>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
+    .ev-feat-box { background:linear-gradient(145deg,#020617 0%,#0f172a 100%); padding:35px; border-radius:20px;
+        color:#f8fafc; font-family:'Inter',sans-serif; border:1px solid rgba(168,85,247,0.3); margin-top:20px; }
+    .ev-feat-legend { display:flex; gap:20px; flex-wrap:wrap; margin-bottom:20px; }
+    .ev-feat-tag { display:flex; align-items:center; gap:8px; padding:6px 14px; border-radius:8px;
+        background:rgba(15,23,42,0.7); border:1px solid rgba(255,255,255,0.08); font-size:0.85rem; font-weight:600; }
+    .ev-feat-dot { width:12px; height:12px; border-radius:3px; flex-shrink:0; }
+    .ev-finding-row { display:flex; gap:12px; align-items:flex-start; padding:12px 0; border-bottom:1px solid rgba(255,255,255,0.05); }
+    .ev-finding-row:last-child { border-bottom:none; }
+</style>
+<div class="ev-feat-box">
+    <h3 style="margin:0 0 18px 0; font-size:1.3rem; font-weight:800; color:#f8fafc;">🔍 Özellik Önemi — Bulgular</h3>
+    <div class="ev-feat-legend">
+        <div class="ev-feat-tag"><div class="ev-feat-dot" style="background:#a855f7;"></div><span style="color:#c084fc;">Diff (Fark) Değişkeni</span></div>
+        <div class="ev-feat-tag"><div class="ev-feat-dot" style="background:#3b82f6;"></div><span style="color:#93c5fd;">CT Değişkeni</span></div>
+        <div class="ev-feat-tag"><div class="ev-feat-dot" style="background:#f59e0b;"></div><span style="color:#fcd34d;">T Değişkeni</span></div>
+        <div class="ev-feat-tag"><div class="ev-feat-dot" style="background:#22d3ee;"></div><span style="color:#67e8f9;">Diğer</span></div>
+    </div>
+    <div class="ev-finding-row">
+        <span style="font-size:1.3rem;">🏆</span>
+        <div><strong style="color:#a855f7;">armor_diff</strong> (CT zırhı − T zırhı) en kritik özellik olarak öne çıkmıştır.
+        İki takım arasındaki zırh farkı, round kazananını diğer her değişkenden daha güçlü öngörmektedir.</div>
+    </div>
+    <div class="ev-finding-row">
+        <span style="font-size:1.3rem;">💡</span>
+        <div>Faz 3'te oluşturulan <strong style="color:#a855f7;">6 fark (diff) özelliğinin 4'ü</strong> ilk 15 arasına girmiştir.
+        Bu, Feature Engineering adımının modele anlamlı bilgi kattığını doğrulamaktadır.</div>
+    </div>
+    <div class="ev-finding-row">
+        <span style="font-size:1.3rem;">🎮</span>
+        <div>Silah sütunları (weapon_*) düşük önem skorlarına sahipken <strong>ct_defuse_kits</strong>,
+        üst 15 arasında yer almaktadır — defuse kiti bulundurmak, bombayı patlamadan önce etkisiz hale
+        getirme şansı verdiği için CT tarafına stratejik avantaj sağlar.</div>
+    </div>
+    <div class="ev-finding-row">
+        <span style="font-size:1.3rem;">⏰</span>
+        <div><strong>time_left</strong>, raunda kalan sürenin belirleyici olduğunu ortaya koymaktadır.
+        Son saniyelerde bomb plant yoksa CT kazanma ihtimali yükselir; bu dinamik model tarafından içselleştirilmiştir.</div>
+    </div>
+</div>
+</body></html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><script src="https://cdn.plot.ly/plotly-2.32.0.min.js"></script></head><body>
+<div style="background: linear-gradient(145deg, rgba(15, 23, 42, 0.8) 0%, rgba(30, 41, 59, 0.8) 100%); border: 1px solid rgba(16, 185, 129, 0.3); border-left: 5px solid #10b981; border-radius: 16px; padding: 25px; margin-top: 25px; font-family: 'Inter', sans-serif; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2);">
+    
+    <h4 style="color: #10b981; font-size: 1.15rem; margin: 0 0 20px 0; display: flex; align-items: center; gap: 10px; font-weight: 700;">
+        <span style="background: rgba(16, 185, 129, 0.15); padding: 6px 10px; border-radius: 8px;">📊</span> Sınıf Dengesi Kontrolü
+    </h4>
+    
+    <div style="display: flex; gap: 25px; flex-wrap: wrap;">
+        
+        <div style="flex: 1; min-width: 250px; background: rgba(0, 0, 0, 0.25); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 12px; padding: 18px;">
+            <div style="display: flex; justify-content: space-between; margin-bottom: 12px; align-items: center;">
+                <span style="color: #94a3b8; font-size: 0.9rem; font-weight: 600;">CT Round Sayısı</span>
+                <span style="color: #3b82f6; font-family: 'JetBrains Mono', monospace; font-weight: 700;">~14,775 <span style="font-size: 0.8rem; color: #64748b;">(%49.25)</span></span>
+            </div>
+            <div style="display: flex; justify-content: space-between; margin-bottom: 12px; align-items: center;">
+                <span style="color: #94a3b8; font-size: 0.9rem; font-weight: 600;">T Round Sayısı</span>
+                <span style="color: #f59e0b; font-family: 'JetBrains Mono', monospace; font-weight: 700;">~15,225 <span style="font-size: 0.8rem; color: #64748b;">(%50.75)</span></span>
+            </div>
+            <div style="display: flex; justify-content: space-between; border-top: 1px dashed rgba(255, 255, 255, 0.15); padding-top: 12px; align-items: center;">
+                <span style="color: #cbd5e1; font-size: 0.9rem; font-weight: 700;">Dengesizlik Oranı</span>
+                <span style="color: #10b981; font-family: 'JetBrains Mono', monospace; font-weight: 800; background: rgba(16, 185, 129, 0.1); padding: 4px 8px; border-radius: 6px;">~%1.50 Fark</span>
+            </div>
+        </div>
+
+        <div style="flex: 2; min-width: 300px; display: flex; flex-direction: column; justify-content: center;">
+            <div style="background: rgba(16, 185, 129, 0.05); border-left: 4px solid #10b981; padding: 18px 22px; border-radius: 0 12px 12px 0;">
+                <p style="margin: 0; color: #cbd5e1; line-height: 1.7; font-size: 0.95rem;">
+                    <strong style="color: #10b981; font-size: 1.05rem;">Yorum:</strong> Hedef değişken neredeyse <strong style="color: #f8fafc;">mükemmel dengeli</strong> bir dağılım sergilemektedir. Bu, modelleme aşamasında sınıf dengesizliği (imbalanced data) kaynaklı ek önlem 
+                    (<code style="background: rgba(255, 255, 255, 0.1); padding: 2px 6px; border-radius: 4px; font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; color: #a78bfa;">SMOTE</code>, <code style="background: rgba(255, 255, 255, 0.1); padding: 2px 6px; border-radius: 4px; font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; color: #a78bfa;">class_weight='balanced'</code> vb.) gerektirmeyeceğine işaret etmektedir. <br><br>
+                    Bununla birlikte, kontrol amaçlı olarak <strong style="color: #38bdf8; border-bottom: 1px solid #38bdf8; padding-bottom: 1px;">stratified k-fold cross-validation</strong> kullanılacaktır.
+                </p>
+            </div>
+        </div>
+
+    </div>
+</div>
+</body></html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><script src="https://cdn.plot.ly/plotly-2.32.0.min.js"></script></head><body>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap');
+    
+    .section-container-top {
+        background: linear-gradient(145deg, #020617 0%, #0f172a 100%);
+        padding: 40px 40px 10px 40px;
+        border-radius: 20px 20px 0 0;
+        color: #f8fafc;
+        font-family: 'Inter', sans-serif;
+        border: 1px solid rgba(14, 165, 233, 0.3);
+        border-bottom: none;
+    }
+
+    .analyst-box {
+        background: linear-gradient(90deg, rgba(236, 72, 153, 0.1) 0%, transparent 100%);
+        border-left: 4px solid #ec4899; /* Isı haritası için Neon Pembe vurgu */
+        padding: 20px 25px;
+        border-radius: 0 12px 12px 0;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        margin-bottom: 10px;
+    }
+</style>
+
+<div class="section-container-top">
+    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 20px;">
+        <div style="width: 4px; height: 24px; background: #ec4899; border-radius: 2px; box-shadow: 0 0 10px #ec4899;"></div>
+        <h3 style="margin: 0; font-size: 1.4rem; font-weight: 700; color: #f8fafc; letter-spacing: 0.02em;">
+            7.1 Çekirdek Değişkenler: Korelasyon Isı Haritası
+        </h3>
+    </div>
+
+    <div class="analyst-box">
+        <div style="font-size: 1.8rem;">🌡️</div>
+        <div>
+            <h4 style="margin: 0 0 6px 0; color: #f472b6; font-size: 1rem; font-weight: 700;">Veri Analisti Perspektifi</h4>
+            <p style="margin: 0; color: #cbd5e1; font-size: 0.95rem; line-height: 1.6;">
+                Sadece hedef değişkenle değil, <em>bağımsız değişkenlerin kendi aralarındaki</em> ilişkiyi görmek modelin kaderini belirler. Isı haritası (Heatmap), bir bakışta veri setindeki "gizli klanları" (birlikte hareket eden değişkenleri) tespit etmemizi sağlayan en güçlü radardır.
+            </p>
+        </div>
+    </div>
+</div>
+</body></html>

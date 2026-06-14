@@ -1,0 +1,151 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><script src="https://cdn.plot.ly/plotly-2.32.0.min.js"></script></head><body>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@700&display=swap');
+    
+    .phase2-container {
+        background: linear-gradient(145deg, #020617 0%, #0f172a 100%);
+        padding: 40px;
+        border-radius: 20px;
+        color: #f8fafc;
+        font-family: 'Inter', sans-serif;
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05), 0 15px 25px -5px rgba(0, 0, 0, 0.4);
+        border: 1px solid rgba(14, 165, 233, 0.3); /* Cyan border */
+    }
+
+    .analyst-box {
+        background: linear-gradient(90deg, rgba(14, 165, 233, 0.1) 0%, transparent 100%);
+        border-left: 4px solid #0ea5e9;
+        padding: 20px 25px;
+        border-radius: 0 12px 12px 0;
+        margin-bottom: 35px;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .toc-grid-f2 {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+    }
+
+    .toc-item-f2 {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        padding: 16px 20px;
+        background: rgba(15, 23, 42, 0.6);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        border-radius: 14px;
+        color: #94a3b8;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        cursor: default;
+    }
+
+    .toc-item-f2:hover {
+        background: rgba(14, 165, 233, 0.1);
+        border-color: rgba(14, 165, 233, 0.3);
+        transform: translateX(6px);
+        color: #f8fafc;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    .toc-num-f2 {
+        background: #0f172a;
+        color: #0ea5e9;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.9rem;
+        width: 36px;
+        height: 36px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 10px;
+        border: 1px solid rgba(14, 165, 233, 0.3);
+        flex-shrink: 0;
+        transition: background 0.3s, color 0.3s;
+    }
+    
+    .toc-item-f2:hover .toc-num-f2 {
+        background: #0ea5e9;
+        color: #0f172a;
+    }
+    
+    .toc-title-f2 {
+        font-size: 0.95rem;
+        font-weight: 600;
+        letter-spacing: 0.02em;
+    }
+</style>
+
+<div class="phase2-container">
+    
+    <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 15px;">
+        <span style="font-size: 2.2rem; background: rgba(14, 165, 233, 0.15); padding: 10px; border-radius: 12px; border: 1px solid rgba(14, 165, 233, 0.3);">🔍</span>
+        <div>
+            <div style="color: #0ea5e9; font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 4px;">CRISP-DM Adım 02</div>
+            <h2 style="margin: 0; font-size: 2.2rem; font-weight: 900; background: linear-gradient(to right, #38bdf8, #818cf8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; letter-spacing: -0.02em;">
+                FAZ 2 – Data Understanding
+            </h2>
+        </div>
+    </div>
+
+    <div class="analyst-box">
+        <div style="font-size: 1.8rem;">💡</div>
+        <div>
+            <h4 style="margin: 0 0 6px 0; color: #38bdf8; font-size: 1rem; font-weight: 700;">Veri Analisti Perspektifi</h4>
+            <p style="margin: 0; color: #cbd5e1; font-size: 0.95rem; line-height: 1.6;">
+                Bu fazda amacımız sadece kod yazıp grafik çizmek değil; <strong>verinin hikayesini anlamaktır.</strong> Veri yapısı, değişken türleri, eksik/aykırı değerler, dağılımlar ve değişkenler arası ilişkiler detaylıca incelenecek ve her grafik projenin iş hedefleri (Faz 1) doğrultusunda yorumlanacaktır.
+            </p>
+        </div>
+    </div>
+
+    <h3 style="margin: 0 0 15px 0; font-size: 1.15rem; font-weight: 700; color: #f8fafc; display: flex; align-items: center; gap: 8px;">
+        <span style="color: #0ea5e9;">📑</span> İçindekiler Paneli
+    </h3>
+
+    <div class="toc-grid-f2">
+        <div class="toc-item-f2">
+            <div class="toc-num-f2">01</div>
+            <div class="toc-title-f2">Veri Yükleme ve Genel Bakış</div>
+        </div>
+        <div class="toc-item-f2">
+            <div class="toc-num-f2">02</div>
+            <div class="toc-title-f2">Değişken Türleri ve Yapısı</div>
+        </div>
+        <div class="toc-item-f2">
+            <div class="toc-num-f2">03</div>
+            <div class="toc-title-f2">Eksik Değer Analizi</div>
+        </div>
+        <div class="toc-item-f2">
+            <div class="toc-num-f2">04</div>
+            <div class="toc-title-f2">Hedef Değişken ile Temel Özellikler</div>
+        </div>
+        <div class="toc-item-f2">
+            <div class="toc-num-f2">05</div>
+            <div class="toc-title-f2">Sayısal Değişken Dağılımları</div>
+        </div>
+        <div class="toc-item-f2">
+            <div class="toc-num-f2">06</div>
+            <div class="toc-title-f2">Aykırı Değer Analizi</div>
+        </div>
+        <div class="toc-item-f2">
+            <div class="toc-num-f2">07</div>
+            <div class="toc-title-f2">Korelasyon Analizi</div>
+        </div>
+        <div class="toc-item-f2">
+            <div class="toc-num-f2">08</div>
+            <div class="toc-title-f2">Silah ve Grenade Sütunu Seyrekliği</div>
+        </div>
+        <div class="toc-item-f2">
+            <div class="toc-num-f2">09</div>
+            <div class="toc-title-f2">Harita (Map) Bazlı Analiz</div>
+        </div>
+        <div class="toc-item-f2" style="border-color: rgba(14, 165, 233, 0.3); background: rgba(14, 165, 233, 0.05);">
+            <div class="toc-num-f2" style="background: #0ea5e9; color: #0f172a;">10</div>
+            <div class="toc-title-f2" style="color: #38bdf8;">Faz 2 Özet ve Bulgular</div>
+        </div>
+    </div>
+
+</div>
+</body></html>

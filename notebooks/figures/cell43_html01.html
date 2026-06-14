@@ -1,0 +1,74 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><script src="https://cdn.plot.ly/plotly-2.32.0.min.js"></script></head><body>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@700&display=swap');
+    .phase4-container {
+        background: linear-gradient(145deg, #020617 0%, #0f172a 100%);
+        padding: 40px; border-radius: 20px; color: #f8fafc; font-family: 'Inter', sans-serif;
+        box-shadow: inset 0 1px 0 rgba(255,255,255,0.05), 0 15px 25px -5px rgba(0,0,0,0.4);
+        border: 1px solid rgba(139,92,246,0.3);
+    }
+    .analyst-box-p4 {
+        background: linear-gradient(90deg, rgba(139,92,246,0.1) 0%, transparent 100%);
+        border-left: 4px solid #8b5cf6; padding: 20px 25px; border-radius: 0 12px 12px 0;
+        margin-bottom: 35px; display: flex; align-items: center; gap: 15px;
+    }
+    .toc-grid-p4 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+    .toc-item-p4 {
+        display: flex; align-items: center; gap: 15px; padding: 16px 20px;
+        background: rgba(15,23,42,0.6); border: 1px solid rgba(255,255,255,0.05);
+        border-radius: 14px; color: #94a3b8; transition: all 0.3s; cursor: default;
+    }
+    .toc-item-p4:hover {
+        background: rgba(139,92,246,0.1); border-color: rgba(139,92,246,0.3);
+        transform: translateX(6px); color: #f8fafc;
+    }
+    .toc-num-p4 {
+        background: #0f172a; color: #8b5cf6; font-family: 'JetBrains Mono', monospace;
+        font-size: 0.9rem; font-weight: 700; width: 36px; height: 36px;
+        display: flex; align-items: center; justify-content: center; border-radius: 10px;
+        border: 1px solid rgba(139,92,246,0.3); flex-shrink: 0; transition: all 0.3s;
+    }
+    .toc-item-p4:hover .toc-num-p4 { background: #8b5cf6; color: #0f172a; border-color: #8b5cf6; }
+    .toc-title-p4 { font-size: 0.95rem; font-weight: 600; letter-spacing: 0.02em; }
+</style>
+<div class="phase4-container">
+    <div style="display:flex; align-items:center; gap:15px; margin-bottom:20px;">
+        <span style="font-size:2.2rem; background:rgba(139,92,246,0.15); padding:10px; border-radius:12px; border:1px solid rgba(139,92,246,0.3); box-shadow:0 0 15px rgba(139,92,246,0.2);">🤖</span>
+        <div>
+            <div style="color:#8b5cf6; font-family:'JetBrains Mono',monospace; font-size:0.85rem; font-weight:800; text-transform:uppercase; letter-spacing:0.1em; margin-bottom:4px;">CRISP-DM Adım 04</div>
+            <h2 style="margin:0; font-size:2.2rem; font-weight:900; background:linear-gradient(to right, #a78bfa, #6366f1); -webkit-background-clip:text; -webkit-text-fill-color:transparent; letter-spacing:-0.02em;">
+                FAZ 4 — Modeling
+            </h2>
+            <div style="color:#94a3b8; font-size:0.95rem; margin-top:4px; font-weight:500;">Model Kurma & Karşılaştırma</div>
+        </div>
+    </div>
+    <div class="analyst-box-p4">
+        <div style="font-size:1.8rem;">🎯</div>
+        <div>
+            <h4 style="margin:0 0 6px 0; color:#a78bfa; font-size:1rem; font-weight:700;">Modelleme Uzmanı Perspektifi</h4>
+            <p style="margin:0; color:#cbd5e1; font-size:0.95rem; line-height:1.6;">
+                Bu fazda sadece algoritma çalıştırılmaz; <strong>model seçimi iş bağlamına oturtulur.</strong>
+                Yanlış pozitif (CT'i kaybedeceğini düşünürken kazanmak) ve yanlış negatif (kazanacağını düşünürken kaybetmek) maliyetleri
+                tartışılır; metrikler salt sayı değil, <strong>stratejik karar değeri</strong> olarak yorumlanır.
+            </p>
+        </div>
+    </div>
+    <h3 style="margin:0 0 15px 0; font-size:1.15rem; font-weight:700; color:#f8fafc; display:flex; align-items:center; gap:8px;">
+        <span style="color:#8b5cf6;">📑</span> İçindekiler Paneli
+    </h3>
+    <div class="toc-grid-p4">
+        <div class="toc-item-p4"><div class="toc-num-p4">01</div><div class="toc-title-p4">Kütüphaneler ve Veri Yükleme</div></div>
+        <div class="toc-item-p4"><div class="toc-num-p4">02</div><div class="toc-title-p4">Preprocessing Pipeline Kurulumu</div></div>
+        <div class="toc-item-p4"><div class="toc-num-p4">03</div><div class="toc-title-p4">Model Havuzu — 11 Algoritma</div></div>
+        <div class="toc-item-p4"><div class="toc-num-p4">04</div><div class="toc-title-p4">Model Eğitimi ve Karşılaştırma</div></div>
+        <div class="toc-item-p4"><div class="toc-num-p4">05</div><div class="toc-title-p4">Görsel Karşılaştırma — Plotly</div></div>
+        <div class="toc-item-p4"><div class="toc-num-p4">06</div><div class="toc-title-p4">Cross-Validation Analizi</div></div>
+        <div class="toc-item-p4"><div class="toc-num-p4">07</div><div class="toc-title-p4">Nihai Model Seçimi ve Gerekçe</div></div>
+        <div class="toc-item-p4"><div class="toc-num-p4">08</div><div class="toc-title-p4">Model & Pipeline Kaydetme</div></div>
+        <div class="toc-item-p4" style="grid-column:1/-1; border-color:rgba(139,92,246,0.4); background:rgba(139,92,246,0.05);">
+            <div class="toc-num-p4" style="background:#8b5cf6; color:#0f172a; border-color:#8b5cf6;">09</div>
+            <div class="toc-title-p4" style="color:#a78bfa; font-weight:700;">Faz 4 Özet ve Bulgular</div>
+        </div>
+    </div>
+</div>
+</body></html>

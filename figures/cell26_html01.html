@@ -1,0 +1,216 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><script src="https://cdn.plot.ly/plotly-2.32.0.min.js"></script></head><body>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap');
+    
+    .section-container-final {
+        background: linear-gradient(145deg, #020617 0%, #0f172a 100%);
+        padding: 40px;
+        border-radius: 20px;
+        color: #f8fafc;
+        font-family: 'Inter', sans-serif;
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05), 0 15px 35px -5px rgba(0, 0, 0, 0.5);
+        border: 1px solid rgba(139, 92, 246, 0.4); /* Final için Premium Mor/Violet vurgu */
+        position: relative;
+        overflow: hidden;
+    }
+    
+    /* Arka plana şık bir ışıltı efekti */
+    .section-container-final::before {
+        content: '';
+        position: absolute;
+        top: -50%; left: -50%; width: 200%; height: 200%;
+        background: radial-gradient(circle, rgba(139, 92, 246, 0.05) 0%, transparent 60%);
+        pointer-events: none;
+    }
+
+    .section-header {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        margin-bottom: 25px;
+        border-bottom: 1px solid rgba(139, 92, 246, 0.2);
+        padding-bottom: 15px;
+        position: relative;
+    }
+
+    .step-badge-final {
+        background: linear-gradient(135deg, #8b5cf6 0%, #6366f1 100%);
+        color: #f8fafc;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 1.2rem;
+        font-weight: 800;
+        width: 48px;
+        height: 48px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(139, 92, 246, 0.5);
+    }
+
+    .summary-table-wrapper {
+        background: rgba(15, 23, 42, 0.7);
+        border-radius: 12px;
+        border: 1px solid rgba(139, 92, 246, 0.3);
+        overflow: hidden;
+        margin-top: 20px;
+        position: relative;
+    }
+
+    .summary-table {
+        width: 100%;
+        border-collapse: collapse;
+        text-align: left;
+    }
+
+    .summary-table th {
+        padding: 16px 20px;
+        color: #c4b5fd;
+        font-size: 0.9rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        background: rgba(139, 92, 246, 0.1);
+    }
+
+    .summary-table td {
+        padding: 14px 20px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        color: #e2e8f0;
+        font-size: 0.95rem;
+        vertical-align: middle;
+    }
+
+    .summary-table tr:last-child td {
+        border-bottom: none;
+    }
+
+    .summary-table tr:hover td {
+        background: rgba(139, 92, 246, 0.08);
+    }
+
+    /* Özel Etiketler (Badges) */
+    .badge {
+        padding: 4px 10px;
+        border-radius: 6px;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.85rem;
+        font-weight: 700;
+        display: inline-block;
+    }
+    .b-blue   { background: rgba(56, 189, 248, 0.15); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.3); }
+    .b-green  { background: rgba(34, 197, 94, 0.15); color: #4ade80; border: 1px solid rgba(34, 197, 94, 0.3); }
+    .b-red    { background: rgba(239, 68, 68, 0.15); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.3); }
+    .b-purple { background: rgba(168, 85, 247, 0.15); color: #c084fc; border: 1px solid rgba(168, 85, 247, 0.3); }
+    .b-orange { background: rgba(249, 115, 22, 0.15); color: #fb923c; border: 1px solid rgba(249, 115, 22, 0.3); }
+    .b-gray   { background: rgba(148, 163, 184, 0.15); color: #94a3b8; border: 1px solid rgba(148, 163, 184, 0.3); }
+    
+    .code-text {
+        font-family: 'JetBrains Mono', monospace;
+        color: #a5b4fc;
+        font-size: 0.9em;
+        background: rgba(165, 180, 252, 0.1);
+        padding: 2px 6px;
+        border-radius: 4px;
+    }
+
+    .success-banner {
+        margin-top: 30px;
+        background: linear-gradient(90deg, rgba(34, 197, 94, 0.1) 0%, rgba(34, 197, 94, 0.05) 100%);
+        border: 1px solid rgba(34, 197, 94, 0.3);
+        border-left: 4px solid #22c55e;
+        padding: 15px 25px;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+    }
+</style>
+
+<div class="section-container-final">
+    <div class="section-header">
+        <div class="step-badge-final">10</div>
+        <div>
+            <div style="color: #a78bfa; font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 4px;">Executive Summary</div>
+            <h2 style="margin: 0; font-size: 1.8rem; font-weight: 800; color: #f8fafc; letter-spacing: -0.01em;">
+                Faz 2 Özet ve Bulgular (Aksiyon Planı)
+            </h2>
+        </div>
+    </div>
+
+    <p style="color: #cbd5e1; font-size: 1rem; line-height: 1.6; margin-bottom: 20px;">
+        Data Understanding (Veriyi Anlama) fazı boyunca elde edilen istatistiksel ve görsel bulgular ışığında, bir sonraki aşama olan <strong>Data Preparation (Veri Ön İşleme)</strong> fazı için aşağıdaki aksiyon planı oluşturulmuştur:
+    </p>
+
+    <div class="summary-table-wrapper">
+        <table class="summary-table">
+            <thead>
+                <tr>
+                    <th style="width: 5%; text-align: center;">#</th>
+                    <th style="width: 50%;">Analiz Bulgusu (Insight)</th>
+                    <th style="width: 45%;">Faz 3 Aksiyon Kararı</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td style="text-align: center; color: #64748b; font-weight: 700;">1</td>
+                    <td>2 Sütunda eksik değer (<%2) tespit edildi.</td>
+                    <td><span class="badge b-blue">Medyan Imputation</span> (Pipeline içinde)</td>
+                </tr>
+                <tr>
+                    <td style="text-align: center; color: #64748b; font-weight: 700;">2</td>
+                    <td>Hedef değişken (Target) sınıf dengesi ~%50/50.</td>
+                    <td><span class="badge b-gray">Ek İşlem Gerekmez</span> (Dengeli)</td>
+                </tr>
+                <tr>
+                    <td style="text-align: center; color: #64748b; font-weight: 700;">3</td>
+                    <td><span class="code-text">ct_armor</span>, <span class="code-text">ct_helmets</span>, <span class="code-text">ct_defuse_kits</span> en güçlü korelasyona sahip.</td>
+                    <td><span class="badge b-green">Feature Olarak Koru</span></td>
+                </tr>
+                <tr>
+                    <td style="text-align: center; color: #64748b; font-weight: 700;">4</td>
+                    <td>~20+ silah/grenade sütunu tamamen seyrek (%0-1 doluluk).</td>
+                    <td><span class="badge b-red">Drop</span> (Zero-Variance Filtresi)</td>
+                </tr>
+                <tr>
+                    <td style="text-align: center; color: #64748b; font-weight: 700;">5</td>
+                    <td><span class="code-text">ct_money</span> ve <span class="code-text">t_money</span> sağa çarpık, aykırı değerler barındırıyor.</td>
+                    <td><span class="badge b-orange">RobustScaler</span> (Aykırılara dirençli)</td>
+                </tr>
+                <tr>
+                    <td style="text-align: center; color: #64748b; font-weight: 700;">6</td>
+                    <td><span class="code-text">ct_health</span> ve <span class="code-text">t_health</span> dağılımları bimodal (çift tepeli) yapıda.</td>
+                    <td><span class="badge b-purple">StandardScaler</span></td>
+                </tr>
+                <tr>
+                    <td style="text-align: center; color: #64748b; font-weight: 700;">7</td>
+                    <td><span class="code-text">de_cache</span> haritasında yalnızca 38 gözlem (satır) var.</td>
+                    <td><span class="badge b-red">Drop</span> veya <span class="badge b-gray">Aggregate</span></td>
+                </tr>
+                <tr>
+                    <td style="text-align: center; color: #64748b; font-weight: 700;">8</td>
+                    <td><span class="code-text">bomb_planted</span> değişkeni %11.9 oranında True (Boolean).</td>
+                    <td><span class="badge b-purple">Boolean → Int Encoding</span> (0/1)</td>
+                </tr>
+                <tr>
+                    <td style="text-align: center; color: #64748b; font-weight: 700;">9</td>
+                    <td><span class="code-text">map</span> kategorik sütunu 8 farklı harita (değer) içeriyor.</td>
+                    <td><span class="badge b-purple">One-Hot Encoding (OHE)</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    
+    <div class="success-banner">
+        <div style="font-size: 2rem;">✅</div>
+        <div>
+            <h4 style="margin: 0 0 4px 0; color: #f8fafc; font-size: 1.1rem;">Faz 2 Başarıyla Tamamlandı</h4>
+            <p style="margin: 0; color: #cbd5e1; font-size: 0.95rem;">
+                CRISP-DM metodolojisinin <strong>Data Understanding</strong> adımı tamamlanmıştır. Projenin rotası çizilmiş olup, modelleme öncesi veri genetiğini optimize etmek üzere <strong>Faz 3: Data Preparation</strong> aşamasına geçiş için sistem hazırdır.
+            </p>
+        </div>
+    </div>
+
+</div>
+</body></html>

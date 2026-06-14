@@ -1,0 +1,111 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><script src="https://cdn.plot.ly/plotly-2.32.0.min.js"></script></head><body>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap');
+    .ev-limit { background:linear-gradient(145deg,#020617 0%,#0f172a 100%); padding:40px; border-radius:20px;
+        color:#f8fafc; font-family:'Inter',sans-serif; border:1px solid rgba(239,68,68,0.3); }
+    .ev-limit-row { display:flex; gap:16px; align-items:flex-start; padding:18px 0; border-bottom:1px solid rgba(255,255,255,0.05); }
+    .ev-limit-row:last-child { border-bottom:none; }
+    .ev-limit-icon { font-size:1.5rem; background:rgba(239,68,68,0.1); padding:10px; border-radius:10px;
+        border:1px solid rgba(239,68,68,0.2); flex-shrink:0; }
+    .ev-limit-body h4 { margin:0 0 6px 0; color:#f87171; font-size:1rem; font-weight:700; }
+    .ev-limit-body p  { margin:0; color:#cbd5e1; font-size:0.9rem; line-height:1.7; }
+    .ev-limit-body strong { color:#f8fafc; }
+    .ev-next-row { display:flex; gap:16px; align-items:flex-start; padding:18px 0; border-bottom:1px solid rgba(255,255,255,0.05); }
+    .ev-next-row:last-child { border-bottom:none; }
+    .ev-next-icon { font-size:1.5rem; background:rgba(34,211,238,0.1); padding:10px; border-radius:10px;
+        border:1px solid rgba(34,211,238,0.2); flex-shrink:0; }
+    .ev-next-body h4 { margin:0 0 6px 0; color:#22d3ee; font-size:1rem; font-weight:700; }
+    .ev-next-body p  { margin:0; color:#cbd5e1; font-size:0.9rem; line-height:1.7; }
+</style>
+<div class="ev-limit">
+    <div style="display:flex; align-items:center; gap:12px; margin-bottom:25px; border-bottom:1px solid rgba(239,68,68,0.2); padding-bottom:15px;">
+        <span style="font-size:1.8rem; background:rgba(239,68,68,0.1); padding:10px; border-radius:12px; border:1px solid rgba(239,68,68,0.3);">⚠️</span>
+        <div>
+            <div style="color:#f87171; font-family:'JetBrains Mono',monospace; font-size:0.8rem; font-weight:800; text-transform:uppercase; letter-spacing:0.1em; margin-bottom:4px;">Risk Assessment</div>
+            <h2 style="margin:0; font-size:1.8rem; font-weight:800; color:#f8fafc;">07 — Sınırlamalar & Riskler</h2>
+        </div>
+    </div>
+
+    <div class="ev-limit-row">
+        <div class="ev-limit-icon">📅</div>
+        <div class="ev-limit-body">
+            <h4>Veri Güncelliği (Data Drift)</h4>
+            <p>Model, belirli bir dönem CS:GO verisi üzerinde eğitilmiştir. Valve'ın meta-değiştiren
+            güncellemeleri (silah dengeleme, harita değişiklikleri, ekonomi ayarlamaları) ile
+            <strong>model performansı zamanla bozulabilir</strong>. Periyodik yeniden eğitim (retraining) zorunludur.</p>
+        </div>
+    </div>
+
+    <div class="ev-limit-row">
+        <div class="ev-limit-icon">🗺️</div>
+        <div class="ev-limit-body">
+            <h4>Harita Genellemesi</h4>
+            <p>Veri setindeki haritalar (de_dust2, de_inferno vb.) belirli oyun döngüleri içindir.
+            <strong>Yeni haritalar</strong> (de_anubis, de_ancient gibi sonraki eklemeler) için model hiç görülmemiş
+            kategorik değerlerle karşılaşabilir; OneHotEncoder'ın <code>handle_unknown='ignore'</code> ayarı bu riski
+            azaltır ancak performans düşebilir.</p>
+        </div>
+    </div>
+
+    <div class="ev-limit-row">
+        <div class="ev-limit-icon">🎭</div>
+        <div class="ev-limit-body">
+            <h4>Oyuncu Beceri Düzeyi Yokluğu</h4>
+            <p>Model, <strong>oyuncu rating/rank bilgisini</strong> içermemektedir. Profesyonel takımların (S-Tier) ekonomik
+            dezavantajı sakin bir şekilde aşma kapasitesi, model tarafından yakalanamaz. Bu yüzden
+            yüksek seviye turnuva tahminlerinde hata oranı artabilir.</p>
+        </div>
+    </div>
+
+    <div class="ev-limit-row">
+        <div class="ev-limit-icon">📊</div>
+        <div class="ev-limit-body">
+            <h4>%19 Hata Oranı ve Bağlam</h4>
+            <p>Model %81 doğrulukla tahmin yapsa da, her 5 raundan yaklaşık 1'inde hata yapmaktadır.
+            CS:GO'nun kendine özgü rastgelelik unsurları (bireysel outplay, stray bullet, clutch plays)
+            <strong>temelden tahmin edilemez</strong> bileşenler içermektedir; yani teorik tavan %100 değildir.</p>
+        </div>
+    </div>
+</div>
+
+<div class="ev-limit" style="margin-top:20px; border-color:rgba(34,211,238,0.3);">
+    <h3 style="margin:0 0 20px 0; font-size:1.3rem; font-weight:800; color:#22d3ee;">🚀 Sonraki Adımlar — Öneriler</h3>
+
+    <div class="ev-next-row">
+        <div class="ev-next-icon">🔄</div>
+        <div class="ev-next-body">
+            <h4>Hiperparametre Optimizasyonu</h4>
+            <p>Extra Trees için <strong>n_estimators, max_depth, min_samples_leaf</strong> parametreleri
+            Optuna veya GridSearchCV ile optimize edilebilir. Tahmini kazanım: +1-2% AUC.</p>
+        </div>
+    </div>
+
+    <div class="ev-next-row">
+        <div class="ev-next-icon">🤝</div>
+        <div class="ev-next-body">
+            <h4>Ensemble / Stacking</h4>
+            <p>Extra Trees + LightGBM + XGBoost birleştirilerek bir <strong>stacking ensemble</strong> kurulabilir.
+            Faz 4'te her üç model de güçlü performans sergilemiştir; birlikte çalışmaları
+            varyansı daha da düşürebilir.</p>
+        </div>
+    </div>
+
+    <div class="ev-next-row">
+        <div class="ev-next-icon">🔍</div>
+        <div class="ev-next-body">
+            <h4>SHAP Değerleri ile Açıklanabilir YZ</h4>
+            <p>Koçluk kararlarında yalnızca "kim kazanır" değil, <strong>"neden kazanır"</strong> sorusu da kritiktir.
+            SHAP değerleri ile bireysel tahmin kararları yorumlanabilir hale getirilebilir.</p>
+        </div>
+    </div>
+
+    <div class="ev-next-row">
+        <div class="ev-next-icon">🌐</div>
+        <div class="ev-next-body">
+            <h4>Canlı API Deployment</h4>
+            <p>FastAPI veya Flask ile <strong>REST endpoint</strong> kurulabilir. Oyun verileri gerçek zamanlı
+            alınıp model tahminleri raundin ortasında koça iletilebilir (Faz 6 kapsamı).</p>
+        </div>
+    </div>
+</div>
+</body></html>

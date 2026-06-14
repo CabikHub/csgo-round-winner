@@ -1,0 +1,268 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><script src="https://cdn.plot.ly/plotly-2.32.0.min.js"></script></head><body>
+<style>
+    .section-container-bottom {
+        background: linear-gradient(145deg, #020617 0%, #0f172a 100%);
+        padding: 0 40px 40px 40px;
+        border-radius: 0 0 20px 20px;
+        color: #f8fafc;
+        font-family: 'Inter', sans-serif;
+        box-shadow: 0 15px 25px -5px rgba(0, 0, 0, 0.4);
+        border: 1px solid rgba(20, 184, 166, 0.3);
+        border-top: none;
+    }
+    
+    /* Harita Grid Tasarımı */
+    .map-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+        gap: 15px;
+        margin-top: 20px;
+        margin-bottom: 25px;
+    }
+    
+    .map-card {
+        background: rgba(15, 23, 42, 0.6);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        border-radius: 10px;
+        padding: 15px;
+        transition: transform 0.2s, border-color 0.2s;
+    }
+    
+    .map-card:hover {
+        border-color: rgba(20, 184, 166, 0.4);
+        transform: translateY(-2px);
+        background: rgba(20, 184, 166, 0.05);
+    }
+    
+    .map-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 8px;
+    }
+    
+    .map-name {
+        font-family: 'JetBrains Mono', monospace;
+        font-weight: 700;
+        font-size: 1.05rem;
+        color: #f8fafc;
+    }
+    
+    .map-stats {
+        font-size: 0.8rem;
+        color: #94a3b8;
+        margin-bottom: 12px;
+    }
+    
+    /* Progress Bar (CT vs T) Tasarımı */
+    .progress-container {
+        display: flex;
+        width: 100%;
+        height: 22px;
+        border-radius: 6px;
+        overflow: hidden;
+        background: #0f172a;
+    }
+    
+    .progress-bar {
+        display: flex;
+        align-items: center;
+        font-size: 0.7rem;
+        font-weight: 700;
+        font-family: 'JetBrains Mono', monospace;
+        color: #fff;
+        padding: 0 5px;
+    }
+    
+    .ct-bar {
+        background: linear-gradient(90deg, rgba(56,189,248,0.7), #38bdf8);
+        justify-content: flex-start;
+        border-right: 1px solid #020617;
+    }
+    
+    .t-bar {
+        background: linear-gradient(90deg, #ef4444, rgba(239,68,68,0.7));
+        justify-content: flex-end;
+    }
+    
+    /* Yorum Kutusu */
+    .insight-box-map {
+        background: linear-gradient(145deg, rgba(16, 185, 129, 0.05) 0%, rgba(16, 185, 129, 0.1) 100%);
+        border: 1px solid rgba(16, 185, 129, 0.3);
+        border-radius: 12px;
+        padding: 20px 25px;
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        display: flex;
+        align-items: flex-start;
+        gap: 15px;
+    }
+    
+    .code-tag-map {
+        color: #14b8a6; 
+        background: rgba(20, 184, 166, 0.1); 
+        padding: 2px 6px; 
+        border-radius: 4px; 
+        font-family: 'JetBrains Mono', monospace; 
+        font-size: 0.85em;
+        border: 1px solid rgba(20, 184, 166, 0.2);
+    }
+</style>
+
+<div class="section-container-bottom">
+    
+    <div style="font-size: 0.95rem; font-weight: 600; color: #2dd4bf; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 8px;">
+        📌 Harita Meta İstatistikleri (Map Meta Stats)
+    </div>
+    
+    <div class='map-grid'>
+        <div class="map-card">
+            <div class="map-header">
+                <span class="map-name">de_cache</span>
+                <span style='background: rgba(239,68,68,0.2); color: #ef4444; font-size: 0.65rem; padding: 2px 6px; border-radius: 4px; border: 1px solid rgba(239,68,68,0.4);'>YETERSİZ VERİ</span>
+            </div>
+            <div class="map-stats">Toplam Gözlem: 38</div>
+            
+            <div class="progress-container">
+                <div class="progress-bar ct-bar" style="width: 68.4%;">
+                    <span>%68.4 CT</span>
+                </div>
+                <div class="progress-bar t-bar" style="width: 31.6%;">
+                    <span>T %31.6</span>
+                </div>
+            </div>
+        </div>
+    
+        <div class="map-card">
+            <div class="map-header">
+                <span class="map-name">de_train</span>
+                
+            </div>
+            <div class="map-stats">Toplam Gözlem: 3,330</div>
+            
+            <div class="progress-container">
+                <div class="progress-bar ct-bar" style="width: 54.4%;">
+                    <span>%54.4 CT</span>
+                </div>
+                <div class="progress-bar t-bar" style="width: 45.6%;">
+                    <span>T %45.6</span>
+                </div>
+            </div>
+        </div>
+    
+        <div class="map-card">
+            <div class="map-header">
+                <span class="map-name">de_nuke</span>
+                
+            </div>
+            <div class="map-stats">Toplam Gözlem: 4,646</div>
+            
+            <div class="progress-container">
+                <div class="progress-bar ct-bar" style="width: 53.9%;">
+                    <span>%53.9 CT</span>
+                </div>
+                <div class="progress-bar t-bar" style="width: 46.1%;">
+                    <span>T %46.1</span>
+                </div>
+            </div>
+        </div>
+    
+        <div class="map-card">
+            <div class="map-header">
+                <span class="map-name">de_overpass</span>
+                
+            </div>
+            <div class="map-stats">Toplam Gözlem: 3,418</div>
+            
+            <div class="progress-container">
+                <div class="progress-bar ct-bar" style="width: 50.2%;">
+                    <span>%50.2 CT</span>
+                </div>
+                <div class="progress-bar t-bar" style="width: 49.8%;">
+                    <span>T %49.8</span>
+                </div>
+            </div>
+        </div>
+    
+        <div class="map-card">
+            <div class="map-header">
+                <span class="map-name">de_mirage</span>
+                
+            </div>
+            <div class="map-stats">Toplam Gözlem: 4,553</div>
+            
+            <div class="progress-container">
+                <div class="progress-bar ct-bar" style="width: 48.6%;">
+                    <span>%48.6 CT</span>
+                </div>
+                <div class="progress-bar t-bar" style="width: 51.4%;">
+                    <span>T %51.4</span>
+                </div>
+            </div>
+        </div>
+    
+        <div class="map-card">
+            <div class="map-header">
+                <span class="map-name">de_vertigo</span>
+                
+            </div>
+            <div class="map-stats">Toplam Gözlem: 2,773</div>
+            
+            <div class="progress-container">
+                <div class="progress-bar ct-bar" style="width: 46.7%;">
+                    <span>%46.7 CT</span>
+                </div>
+                <div class="progress-bar t-bar" style="width: 53.3%;">
+                    <span>T %53.3</span>
+                </div>
+            </div>
+        </div>
+    
+        <div class="map-card">
+            <div class="map-header">
+                <span class="map-name">de_inferno</span>
+                
+            </div>
+            <div class="map-stats">Toplam Gözlem: 5,777</div>
+            
+            <div class="progress-container">
+                <div class="progress-bar ct-bar" style="width: 46.4%;">
+                    <span>%46.4 CT</span>
+                </div>
+                <div class="progress-bar t-bar" style="width: 53.6%;">
+                    <span>T %53.6</span>
+                </div>
+            </div>
+        </div>
+    
+        <div class="map-card">
+            <div class="map-header">
+                <span class="map-name">de_dust2</span>
+                
+            </div>
+            <div class="map-stats">Toplam Gözlem: 5,465</div>
+            
+            <div class="progress-container">
+                <div class="progress-bar ct-bar" style="width: 46.2%;">
+                    <span>%46.2 CT</span>
+                </div>
+                <div class="progress-bar t-bar" style="width: 53.8%;">
+                    <span>T %53.8</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="insight-box-map">
+        <div style="font-size: 1.6rem; background: rgba(16, 185, 129, 0.15); padding: 12px; border-radius: 12px; border: 1px solid rgba(16, 185, 129, 0.2);">🧠</div>
+        <div>
+            <h4 style="margin: 0 0 10px 0; color: #f8fafc; font-size: 1.05rem; letter-spacing: 0.01em;">Mekansal Analiz ve Feature Engineering</h4>
+            <ul style="margin: 0; padding-left: 20px; color: #cbd5e1; font-size: 0.95rem; line-height: 1.8;">
+                <li>Haritaların büyük çoğunluğunda CT/T kazanma oranları <strong style="color: #f8fafc;">%50'ye yakın</strong> seyretmektedir — bu, veri setindeki genel sınıf dengesini teyit etmektedir. Herhangi bir tarafa haksız bir yapısal üstünlük yoktur.</li>
+                <li><strong style="color: #ef4444;">Dikkat:</strong> <span class="code-tag-map">de_cache</span> veri setinde yalnızca 38 gözlem barındırmaktadır; bu harita istatistiksel olarak temsili <u>değildir</u>. Faz 3'te (Data Preparation) bu satırların "Diğer" (Other) kategorisine birleştirilmesi (aggregate) veya veri setinden drop edilmesi (silinmesi) değerlendirilecektir.</li>
+                <li>📌 <strong>Aksiyon:</strong> <span class="code-tag-map">map</span> sütunu kategorik bir değişken olduğu için, modelleme aşamasına girmeden hemen önce <strong style="color: #10b981;">One-Hot Encoding (OHE)</strong> uygulanarak sayısal feature'lar olarak yapılandırılacaktır.</li>
+            </ul>
+        </div>
+    </div>
+
+</div>
+</body></html>

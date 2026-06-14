@@ -1,0 +1,187 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><script src="https://cdn.plot.ly/plotly-2.32.0.min.js"></script></head><body>
+<style>
+    .section-container-bottom {
+        background: linear-gradient(145deg, #020617 0%, #0f172a 100%);
+        padding: 0 40px 40px 40px;
+        border-radius: 0 0 20px 20px;
+        color: #f8fafc;
+        font-family: 'Inter', sans-serif;
+        box-shadow: 0 15px 25px -5px rgba(0, 0, 0, 0.4);
+        border: 1px solid rgba(245, 158, 11, 0.3);
+        border-top: none;
+    }
+
+    .stats-table-wrapper {
+        background: rgba(15, 23, 42, 0.6);
+        border-radius: 12px;
+        border: 1px solid rgba(245, 158, 11, 0.2);
+        overflow: hidden;
+        margin-top: 15px;
+    }
+
+    .panel-header {
+        background: rgba(245, 158, 11, 0.1);
+        color: #fbbf24;
+        padding: 12px 20px;
+        font-weight: 600;
+        font-size: 0.95rem;
+        border-bottom: 1px solid rgba(245, 158, 11, 0.2);
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .stats-table {
+        width: 100%;
+        border-collapse: collapse;
+        text-align: left;
+    }
+
+    .stats-table th {
+        padding: 12px 20px;
+        color: #94a3b8;
+        font-size: 0.85rem;
+        font-weight: 600;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        background: rgba(0,0,0,0.2);
+    }
+
+    .stats-table td {
+        padding: 12px 20px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        color: #cbd5e1;
+        font-size: 0.85rem;
+        font-family: 'JetBrains Mono', monospace;
+    }
+
+    .stats-table tr:hover td {
+        background: rgba(245, 158, 11, 0.05);
+    }
+
+    .insight-box-final {
+        background: linear-gradient(145deg, rgba(16, 185, 129, 0.05) 0%, rgba(16, 185, 129, 0.1) 100%);
+        border: 1px solid rgba(16, 185, 129, 0.3);
+        border-radius: 12px;
+        padding: 20px 25px;
+        margin-top: 25px;
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    }
+    
+    .code-tag {
+        color: #38bdf8; 
+        background: rgba(56, 189, 248, 0.1); 
+        padding: 2px 6px; 
+        border-radius: 4px; 
+        font-family: 'JetBrains Mono', monospace; 
+        font-size: 0.9em;
+        border: 1px solid rgba(56, 189, 248, 0.2);
+    }
+    
+    .highlight-tag {
+        color: #10b981; 
+        background: rgba(16, 185, 129, 0.1); 
+        padding: 2px 6px; 
+        border-radius: 4px; 
+        font-weight: 700;
+        border: 1px solid rgba(16, 185, 129, 0.2);
+    }
+</style>
+
+<div class="section-container-bottom">
+    
+    <div class="stats-table-wrapper">
+        <div class="panel-header"><span>📐</span> IQR Yöntemi İle Aykırı Değer İstatistikleri</div>
+        <table class="stats-table">
+            <thead>
+                <tr>
+                    <th>Sütun (Feature)</th>
+                    <th style="text-align: right;">Alt Sınır</th>
+                    <th style="text-align: right;">Üst Sınır</th>
+                    <th style="text-align: right;">Aykırı Kayıt Sayısı</th>
+                    <th style="text-align: right;">Oran (%)</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                <tr>
+                    <td style="font-weight: 600; color: #f8fafc;">ct_money</td>
+                    <td style="text-align: right;">-18,793.8</td>
+                    <td style="text-align: right;">34,656.2</td>
+                    <td style="text-align: right; color: #f8fafc; font-weight: 700;">1,108</td>
+                    <td style="text-align: right; color: #f8fafc; font-weight: 700;">3.69%</td>
+                </tr>
+    
+                <tr>
+                    <td style="font-weight: 600; color: #f8fafc;">t_money</td>
+                    <td style="text-align: right;">-23,275.0</td>
+                    <td style="text-align: right;">42,925.0</td>
+                    <td style="text-align: right; color: #f8fafc; font-weight: 700;">930</td>
+                    <td style="text-align: right; color: #f8fafc; font-weight: 700;">3.10%</td>
+                </tr>
+    
+                <tr>
+                    <td style="font-weight: 600; color: #fbbf24;">ct_health</td>
+                    <td style="text-align: right;">127.5</td>
+                    <td style="text-align: right;">723.5</td>
+                    <td style="text-align: right; color: #f8fafc; font-weight: 700;">1,963</td>
+                    <td style="text-align: right; color: #fbbf24; font-weight: 700;">6.54%</td>
+                </tr>
+    
+                <tr>
+                    <td style="font-weight: 600; color: #f8fafc;">t_health</td>
+                    <td style="text-align: right;">52.5</td>
+                    <td style="text-align: right;">768.5</td>
+                    <td style="text-align: right; color: #f8fafc; font-weight: 700;">764</td>
+                    <td style="text-align: right; color: #f8fafc; font-weight: 700;">2.55%</td>
+                </tr>
+    
+                <tr>
+                    <td style="font-weight: 600; color: #f8fafc;">ct_armor</td>
+                    <td style="text-align: right;">-244.0</td>
+                    <td style="text-align: right;">924.0</td>
+                    <td style="text-align: right; color: #f8fafc; font-weight: 700;">0</td>
+                    <td style="text-align: right; color: #f8fafc; font-weight: 700;">0.00%</td>
+                </tr>
+    
+                <tr>
+                    <td style="font-weight: 600; color: #f8fafc;">t_armor</td>
+                    <td style="text-align: right;">-269.5</td>
+                    <td style="text-align: right;">910.5</td>
+                    <td style="text-align: right; color: #f8fafc; font-weight: 700;">0</td>
+                    <td style="text-align: right; color: #f8fafc; font-weight: 700;">0.00%</td>
+                </tr>
+    
+                <tr>
+                    <td style="font-weight: 600; color: #f8fafc;">ct_score</td>
+                    <td style="text-align: right;">-7.5</td>
+                    <td style="text-align: right;">20.5</td>
+                    <td style="text-align: right; color: #f8fafc; font-weight: 700;">156</td>
+                    <td style="text-align: right; color: #f8fafc; font-weight: 700;">0.52%</td>
+                </tr>
+    
+                <tr>
+                    <td style="font-weight: 600; color: #f8fafc;">t_score</td>
+                    <td style="text-align: right;">-7.5</td>
+                    <td style="text-align: right;">20.5</td>
+                    <td style="text-align: right; color: #f8fafc; font-weight: 700;">153</td>
+                    <td style="text-align: right; color: #f8fafc; font-weight: 700;">0.51%</td>
+                </tr>
+    
+            </tbody>
+        </table>
+    </div>
+
+    <div class="insight-box-final">
+        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 15px;">
+            <span style="font-size: 1.5rem; background: rgba(16, 185, 129, 0.15); padding: 8px; border-radius: 10px; border: 1px solid rgba(16, 185, 129, 0.2);">💡</span>
+            <h4 style="margin: 0; color: #f8fafc; font-size: 1.05rem;">Domain Uzmanı Kararı ve Modelleme Stratejisi</h4>
+        </div>
+        <ul style="margin: 0; padding-left: 20px; color: #cbd5e1; font-size: 0.95rem; line-height: 1.8;">
+            <li><span class="code-tag">ct_health</span> (ve <span class="code-tag">t_health</span>) en yüksek aykırı değer oranına sahiptir. Bu; round sonuna doğru çok az sağlıkla ayakta kalan oyuncu durumlarını yansıtmaktadır — yani bunlar <strong style="color: #f8fafc;">gerçek oyun verisidir, gürültü veya sensör hatası değildir.</strong></li>
+            <li><span class="code-tag">ct_money</span> ve <span class="code-tag">t_money</span> sütunlarındaki aykırılar ise, "full-buy" round'larındaki (maksimum teçhizat) yüksek ekonomiyi ve üstünlük anlarını temsil eder.</li>
+            <li style="margin-top: 10px;">📌 <strong>Aksiyon:</strong> Bu aykırı değerler <span class="highlight-tag">Domain-Valid</span> (oyun dinamiklerinden kaynaklı geçerli değerler) olduğu için veri setinden <u>silinmeyecektir (No Drop)</u>. Bunun yerine, aykırı değerlere karşı dirençli olan <span class="highlight-tag">RobustScaler</span> yöntemi ile ölçekleme işlemi Faz 3'te pipeline'a eklenecektir.</li>
+        </ul>
+    </div>
+
+</div>
+</body></html>

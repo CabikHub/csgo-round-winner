@@ -1,0 +1,170 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><script src="https://cdn.plot.ly/plotly-2.32.0.min.js"></script></head><body>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap');
+    
+    .phase4-container {
+        background: linear-gradient(145deg, #020617 0%, #170f23 100%);
+        padding: 40px;
+        border-radius: 20px;
+        color: #f8fafc;
+        font-family: 'Inter', sans-serif;
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05), 0 15px 35px -5px rgba(0, 0, 0, 0.5);
+        border: 1px solid rgba(244, 63, 94, 0.4); /* Neon Crimson Vurgu */
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .phase4-container::before {
+        content: '';
+        position: absolute;
+        top: -50%; left: -50%; width: 200%; height: 200%;
+        background: radial-gradient(circle, rgba(244, 63, 94, 0.05) 0%, transparent 60%);
+        pointer-events: none;
+    }
+
+    .analyst-box-p4 {
+        background: linear-gradient(90deg, rgba(244, 63, 94, 0.1) 0%, transparent 100%);
+        border-left: 4px solid #f43f5e;
+        padding: 20px 25px;
+        border-radius: 0 12px 12px 0;
+        margin-bottom: 30px;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .code-wrapper-p4 {
+        background: #020617;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 12px;
+        overflow: hidden;
+        margin-bottom: 25px;
+    }
+
+    .code-header-p4 {
+        background: rgba(15, 23, 42, 0.8);
+        padding: 10px 15px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.85rem;
+        color: #94a3b8;
+    }
+
+    .code-dots span { display: inline-block; width: 10px; height: 10px; border-radius: 50%; }
+    .code-content-p4 { padding: 20px; margin: 0; font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; line-height: 1.6; color: #e2e8f0; overflow-x: auto; }
+    
+    .kw { color: #c678dd; } 
+    .func { color: #61afef; } 
+    .str { color: #98c379; } 
+    .com { color: #5c6370; font-style: italic; } 
+
+    .model-dashboard {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 15px;
+        margin-top: 20px;
+    }
+
+    .model-card {
+        background: rgba(15, 23, 42, 0.6);
+        border: 1px solid rgba(244, 63, 94, 0.2);
+        border-radius: 10px;
+        padding: 15px;
+    }
+
+    .model-card-title {
+        color: #fb7185;
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        margin-bottom: 10px;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+    
+    .model-tag {
+        display: inline-block;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        color: #cbd5e1;
+        padding: 2px 8px;
+        border-radius: 4px;
+        font-size: 0.8rem;
+        font-family: 'JetBrains Mono', monospace;
+        margin: 0 4px 4px 0;
+    }
+    
+    .model-tag.boost {
+        background: rgba(167, 139, 250, 0.15);
+        color: #c4b5fd;
+        border-color: rgba(167, 139, 250, 0.3);
+    }
+</style>
+
+<div class="phase4-container">
+    <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 20px;">
+        <span style="font-size: 2.2rem; background: rgba(244, 63, 94, 0.15); padding: 10px; border-radius: 12px; border: 1px solid rgba(244, 63, 94, 0.3); box-shadow: 0 0 15px rgba(244, 63, 94, 0.2);">🤖</span>
+        <div>
+            <div style="color: #fb7185; font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 4px;">CRISP-DM Adım 04</div>
+            <h2 style="margin: 0; font-size: 2.2rem; font-weight: 900; background: linear-gradient(to right, #fb7185, #e11d48); -webkit-background-clip: text; -webkit-text-fill-color: transparent; letter-spacing: -0.02em;">
+                FAZ 4 – Modeling
+            </h2>
+            <div style="color: #94a3b8; font-family: 'Inter', sans-serif; font-size: 0.95rem; margin-top: 4px; font-weight: 500;">
+                Algoritma Arenası & Hiperparametre Optimizasyonu
+            </div>
+        </div>
+    </div>
+
+    <div class="analyst-box-p4">
+        <div style="font-size: 1.8rem;">⚔️</div>
+        <div>
+            <h4 style="margin: 0 0 6px 0; color: #fb7185; font-size: 1rem; font-weight: 700;">Sistem Başlatıldı: Algoritmalar Hazır</h4>
+            <p style="margin: 0; color: #cbd5e1; font-size: 0.95rem; line-height: 1.6;">
+                10'dan fazla sınıflandırma (Classification) algoritması, çapraz doğrulama (Cross-Validation) motorları ve metrik kütüphaneleri (ROC-AUC, F1, Recall) başarıyla çekirdeğe yüklendi. Modeller işlenmiş veri üzerinde sistematik bir yarışa sokulacaktır.
+            </p>
+        </div>
+    </div>
+
+    <div class="model-dashboard">
+        <div class="model-card">
+            <div class="model-card-title"><span>📐</span> Linear & Baseline</div>
+            <div>
+                <span class="model-tag">LogisticReg</span>
+                <span class="model-tag">LDA</span>
+                <span class="model-tag">GaussianNB</span>
+                <span class="model-tag">KNN</span>
+            </div>
+        </div>
+        <div class="model-card">
+            <div class="model-card-title"><span>🌳</span> Tree Ensembles</div>
+            <div>
+                <span class="model-tag">RandomForest</span>
+                <span class="model-tag">ExtraTrees</span>
+                <span class="model-tag">DecisionTree</span>
+            </div>
+        </div>
+        <div class="model-card" style="border-color: rgba(167, 139, 250, 0.4); background: rgba(167, 139, 250, 0.05);">
+            <div class="model-card-title" style="color: #c4b5fd;"><span>🚀</span> Advanced Boosting</div>
+            <div>
+                <span class="model-tag boost">XGBoost</span>
+                <span class="model-tag boost">LightGBM</span>
+                <span class="model-tag boost">GradBoost</span>
+                <span class="model-tag boost">AdaBoost</span>
+            </div>
+        </div>
+    </div>
+    
+    <div style="margin-top: 25px; background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.3); padding: 12px 20px; border-radius: 8px; display: flex; align-items: center; gap: 10px; font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; color: #34d399;">
+        <span style="animation: pulse 2s infinite;">🟢</span> LIBRARIES_LOADED_SUCCESSFULLY
+    </div>
+    
+    <style>
+        @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.4; } 100% { opacity: 1; } }
+    </style>
+</div>
+</body></html>

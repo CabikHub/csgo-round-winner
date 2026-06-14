@@ -1,0 +1,100 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><script src="https://cdn.plot.ly/plotly-2.32.0.min.js"></script></head><body>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;700;800&display=swap');
+    .final-container {
+        background: linear-gradient(145deg, #020617 0%, #0f172a 100%);
+        padding: 45px 40px; border-radius: 24px; color: #f8fafc;
+        font-family: 'Inter', sans-serif;
+        box-shadow: inset 0 1px 0 rgba(255,255,255,0.1), 0 20px 25px -5px rgba(0,0,0,0.4);
+        border: 1px solid rgba(34,197,94,0.4); position: relative; overflow: hidden;
+    }
+    .final-container::before {
+        content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
+        background: linear-gradient(90deg, #22c55e 0%, #10b981 25%, #06b6d4 50%, #3b82f6 75%, #8b5cf6 100%);
+    }
+    .criteria-grid {
+        display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin: 25px 0;
+    }
+    .crit-card {
+        background: rgba(15,23,42,0.6); border-radius: 12px; padding: 18px; text-align: center;
+        border: 1px solid rgba(34,197,94,0.2); border-top: 3px solid #22c55e;
+    }
+    .crit-label { color: #94a3b8; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 8px; font-weight: 700; }
+    .crit-score { font-family: 'JetBrains Mono', monospace; font-size: 1.3rem; font-weight: 800; color: #4ade80; }
+    .crit-target { color: #64748b; font-size: 0.8rem; margin-top: 4px; font-family: 'JetBrains Mono', monospace; }
+    .faz-timeline {
+        display: flex; gap: 0; margin: 25px 0; background: rgba(15,23,42,0.4);
+        border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,0.05);
+    }
+    .faz-block {
+        flex: 1; padding: 14px 8px; text-align: center;
+        font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; font-weight: 700;
+        border-right: 1px solid rgba(255,255,255,0.05);
+    }
+    .faz-block:last-child { border-right: none; }
+    .victory-banner {
+        background: linear-gradient(90deg, rgba(34,197,94,0.15) 0%, rgba(6,182,212,0.15) 100%);
+        border: 1px solid rgba(34,197,94,0.4); border-radius: 16px; padding: 30px;
+        text-align: center; margin-top: 25px;
+    }
+</style>
+<div class="final-container">
+    <div style="display:flex; align-items:center; gap:15px; margin-bottom:20px; border-bottom:1px solid rgba(34,197,94,0.2); padding-bottom:20px;">
+        <div style="background:linear-gradient(135deg,#22c55e,#06b6d4); color:#0f172a; font-family:'JetBrains Mono',monospace; font-size:1.2rem; font-weight:800; width:48px; height:48px; display:flex; align-items:center; justify-content:center; border-radius:12px; box-shadow:0 4px 15px rgba(34,197,94,0.4);">08</div>
+        <div>
+            <div style="color:#4ade80; font-family:'JetBrains Mono',monospace; font-size:0.85rem; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; margin-bottom:4px;">CRISP-DM Closure</div>
+            <h2 style="margin:0; font-size:1.8rem; font-weight:800; color:#f8fafc;">Döngü Kapanışı & Proje Finali</h2>
+        </div>
+    </div>
+
+    <div style="color:#e2e8f0; font-size:1rem; font-weight:600; margin-bottom:10px;">📋 Faz 1 Başarı Kriterleri — Sonuç Karşılaştırması</div>
+    <div class="criteria-grid">
+        <div class="crit-card">
+            <div class="crit-label">Accuracy</div>
+            <div class="crit-score">✅ 0.8173</div>
+            <div class="crit-target">Hedef ≥ 0.75</div>
+        </div>
+        <div class="crit-card">
+            <div class="crit-label">Macro F1-Score</div>
+            <div class="crit-score">✅ 0.8172</div>
+            <div class="crit-target">Hedef ≥ 0.73</div>
+        </div>
+        <div class="crit-card">
+            <div class="crit-label">ROC-AUC</div>
+            <div class="crit-score">✅ 0.9049</div>
+            <div class="crit-target">Hedef ≥ 0.80</div>
+        </div>
+    </div>
+
+    <div style="color:#e2e8f0; font-size:1rem; font-weight:600; margin-bottom:10px;">🗺️ CRISP-DM Faz Tamamlanma Özeti</div>
+    <div class="faz-timeline">
+        <div class="faz-block" style="background:rgba(56,189,248,0.1); color:#38bdf8;">📌<br>FAZ 1<br>Business</div>
+        <div class="faz-block" style="background:rgba(14,165,233,0.1); color:#0ea5e9;">🔍<br>FAZ 2<br>Data Und.</div>
+        <div class="faz-block" style="background:rgba(16,185,129,0.1); color:#10b981;">🛠️<br>FAZ 3<br>Data Prep.</div>
+        <div class="faz-block" style="background:rgba(139,92,246,0.1); color:#8b5cf6;">🤖<br>FAZ 4<br>Modeling</div>
+        <div class="faz-block" style="background:rgba(34,211,238,0.1); color:#22d3ee;">✅<br>FAZ 5<br>Evaluation</div>
+        <div class="faz-block" style="background:rgba(34,197,94,0.2); color:#22c55e; box-shadow:inset 0 0 20px rgba(34,197,94,0.1);">🚀<br>FAZ 6<br>Deployment</div>
+    </div>
+
+    <div class="victory-banner">
+        <div style="font-size:3rem; margin-bottom:15px;">🏆</div>
+        <h2 style="margin:0 0 12px 0; font-size:2rem; font-weight:900; background:linear-gradient(135deg,#4ade80 0%,#22d3ee 100%); -webkit-background-clip:text; -webkit-text-fill-color:transparent;">
+            Proje Başarıyla Tamamlandı!
+        </h2>
+        <p style="color:#cbd5e1; font-size:1rem; max-width:650px; margin:0 auto; line-height:1.7;">
+            CS:GO Round Winner Prediction projesi CRISP-DM metodolojisinin tüm 6 fazında başarıyla tamamlanmıştır. 
+            <strong style="color:#4ade80;">ExtraTreesClassifier</strong> şampiyon modeli Faz 1'de belirlenen tüm 
+            başarı kriterlerini karşılamış, production-ready pipeline olarak paketlenmiş ve canlı 
+            tahmin demosuyla doğrulanmıştır.
+        </p>
+        <div style="margin-top:20px; display:flex; justify-content:center; gap:15px; flex-wrap:wrap;">
+            <span style="background:rgba(34,197,94,0.15); color:#4ade80; border:1px solid rgba(34,197,94,0.3); padding:6px 16px; border-radius:8px; font-family:'JetBrains Mono',monospace; font-size:0.85rem; font-weight:700;">Emirhan Çabık</span>
+            <span style="background:rgba(34,197,94,0.15); color:#4ade80; border:1px solid rgba(34,197,94,0.3); padding:6px 16px; border-radius:8px; font-family:'JetBrains Mono',monospace; font-size:0.85rem; font-weight:700;">Tevfik Özyurt</span>
+            <span style="background:rgba(34,197,94,0.15); color:#4ade80; border:1px solid rgba(34,197,94,0.3); padding:6px 16px; border-radius:8px; font-family:'JetBrains Mono',monospace; font-size:0.85rem; font-weight:700;">Mücahit Selman Şahin</span>
+        </div>
+        <div style="margin-top:12px; color:#64748b; font-family:'JetBrains Mono',monospace; font-size:0.8rem;">
+            YBS3259 Makine Öğrenmesi | Bahar Dönemi Final Projesi
+        </div>
+    </div>
+</div>
+</body></html>

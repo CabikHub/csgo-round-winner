@@ -1,0 +1,174 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><script src="https://cdn.plot.ly/plotly-2.32.0.min.js"></script></head><body>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap');
+    
+    .section-container-p8 {
+        background: linear-gradient(145deg, #020617 0%, #0f172a 100%);
+        padding: 40px;
+        border-radius: 20px;
+        color: #f8fafc;
+        font-family: 'Inter', sans-serif;
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05), 0 15px 35px -5px rgba(0, 0, 0, 0.5);
+        border: 1px solid rgba(16, 185, 129, 0.3);
+    }
+
+    .section-header-p8 {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        margin-bottom: 25px;
+        border-bottom: 1px solid rgba(16, 185, 129, 0.2);
+        padding-bottom: 15px;
+    }
+
+    .step-badge-p8 {
+        background: #10b981;
+        color: #0f172a;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 1.2rem;
+        font-weight: 800;
+        width: 48px;
+        height: 48px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(16, 185, 129, 0.4);
+    }
+
+    .artifact-table-wrapper {
+        background: rgba(15, 23, 42, 0.6);
+        border-radius: 12px;
+        border: 1px solid rgba(16, 185, 129, 0.2);
+        overflow: hidden;
+        margin-top: 20px;
+    }
+
+    .artifact-table {
+        width: 100%;
+        border-collapse: collapse;
+        text-align: left;
+    }
+
+    .artifact-table th {
+        padding: 14px 20px;
+        color: #34d399;
+        font-size: 0.85rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        border-bottom: 1px solid rgba(16, 185, 129, 0.2);
+        background: rgba(16, 185, 129, 0.05);
+    }
+
+    .artifact-table tr:hover td {
+        background: rgba(16, 185, 129, 0.03);
+    }
+
+    .console-footer-p8 {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: #020617;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        padding: 15px 20px;
+        border-radius: 8px;
+        margin-top: 20px;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.85rem;
+    }
+</style>
+
+<div class="section-container-p8">
+    <div class="section-header-p8">
+        <div class="step-badge-p8">08</div>
+        <div>
+            <div style="color: #34d399; font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 4px;">Model Serialization & Storage</div>
+            <h2 style="margin: 0; font-size: 1.8rem; font-weight: 800; color: #f8fafc; letter-spacing: -0.01em;">
+                Pipeline ve Yapay Zeka Varlıklarının (Artifacts) Kaydedilmesi
+            </h2>
+        </div>
+    </div>
+
+    <p style="color: #cbd5e1; font-size: 0.95rem; line-height: 1.6; margin-bottom: 15px;">
+        Hazırlanan tüm veri dönüşüm mimarisi, izole edilerek diske yazılmıştır. Bu kayıtlar, projenin bir sonraki adımı olan <strong>Faz 4 Modelleme</strong> aşamasında kütüphaneler arası transfer güvenliğini sağlarken, <strong>Faz 6 Canlı Dağıtım (Deployment)</strong> süreçlerinde modelin girdi formatı uyuşmazlıklarını (data shift) tamamen engeller.
+    </p>
+
+    <div class="artifact-table-wrapper">
+        <table class="artifact-table">
+            <thead>
+                <tr>
+                    <th style="width: 35%;">Erişim Yolu (Path)</th>
+                    <th style="width: 40%;">Varlık Açıklaması ve Görevi</th>
+                    <th style="width: 13%; text-align: right;">Dosya Boyutu</th>
+                    <th style="width: 12%; text-align: center;">Durum</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+    <tr>
+        <td style="padding: 12px 20px; border-bottom: 1px solid rgba(255, 255, 255, 0.04); font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; color: #38bdf8;">models/preprocessor_pipeline.joblib</td>
+        <td style="padding: 12px 20px; border-bottom: 1px solid rgba(255, 255, 255, 0.04); color: #94a3b8; font-size: 0.9rem;">Üretim Ortamı Ön İşleme Pipeline Nesnesi (Joblib Binary)</td>
+        <td style="padding: 12px 20px; border-bottom: 1px solid rgba(255, 255, 255, 0.04); font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; text-align: right; color: #f8fafc; font-weight: 700;">10.5 KB</td>
+        <td style="padding: 12px 20px; border-bottom: 1px solid rgba(255, 255, 255, 0.04); text-align: center;">
+            <span style="padding: 3px 8px; border-radius: 4px; font-size: 0.75rem; font-family: 'JetBrains Mono', monospace; font-weight: 700; border: 1px solid; background: rgba(16, 185, 129, 0.15); color: #10b981; border-color: rgba(16, 185, 129, 0.3);">KAYDEDİLDİ</span>
+        </td>
+    </tr>
+    
+    <tr>
+        <td style="padding: 12px 20px; border-bottom: 1px solid rgba(255, 255, 255, 0.04); font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; color: #38bdf8;">data/processed/X_train_processed.csv</td>
+        <td style="padding: 12px 20px; border-bottom: 1px solid rgba(255, 255, 255, 0.04); color: #94a3b8; font-size: 0.9rem;">Eğitim Seti Bağımsız Değişken Matrisi (Nihai Sayısal)</td>
+        <td style="padding: 12px 20px; border-bottom: 1px solid rgba(255, 255, 255, 0.04); font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; text-align: right; color: #f8fafc; font-weight: 700;">28.38 MB</td>
+        <td style="padding: 12px 20px; border-bottom: 1px solid rgba(255, 255, 255, 0.04); text-align: center;">
+            <span style="padding: 3px 8px; border-radius: 4px; font-size: 0.75rem; font-family: 'JetBrains Mono', monospace; font-weight: 700; border: 1px solid; background: rgba(16, 185, 129, 0.15); color: #10b981; border-color: rgba(16, 185, 129, 0.3);">KAYDEDİLDİ</span>
+        </td>
+    </tr>
+    
+    <tr>
+        <td style="padding: 12px 20px; border-bottom: 1px solid rgba(255, 255, 255, 0.04); font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; color: #38bdf8;">data/processed/X_test_processed.csv</td>
+        <td style="padding: 12px 20px; border-bottom: 1px solid rgba(255, 255, 255, 0.04); color: #94a3b8; font-size: 0.9rem;">Doğrulama Seti Bağımsız Değişken Matrisi (Nihai Sayısal)</td>
+        <td style="padding: 12px 20px; border-bottom: 1px solid rgba(255, 255, 255, 0.04); font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; text-align: right; color: #f8fafc; font-weight: 700;">7.09 MB</td>
+        <td style="padding: 12px 20px; border-bottom: 1px solid rgba(255, 255, 255, 0.04); text-align: center;">
+            <span style="padding: 3px 8px; border-radius: 4px; font-size: 0.75rem; font-family: 'JetBrains Mono', monospace; font-weight: 700; border: 1px solid; background: rgba(16, 185, 129, 0.15); color: #10b981; border-color: rgba(16, 185, 129, 0.3);">KAYDEDİLDİ</span>
+        </td>
+    </tr>
+    
+    <tr>
+        <td style="padding: 12px 20px; border-bottom: 1px solid rgba(255, 255, 255, 0.04); font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; color: #38bdf8;">data/processed/y_train.csv</td>
+        <td style="padding: 12px 20px; border-bottom: 1px solid rgba(255, 255, 255, 0.04); color: #94a3b8; font-size: 0.9rem;">Eğitim Seti Hedef Değişken Vektörü (CT=1, T=0)</td>
+        <td style="padding: 12px 20px; border-bottom: 1px solid rgba(255, 255, 255, 0.04); font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; text-align: right; color: #f8fafc; font-weight: 700;">70.3 KB</td>
+        <td style="padding: 12px 20px; border-bottom: 1px solid rgba(255, 255, 255, 0.04); text-align: center;">
+            <span style="padding: 3px 8px; border-radius: 4px; font-size: 0.75rem; font-family: 'JetBrains Mono', monospace; font-weight: 700; border: 1px solid; background: rgba(16, 185, 129, 0.15); color: #10b981; border-color: rgba(16, 185, 129, 0.3);">KAYDEDİLDİ</span>
+        </td>
+    </tr>
+    
+    <tr>
+        <td style="padding: 12px 20px; border-bottom: 1px solid rgba(255, 255, 255, 0.04); font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; color: #38bdf8;">data/processed/y_test.csv</td>
+        <td style="padding: 12px 20px; border-bottom: 1px solid rgba(255, 255, 255, 0.04); color: #94a3b8; font-size: 0.9rem;">Doğrulama Seti Hedef Değişken Vektörü (CT=1, T=0)</td>
+        <td style="padding: 12px 20px; border-bottom: 1px solid rgba(255, 255, 255, 0.04); font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; text-align: right; color: #f8fafc; font-weight: 700;">17.6 KB</td>
+        <td style="padding: 12px 20px; border-bottom: 1px solid rgba(255, 255, 255, 0.04); text-align: center;">
+            <span style="padding: 3px 8px; border-radius: 4px; font-size: 0.75rem; font-family: 'JetBrains Mono', monospace; font-weight: 700; border: 1px solid; background: rgba(16, 185, 129, 0.15); color: #10b981; border-color: rgba(16, 185, 129, 0.3);">KAYDEDİLDİ</span>
+        </td>
+    </tr>
+    
+    <tr>
+        <td style="padding: 12px 20px; border-bottom: 1px solid rgba(255, 255, 255, 0.04); font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; color: #38bdf8;">data/processed/feature_names.csv</td>
+        <td style="padding: 12px 20px; border-bottom: 1px solid rgba(255, 255, 255, 0.04); color: #94a3b8; font-size: 0.9rem;">Sütun İndeksi Güvenlik Protokol Listesi (Feature Index)</td>
+        <td style="padding: 12px 20px; border-bottom: 1px solid rgba(255, 255, 255, 0.04); font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; text-align: right; color: #f8fafc; font-weight: 700;">1.1 KB</td>
+        <td style="padding: 12px 20px; border-bottom: 1px solid rgba(255, 255, 255, 0.04); text-align: center;">
+            <span style="padding: 3px 8px; border-radius: 4px; font-size: 0.75rem; font-family: 'JetBrains Mono', monospace; font-weight: 700; border: 1px solid; background: rgba(16, 185, 129, 0.15); color: #10b981; border-color: rgba(16, 185, 129, 0.3);">KAYDEDİLDİ</span>
+        </td>
+    </tr>
+    
+            </tbody>
+        </table>
+    </div>
+
+    <div class="console-footer-p8">
+        <div style="color: #64748b;">Sistem Kayıt Durumu: <span style="color: #6ee7b7; font-weight: 700;">ARTIFACTS_SERIALIZED_SUCCESSFULLY</span></div>
+        <div style="background: rgba(16, 185, 129, 0.15); color: #10b981; padding: 4px 10px; border-radius: 4px; font-weight: 700; border: 1px solid rgba(16, 185, 129, 0.2);">
+            ⚡ DISK_SYNCHRONIZED
+        </div>
+    </div>
+</div>
+</body></html>

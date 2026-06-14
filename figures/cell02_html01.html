@@ -1,0 +1,176 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><script src="https://cdn.plot.ly/plotly-2.32.0.min.js"></script></head><body>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@700&display=swap');
+    
+    .section-container {
+        background: linear-gradient(145deg, #020617 0%, #0f172a 100%);
+        padding: 40px;
+        border-radius: 20px;
+        color: #f8fafc;
+        font-family: 'Inter', sans-serif;
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05), 0 10px 20px -5px rgba(0, 0, 0, 0.3);
+        border: 1px solid rgba(51, 65, 85, 0.5);
+    }
+
+    .section-header {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        margin-bottom: 25px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        padding-bottom: 15px;
+    }
+
+    .section-num {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 1.5rem;
+        font-weight: 800;
+        color: #38bdf8;
+        background: rgba(56, 189, 248, 0.1);
+        padding: 4px 12px;
+        border-radius: 8px;
+        border: 1px solid rgba(56, 189, 248, 0.2);
+    }
+
+    .text-block {
+        background: rgba(15, 23, 42, 0.5);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        border-radius: 12px;
+        padding: 20px;
+        margin-bottom: 25px;
+        line-height: 1.7;
+        color: #cbd5e1;
+        font-size: 0.95rem;
+    }
+
+    .win-condition {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-top: 10px;
+        padding: 12px 16px;
+        border-radius: 8px;
+        background: rgba(0, 0, 0, 0.2);
+    }
+
+    .ct-win { border-left: 4px solid #3b82f6; }
+    .t-win { border-left: 4px solid #f59e0b; }
+
+    .use-case-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 16px;
+        margin-top: 20px;
+        margin-bottom: 30px;
+    }
+
+    .use-case-card {
+        background: rgba(30, 41, 59, 0.4);
+        border: 1px solid rgba(148, 163, 184, 0.2);
+        border-radius: 12px;
+        padding: 16px;
+        transition: transform 0.2s, background 0.2s;
+    }
+
+    .use-case-card:hover {
+        transform: translateY(-3px);
+        background: rgba(30, 41, 59, 0.7);
+        border-color: rgba(148, 163, 184, 0.4);
+    }
+
+    .use-case-icon {
+        font-size: 1.4rem;
+        margin-bottom: 8px;
+    }
+
+    .use-case-title {
+        font-weight: 700;
+        color: #f8fafc;
+        margin: 0 0 4px 0;
+        font-size: 0.95rem;
+    }
+
+    .use-case-desc {
+        color: #94a3b8;
+        font-size: 0.85rem;
+        margin: 0;
+        line-height: 1.5;
+    }
+
+    .target-box {
+        background: linear-gradient(90deg, rgba(16, 185, 129, 0.1) 0%, rgba(16, 185, 129, 0.02) 100%);
+        border-left: 4px solid #10b981;
+        padding: 20px;
+        border-radius: 0 12px 12px 0;
+    }
+</style>
+
+<div class="section-container">
+    
+    <div class="section-header">
+        <div class="section-num">1</div>
+        <h2 style="margin: 0; font-size: 1.8rem; font-weight: 800; color: #f8fafc;">Bağlam ve Motivasyon</h2>
+    </div>
+
+    <h3 style="color: #e2e8f0; font-size: 1.2rem; display: flex; align-items: center; gap: 8px; margin-top: 0;">
+        🎮 CS:GO Hakkında
+    </h3>
+    <div class="text-block">
+        <p style="margin-top: 0;">
+            Counter-Strike: Global Offensive (CS:GO), dünyada en fazla izlenen ve oynanan rekabetçi nişancı oyunlarından biridir. 2023 itibarıyla <strong>CS2</strong> olarak güncellenen oyun ekosistemi, esports endüstrisinde milyarlarca dolarlık bir piyasayı temsil etmektedir.
+        </p>
+        <p style="margin-bottom: 15px;">
+            Bir CS:GO maçı; <strong>CT (Counter-Terrorist)</strong> ve <strong>T (Terrorist)</strong> takımları arasında geçen çok sayıda round'dan oluşur. Her round birkaç dakika sürer ve iki takımdan biri round'u kazanır:
+        </p>
+        
+        <div class="win-condition ct-win">
+            <span style="color: #3b82f6; font-weight: 800; font-family: 'JetBrains Mono', monospace;">[CT KAZANIR]</span>
+            <span>T takımının tüm oyuncuları elenir <b>ya da</b> bomba imha edilir.</span>
+        </div>
+        
+        <div class="win-condition t-win">
+            <span style="color: #f59e0b; font-weight: 800; font-family: 'JetBrains Mono', monospace;">[T KAZANIR]</span>
+            <span>CT takımının tüm oyuncuları elenir <b>ya da</b> bomba patlar.</span>
+        </div>
+    </div>
+
+    <h3 style="color: #e2e8f0; font-size: 1.2rem; margin-top: 30px;">
+        💡 Neden Bu Problem Önemli?
+    </h3>
+    <div class="use-case-grid">
+        <div class="use-case-card">
+            <div class="use-case-icon">📺</div>
+            <h4 class="use-case-title">Esports Analitiği</h4>
+            <p class="use-case-desc">Canlı yayınlarda izleyiciler için "anlık kazanma ihtimali" göstergeleri sunulması.</p>
+        </div>
+        <div class="use-case-card">
+            <div class="use-case-icon">🧠</div>
+            <h4 class="use-case-title">Antrenman Desteği</h4>
+            <p class="use-case-desc">Koçların round içi stratejik hata ve karar noktalarını analiz etmesi.</p>
+        </div>
+        <div class="use-case-card">
+            <div class="use-case-icon">📊</div>
+            <h4 class="use-case-title">Bahis ve Tahmin</h4>
+            <p class="use-case-desc">Canlı veriler üzerinden gerçek zamanlı round sonucu tahmini yapılması.</p>
+        </div>
+        <div class="use-case-card">
+            <div class="use-case-icon">⚖️</div>
+            <h4 class="use-case-title">Oyun Dengesi</h4>
+            <p class="use-case-desc">Geliştirici şirketlerin silah ve ekonomi dinamiklerini geriye dönük test etmesi.</p>
+        </div>
+        <div class="use-case-card">
+            <div class="use-case-icon">🎓</div>
+            <h4 class="use-case-title">Akademik Araştırma</h4>
+            <p class="use-case-desc">Oyun teorisi ve çok etmenli strateji optimizasyonu çalışmaları.</p>
+        </div>
+    </div>
+
+    <div class="target-box">
+         <h4 style="color: #10b981; font-size: 1.05rem; margin: 0 0 8px 0; font-weight: 700;">🎯 Projenin Ana Hedefi</h4>
+         <p style="color: #cbd5e1; line-height: 1.6; font-size: 0.95rem; margin: 0;">
+            Bu proje; round'un belirli bir anındaki <strong>anlık oyun durumunu</strong> (sağlık, zırh, silah gücü, ekonomi, canlı oyuncu sayısı vb.) kullanarak, round'u nihai olarak hangi takımın kazanacağını öngören bir <strong>sınıflandırma (classification) modeli</strong> geliştirmeyi hedeflemektedir.
+         </p>
+    </div>
+
+</div>
+</body></html>

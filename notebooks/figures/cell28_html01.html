@@ -1,0 +1,202 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><script src="https://cdn.plot.ly/plotly-2.32.0.min.js"></script></head><body>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap');
+    
+    .section-container-p3 {
+        background: linear-gradient(145deg, #020617 0%, #0f172a 100%);
+        padding: 40px;
+        border-radius: 20px;
+        color: #f8fafc;
+        font-family: 'Inter', sans-serif;
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05), 0 15px 25px -5px rgba(0, 0, 0, 0.4);
+        border: 1px solid rgba(16, 185, 129, 0.3); /* Zümrüt Yeşili */
+    }
+
+    .section-header-p3 {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        margin-bottom: 25px;
+        border-bottom: 1px solid rgba(16, 185, 129, 0.2);
+        padding-bottom: 15px;
+    }
+
+    .step-badge-p3 {
+        background: #10b981;
+        color: #0f172a;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 1.2rem;
+        font-weight: 800;
+        width: 48px;
+        height: 48px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(16, 185, 129, 0.4);
+    }
+
+    .analyst-box-p3 {
+        background: linear-gradient(90deg, rgba(16, 185, 129, 0.1) 0%, transparent 100%);
+        border-left: 4px solid #10b981;
+        padding: 20px 25px;
+        border-radius: 0 12px 12px 0;
+        margin-bottom: 30px;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .code-wrapper-p3 {
+        background: #020617;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 12px;
+        overflow: hidden;
+        margin-bottom: 25px;
+    }
+
+    .code-header-p3 {
+        background: rgba(15, 23, 42, 0.8);
+        padding: 10px 15px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.85rem;
+        color: #94a3b8;
+    }
+
+    .code-dots span {
+        display: inline-block;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+    }
+
+    .code-content-p3 {
+        padding: 20px;
+        margin: 0;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.85rem;
+        line-height: 1.6;
+        color: #e2e8f0;
+        overflow-x: auto;
+    }
+    
+    .kw { color: #c678dd; } /* Keyword */
+    .func { color: #61afef; } /* Function */
+    .str { color: #98c379; } /* String */
+    .com { color: #5c6370; font-style: italic; } /* Comment */
+
+    .stats-table-wrapper-p3 {
+        background: rgba(15, 23, 42, 0.6);
+        border-radius: 12px;
+        border: 1px solid rgba(16, 185, 129, 0.2);
+        overflow: hidden;
+    }
+
+    .panel-header-p3 {
+        background: rgba(16, 185, 129, 0.1);
+        color: #34d399;
+        padding: 12px 20px;
+        font-weight: 600;
+        font-size: 0.95rem;
+        border-bottom: 1px solid rgba(16, 185, 129, 0.2);
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .stats-table-p3 {
+        width: 100%;
+        border-collapse: collapse;
+        text-align: left;
+    }
+
+    .stats-table-p3 td {
+        padding: 12px 20px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        color: #cbd5e1;
+        font-size: 0.95rem;
+        font-weight: 500;
+    }
+    
+    .stats-table-p3 tr:last-child td { border-bottom: none; }
+    .stats-table-p3 tr:hover td { background: rgba(16, 185, 129, 0.05); }
+
+    .val-cell-p3 {
+        font-family: 'JetBrains Mono', monospace;
+        color: #f8fafc;
+        font-weight: 700;
+        text-align: right;
+    }
+</style>
+
+<div class="section-container-p3">
+    
+    <div class="section-header-p3">
+        <div class="step-badge-p3">01</div>
+        <div>
+            <div style="color: #34d399; font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 4px;">Initialization</div>
+            <h2 style="margin: 0; font-size: 1.8rem; font-weight: 800; color: #f8fafc; letter-spacing: -0.01em;">
+                Kütüphaneler ve Veri Yükleme
+            </h2>
+        </div>
+    </div>
+
+    <div class="analyst-box-p3">
+        <div style="font-size: 1.8rem;">📦</div>
+        <div>
+            <h4 style="margin: 0 0 6px 0; color: #34d399; font-size: 1rem; font-weight: 700;">Veri Mühendisi Perspektifi</h4>
+            <p style="margin: 0; color: #cbd5e1; font-size: 0.95rem; line-height: 1.6;">
+                Scikit-Learn kütüphanesinden <code style="color:#10b981; background:rgba(16,185,129,0.1); padding:2px 5px; border-radius:4px; font-family:'JetBrains Mono', monospace; font-size:0.9em;">Pipeline</code> ve <code style="color:#10b981; background:rgba(16,185,129,0.1); padding:2px 5px; border-radius:4px; font-family:'JetBrains Mono', monospace; font-size:0.9em;">ColumnTransformer</code> modüllerini projeye dahil ediyoruz. Amacımız modeli eğitirken <strong>veri sızıntısını (data leakage)</strong> önlemek ve veri setindeki tüm dönüşümlerin (imputation, scaling, encoding) üretim (production) ortamında tek bir obje üzerinden hatasız çalışmasını sağlamaktır.
+            </p>
+        </div>
+    </div>
+
+    <div class="code-wrapper-p3">
+        <div class="code-header-p3">
+            <div class="code-dots">
+                <span style="background: #ff5f56;"></span>
+                <span style="background: #ffbd2e;"></span>
+                <span style="background: #27c93f;"></span>
+            </div>
+            <span style="margin-left: 10px;">python (sklearn_pipeline_init)</span>
+        </div>
+        <pre class="code-content-p3"><code><span class="kw">from</span> sklearn.pipeline <span class="kw">import</span> Pipeline
+<span class="kw">from</span> sklearn.compose <span class="kw">import</span> ColumnTransformer
+<span class="kw">from</span> sklearn.preprocessing <span class="kw">import</span> StandardScaler, RobustScaler, OneHotEncoder
+<span class="kw">from</span> sklearn.impute <span class="kw">import</span> SimpleImputer
+<span class="kw">from</span> sklearn.model_selection <span class="kw">import</span> train_test_split
+<span class="kw">import</span> joblib
+<span class="kw">from</span> pathlib <span class="kw">import</span> Path
+
+<span class="com"># Platform bağımsız veri yükleme bloğu</span>
+data_path = Path(<span class="str">'..'</span>) / <span class="str">'data'</span> / <span class="str">'YBS3259_CSGO_Final_Verisi.csv'</span>
+...
+df_raw = pd.<span class="func">read_csv</span>(data_path)</code></pre>
+    </div>
+
+    <div class="stats-table-wrapper-p3">
+        <div class="panel-header-p3"><span>🗄️</span> Veri Seti — Ham Durum (Raw Data Ingestion)</div>
+        <table class="stats-table-p3">
+            <tbody>
+                <tr>
+                    <td style="width: 50%;">Toplam Satır (Gözlem Sayısı)</td>
+                    <td class="val-cell-p3" style="color: #6ee7b7;">30,000</td>
+                </tr>
+                <tr>
+                    <td>Toplam Sütun (Özellik Sayısı)</td>
+                    <td class="val-cell-p3" style="color: #6ee7b7;">97</td>
+                </tr>
+                <tr>
+                    <td>Tespit Edilen Eksik Veri (NaN)</td>
+                    <td class="val-cell-p3" style="color: #ef4444;">798</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>
+</body></html>

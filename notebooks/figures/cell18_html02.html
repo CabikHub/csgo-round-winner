@@ -1,0 +1,171 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><script src="https://cdn.plot.ly/plotly-2.32.0.min.js"></script></head><body>
+<style>
+    .section-container-bottom {
+        background: linear-gradient(145deg, #020617 0%, #0f172a 100%);
+        padding: 0 40px 40px 40px;
+        border-radius: 0 0 20px 20px;
+        color: #f8fafc;
+        font-family: 'Inter', sans-serif;
+        box-shadow: 0 15px 25px -5px rgba(0, 0, 0, 0.4);
+        border: 1px solid rgba(14, 165, 233, 0.3);
+        border-top: none;
+    }
+
+    .stats-table-wrapper {
+        background: rgba(15, 23, 42, 0.6);
+        border-radius: 12px;
+        border: 1px solid rgba(168, 85, 247, 0.2);
+        overflow: hidden;
+        margin-top: 15px;
+    }
+
+    .panel-header {
+        background: rgba(168, 85, 247, 0.1);
+        color: #c084fc;
+        padding: 12px 20px;
+        font-weight: 600;
+        font-size: 0.95rem;
+        border-bottom: 1px solid rgba(168, 85, 247, 0.2);
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .stats-table {
+        width: 100%;
+        border-collapse: collapse;
+        text-align: left;
+    }
+
+    .stats-table th {
+        padding: 14px 20px;
+        color: #94a3b8;
+        font-size: 0.85rem;
+        font-weight: 600;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        background: rgba(0,0,0,0.2);
+    }
+
+    .stats-table td {
+        padding: 14px 20px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        color: #cbd5e1;
+        font-size: 0.9rem;
+    }
+
+    .stats-table tr:hover td {
+        background: rgba(168, 85, 247, 0.05);
+    }
+    
+    .val-cell {
+        font-family: 'JetBrains Mono', monospace;
+    }
+
+    /* YENİ: Modelleme Öngörüsü Kutusu */
+    .insight-box-model {
+        background: linear-gradient(145deg, rgba(16, 185, 129, 0.05) 0%, rgba(16, 185, 129, 0.1) 100%);
+        border: 1px solid rgba(16, 185, 129, 0.3);
+        border-radius: 12px;
+        padding: 20px 25px;
+        margin-top: 25px;
+        display: flex;
+        align-items: flex-start;
+        gap: 18px;
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    }
+
+    .insight-icon-model {
+        font-size: 1.6rem;
+        background: rgba(16, 185, 129, 0.15);
+        padding: 12px;
+        border-radius: 12px;
+        border: 1px solid rgba(16, 185, 129, 0.2);
+    }
+    
+    .ul-custom {
+        margin: 0; 
+        padding-left: 20px; 
+        color: #cbd5e1; 
+        font-size: 0.95rem; 
+        line-height: 1.8;
+    }
+    .ul-custom li::marker {
+        color: #10b981;
+    }
+</style>
+
+<div class="section-container-bottom">
+    
+    <div class="stats-table-wrapper">
+        <div class="panel-header"><span>⚖️</span> Kazananın Anatomisi: Ortalama Değer Karşılaştırması</div>
+        <table class="stats-table">
+            <thead>
+                <tr>
+                    <th>Metrik / Özellik (Feature)</th>
+                    <th style="text-align: right; color: #38bdf8;">CT Kazandığında (Ort)</th>
+                    <th style="text-align: right; color: #ef4444;">T Kazandığında (Ort)</th>
+                    <th style="text-align: center;">Durum Sinyali</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                <tr>
+                    <td style="font-family: 'JetBrains Mono', monospace; font-weight: 600; color: #f8fafc;">ct_players_alive</td>
+                    <td class="val-cell" style="text-align: right; color: #bae6fd;">4.52</td>
+                    <td class="val-cell" style="text-align: right; color: #fecaca;">4.00</td>
+                    <td style="text-align: center;"><span style="background: rgba(56, 189, 248, 0.15); color: #38bdf8; padding: 3px 8px; border-radius: 6px; font-size: 0.75rem; font-weight: 700; border: 1px solid rgba(56, 189, 248, 0.3);">CT ÜSTÜN</span></td>
+                </tr>
+    
+                <tr>
+                    <td style="font-family: 'JetBrains Mono', monospace; font-weight: 600; color: #f8fafc;">t_players_alive</td>
+                    <td class="val-cell" style="text-align: right; color: #bae6fd;">4.09</td>
+                    <td class="val-cell" style="text-align: right; color: #fecaca;">4.44</td>
+                    <td style="text-align: center;"><span style="background: rgba(148, 163, 184, 0.15); color: #94a3b8; padding: 3px 8px; border-radius: 6px; font-size: 0.75rem; font-weight: 600; border: 1px solid rgba(148, 163, 184, 0.3);">DENGELİ</span></td>
+                </tr>
+    
+                <tr>
+                    <td style="font-family: 'JetBrains Mono', monospace; font-weight: 600; color: #f8fafc;">ct_health</td>
+                    <td class="val-cell" style="text-align: right; color: #bae6fd;">437.83</td>
+                    <td class="val-cell" style="text-align: right; color: #fecaca;">387.60</td>
+                    <td style="text-align: center;"><span style="background: rgba(56, 189, 248, 0.15); color: #38bdf8; padding: 3px 8px; border-radius: 6px; font-size: 0.75rem; font-weight: 700; border: 1px solid rgba(56, 189, 248, 0.3);">CT ÜSTÜN</span></td>
+                </tr>
+    
+                <tr>
+                    <td style="font-family: 'JetBrains Mono', monospace; font-weight: 600; color: #f8fafc;">t_health</td>
+                    <td class="val-cell" style="text-align: right; color: #bae6fd;">389.59</td>
+                    <td class="val-cell" style="text-align: right; color: #fecaca;">415.40</td>
+                    <td style="text-align: center;"><span style="background: rgba(148, 163, 184, 0.15); color: #94a3b8; padding: 3px 8px; border-radius: 6px; font-size: 0.75rem; font-weight: 600; border: 1px solid rgba(148, 163, 184, 0.3);">DENGELİ</span></td>
+                </tr>
+    
+                <tr>
+                    <td style="font-family: 'JetBrains Mono', monospace; font-weight: 600; color: #f8fafc;">ct_money</td>
+                    <td class="val-cell" style="text-align: right; color: #bae6fd;">11,251</td>
+                    <td class="val-cell" style="text-align: right; color: #fecaca;">8,352</td>
+                    <td style="text-align: center;"><span style="background: rgba(56, 189, 248, 0.15); color: #38bdf8; padding: 3px 8px; border-radius: 6px; font-size: 0.75rem; font-weight: 700; border: 1px solid rgba(56, 189, 248, 0.3);">CT ÜSTÜN</span></td>
+                </tr>
+    
+                <tr>
+                    <td style="font-family: 'JetBrains Mono', monospace; font-weight: 600; color: #f8fafc;">t_money</td>
+                    <td class="val-cell" style="text-align: right; color: #bae6fd;">12,207</td>
+                    <td class="val-cell" style="text-align: right; color: #fecaca;">14,641</td>
+                    <td style="text-align: center;"><span style="background: rgba(239, 68, 68, 0.15); color: #ef4444; padding: 3px 8px; border-radius: 6px; font-size: 0.75rem; font-weight: 700; border: 1px solid rgba(239, 68, 68, 0.3);">T ÜSTÜN</span></td>
+                </tr>
+    
+            </tbody>
+        </table>
+    </div>
+
+    <div class="insight-box-model">
+        <div class="insight-icon-model">🧠</div>
+        <div>
+            <h4 style="margin: 0 0 10px 0; color: #f8fafc; font-size: 1.05rem; letter-spacing: 0.01em;">Modelleme Öngörüsü ve Çıkarım</h4>
+            <ul class="ul-custom">
+                <li><code style="color: #38bdf8; background: rgba(56, 189, 248, 0.1); padding: 2px 5px; border-radius: 4px; font-family: 'JetBrains Mono', monospace; font-size: 0.85em;">ct_players_alive</code> ve <code style="color: #ef4444; background: rgba(239, 68, 68, 0.1); padding: 2px 5px; border-radius: 4px; font-family: 'JetBrains Mono', monospace; font-size: 0.85em;">t_players_alive</code> değişkenleri, kazanan tarafla güçlü ilişki sergilemektedir. CT takımı kazandığında CT canlı oyuncu ortalaması belirgin şekilde daha yüksektir.</li>
+                <li><code style="color: #38bdf8; background: rgba(56, 189, 248, 0.1); padding: 2px 5px; border-radius: 4px; font-family: 'JetBrains Mono', monospace; font-size: 0.85em;">ct_health</code> ve <code style="color: #38bdf8; background: rgba(56, 189, 248, 0.1); padding: 2px 5px; border-radius: 4px; font-family: 'JetBrains Mono', monospace; font-size: 0.85em;">ct_money</code> değişkenlerinde de kazanan tarafa göre istatistiksel farklılık gözlemlenmektedir.</li>
+                <li>Bu bulgular, modelleme aşamasında bu sütunların <strong style="color: #10b981;">yüksek önem skoru (Feature Importance)</strong> alacağına açıkça işaret etmektedir.</li>
+            </ul>
+        </div>
+    </div>
+
+</div>
+</body></html>

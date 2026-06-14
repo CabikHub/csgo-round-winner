@@ -1,0 +1,236 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><script src="https://cdn.plot.ly/plotly-2.32.0.min.js"></script></head><body>
+<style>
+    .section-container-bottom {
+        background: linear-gradient(145deg, #020617 0%, #0f172a 100%);
+        padding: 0 40px 40px 40px;
+        border-radius: 0 0 20px 20px;
+        color: #f8fafc;
+        font-family: 'Inter', sans-serif;
+        box-shadow: 0 15px 25px -5px rgba(0, 0, 0, 0.4);
+        border: 1px solid rgba(99, 102, 241, 0.3);
+        border-top: none;
+    }
+
+    .stats-table-wrapper {
+        background: rgba(15, 23, 42, 0.6);
+        border-radius: 12px;
+        border: 1px solid rgba(99, 102, 241, 0.2);
+        overflow: hidden;
+        margin-top: 15px;
+    }
+
+    .panel-header {
+        background: rgba(99, 102, 241, 0.1);
+        color: #a5b4fc;
+        padding: 12px 20px;
+        font-weight: 600;
+        font-size: 0.95rem;
+        border-bottom: 1px solid rgba(99, 102, 241, 0.2);
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .stats-table {
+        width: 100%;
+        border-collapse: collapse;
+        text-align: left;
+    }
+
+    .stats-table th {
+        padding: 12px 20px;
+        color: #94a3b8;
+        font-size: 0.85rem;
+        font-weight: 600;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        background: rgba(0,0,0,0.2);
+    }
+
+    .stats-table td {
+        padding: 10px 20px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        color: #cbd5e1;
+        font-size: 0.9rem;
+    }
+
+    .stats-table tr:hover td {
+        background: rgba(99, 102, 241, 0.05);
+    }
+    
+    .corr-bar-bg {
+        width: 100%;
+        background: rgba(255,255,255,0.05);
+        border-radius: 4px;
+        height: 8px;
+        overflow: hidden;
+        margin-top: 4px;
+    }
+    
+    .corr-bar-fill {
+        height: 100%;
+        background: linear-gradient(90deg, #38bdf8, #6366f1);
+        border-radius: 4px;
+    }
+
+    .insight-box-corr {
+        background: linear-gradient(145deg, rgba(16, 185, 129, 0.05) 0%, rgba(16, 185, 129, 0.1) 100%);
+        border: 1px solid rgba(16, 185, 129, 0.3);
+        border-radius: 12px;
+        padding: 20px 25px;
+        margin-top: 25px;
+        display: flex;
+        align-items: flex-start;
+        gap: 18px;
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    }
+
+    .insight-icon-corr {
+        font-size: 1.6rem;
+        background: rgba(16, 185, 129, 0.15);
+        padding: 12px;
+        border-radius: 12px;
+        border: 1px solid rgba(16, 185, 129, 0.2);
+    }
+</style>
+
+<div class="section-container-bottom">
+    
+    <div class="stats-table-wrapper">
+        <div class="panel-header"><span>🏆</span> Top 10 Belirleyici Özellik (Predictors)</div>
+        <table class="stats-table">
+            <thead>
+                <tr>
+                    <th style="width: 10%; text-align: center;">Sıra</th>
+                    <th style="width: 35%;">Özellik (Feature)</th>
+                    <th style="width: 20%; text-align: center;">Korelasyon (|r|)</th>
+                    <th style="width: 35%;">Güç Göstergesi</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                <tr>
+                    <td style="text-align: center; color: #64748b; font-weight: 700;">#1</td>
+                    <td style="font-family: 'JetBrains Mono', monospace; font-weight: 600; color: #e0e7ff;">ct_armor</td>
+                    <td style="text-align: center; font-family: 'JetBrains Mono', monospace; color: #38bdf8; font-weight: 700;">0.3323</td>
+                    <td>
+                        <div class="corr-bar-bg">
+                            <div class="corr-bar-fill" style="width: 100.0%;"></div>
+                        </div>
+                    </td>
+                </tr>
+    
+                <tr>
+                    <td style="text-align: center; color: #64748b; font-weight: 700;">#2</td>
+                    <td style="font-family: 'JetBrains Mono', monospace; font-weight: 600; color: #e0e7ff;">ct_helmets</td>
+                    <td style="text-align: center; font-family: 'JetBrains Mono', monospace; color: #38bdf8; font-weight: 700;">0.3092</td>
+                    <td>
+                        <div class="corr-bar-bg">
+                            <div class="corr-bar-fill" style="width: 93.05129679792798%;"></div>
+                        </div>
+                    </td>
+                </tr>
+    
+                <tr>
+                    <td style="text-align: center; color: #64748b; font-weight: 700;">#3</td>
+                    <td style="font-family: 'JetBrains Mono', monospace; font-weight: 600; color: #e0e7ff;">t_helmets</td>
+                    <td style="text-align: center; font-family: 'JetBrains Mono', monospace; color: #38bdf8; font-weight: 700;">0.3016</td>
+                    <td>
+                        <div class="corr-bar-bg">
+                            <div class="corr-bar-fill" style="width: 90.74869746961197%;"></div>
+                        </div>
+                    </td>
+                </tr>
+    
+                <tr>
+                    <td style="text-align: center; color: #64748b; font-weight: 700;">#4</td>
+                    <td style="font-family: 'JetBrains Mono', monospace; font-weight: 600; color: #e0e7ff;">t_armor</td>
+                    <td style="text-align: center; font-family: 'JetBrains Mono', monospace; color: #38bdf8; font-weight: 700;">0.2920</td>
+                    <td>
+                        <div class="corr-bar-bg">
+                            <div class="corr-bar-fill" style="width: 87.87263031597384%;"></div>
+                        </div>
+                    </td>
+                </tr>
+    
+                <tr>
+                    <td style="text-align: center; color: #64748b; font-weight: 700;">#5</td>
+                    <td style="font-family: 'JetBrains Mono', monospace; font-weight: 600; color: #e0e7ff;">ct_defuse_kits</td>
+                    <td style="text-align: center; font-family: 'JetBrains Mono', monospace; color: #38bdf8; font-weight: 700;">0.2908</td>
+                    <td>
+                        <div class="corr-bar-bg">
+                            <div class="corr-bar-fill" style="width: 87.49306595975351%;"></div>
+                        </div>
+                    </td>
+                </tr>
+    
+                <tr>
+                    <td style="text-align: center; color: #64748b; font-weight: 700;">#6</td>
+                    <td style="font-family: 'JetBrains Mono', monospace; font-weight: 600; color: #e0e7ff;">ct_grenade_flashbang</td>
+                    <td style="text-align: center; font-family: 'JetBrains Mono', monospace; color: #38bdf8; font-weight: 700;">0.2493</td>
+                    <td>
+                        <div class="corr-bar-bg">
+                            <div class="corr-bar-fill" style="width: 75.00971866417927%;"></div>
+                        </div>
+                    </td>
+                </tr>
+    
+                <tr>
+                    <td style="text-align: center; color: #64748b; font-weight: 700;">#7</td>
+                    <td style="font-family: 'JetBrains Mono', monospace; font-weight: 600; color: #e0e7ff;">ct_players_alive</td>
+                    <td style="text-align: center; font-family: 'JetBrains Mono', monospace; color: #38bdf8; font-weight: 700;">0.2138</td>
+                    <td>
+                        <div class="corr-bar-bg">
+                            <div class="corr-bar-fill" style="width: 64.33567360035123%;"></div>
+                        </div>
+                    </td>
+                </tr>
+    
+                <tr>
+                    <td style="text-align: center; color: #64748b; font-weight: 700;">#8</td>
+                    <td style="font-family: 'JetBrains Mono', monospace; font-weight: 600; color: #e0e7ff;">ct_grenade_smokegrenade</td>
+                    <td style="text-align: center; font-family: 'JetBrains Mono', monospace; color: #38bdf8; font-weight: 700;">0.2041</td>
+                    <td>
+                        <div class="corr-bar-bg">
+                            <div class="corr-bar-fill" style="width: 61.41553862412334%;"></div>
+                        </div>
+                    </td>
+                </tr>
+    
+                <tr>
+                    <td style="text-align: center; color: #64748b; font-weight: 700;">#9</td>
+                    <td style="font-family: 'JetBrains Mono', monospace; font-weight: 600; color: #e0e7ff;">t_weapon_ak47</td>
+                    <td style="text-align: center; font-family: 'JetBrains Mono', monospace; color: #38bdf8; font-weight: 700;">0.1964</td>
+                    <td>
+                        <div class="corr-bar-bg">
+                            <div class="corr-bar-fill" style="width: 59.0969318997147%;"></div>
+                        </div>
+                    </td>
+                </tr>
+    
+                <tr>
+                    <td style="text-align: center; color: #64748b; font-weight: 700;">#10</td>
+                    <td style="font-family: 'JetBrains Mono', monospace; font-weight: 600; color: #e0e7ff;">ct_weapon_awp</td>
+                    <td style="text-align: center; font-family: 'JetBrains Mono', monospace; color: #38bdf8; font-weight: 700;">0.1941</td>
+                    <td>
+                        <div class="corr-bar-bg">
+                            <div class="corr-bar-fill" style="width: 58.41772396113908%;"></div>
+                        </div>
+                    </td>
+                </tr>
+    
+            </tbody>
+        </table>
+    </div>
+
+    <div class="insight-box-corr">
+        <div class="insight-icon-corr">🧠</div>
+        <div>
+            <h4 style="margin: 0 0 8px 0; color: #f8fafc; font-size: 1.05rem; letter-spacing: 0.01em;">Multicollinearity (Çoklu Bağlantı) Uyarısı</h4>
+            <p style="margin: 0; color: #cbd5e1; font-size: 0.95rem; line-height: 1.6;">
+                Hedef değişkenle yüksek korelasyona sahip olan Zırh (Armor), Kask (Helmets) ve Sağlık (Health) gibi özellikler tahmin gücümüzün belkemiğini oluşturacaktır. <strong>Ancak dikkat:</strong> Bu değişkenlerin kendi aralarındaki korelasyonu (örneğin zırh alan birinin kask da alması) çok yüksek olabilir. Bu durum modellerde <span style="color: #10b981; font-weight: 600;">Multicollinearity</span> yaratabileceği için Faz 3'te PCA (Temel Bileşenler Analizi) veya ağaç bazlı modeller (RandomForest/XGBoost) kullanılması güçlü bir strateji olacaktır.
+            </p>
+        </div>
+    </div>
+
+</div>
+</body></html>

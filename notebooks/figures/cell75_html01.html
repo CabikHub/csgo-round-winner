@@ -1,0 +1,106 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><script src="https://cdn.plot.ly/plotly-2.32.0.min.js"></script></head><body>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap');
+    .dep-section2 {
+        background: linear-gradient(145deg, #020617 0%, #0f172a 100%);
+        padding: 40px; border-radius: 20px; color: #f8fafc;
+        font-family: 'Inter', sans-serif; border: 1px solid rgba(34,197,94,0.3);
+        box-shadow: inset 0 1px 0 rgba(255,255,255,0.05), 0 15px 25px -5px rgba(0,0,0,0.4);
+    }
+    .dep-step-badge2 {
+        background: #22c55e; color: #0f172a;
+        font-family: 'JetBrains Mono', monospace; font-size: 1.2rem; font-weight: 800;
+        width: 48px; height: 48px; display: flex; align-items: center; justify-content: center;
+        border-radius: 12px; box-shadow: 0 4px 15px rgba(34,197,94,0.4);
+    }
+    .log-grid {
+        display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 20px;
+    }
+    .log-panel {
+        background: #020617; border: 1px solid rgba(34,197,94,0.3);
+        border-radius: 12px; padding: 20px; position: relative; overflow: hidden;
+    }
+    .log-panel::before {
+        content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%;
+        background: #22c55e; box-shadow: 0 0 15px #22c55e;
+    }
+    .log-row {
+        display: flex; justify-content: space-between; align-items: center;
+        padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.05);
+        font-family: 'JetBrains Mono', monospace; font-size: 0.9rem;
+    }
+    .log-row:last-child { border-bottom: none; }
+    .log-key { color: #94a3b8; }
+    .log-val { color: #f8fafc; font-weight: 700; }
+    .export-badge {
+        display: inline-block; background: rgba(34,197,94,0.15); color: #4ade80;
+        border: 1px solid rgba(34,197,94,0.3); padding: 4px 10px; border-radius: 6px;
+        font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; font-weight: 700;
+    }
+    .json-block {
+        background: #020617; border: 1px solid rgba(56,189,248,0.2); border-radius: 10px;
+        padding: 15px 20px; font-family: 'JetBrains Mono', monospace; font-size: 0.82rem;
+        color: #94a3b8; line-height: 1.6; overflow-x: auto; margin-top: 15px;
+    }
+    .json-key { color: #38bdf8; }
+    .json-num { color: #4ade80; }
+    .json-str { color: #f59e0b; }
+</style>
+<div class="dep-section2">
+    <div style="display:flex; align-items:center; gap:15px; margin-bottom:25px; border-bottom:1px solid rgba(34,197,94,0.2); padding-bottom:15px;">
+        <div class="dep-step-badge2">02</div>
+        <div>
+            <div style="color:#4ade80; font-family:'JetBrains Mono',monospace; font-size:0.85rem; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; margin-bottom:4px;">Export & Packaging</div>
+            <h2 style="margin:0; font-size:1.8rem; font-weight:800; color:#f8fafc;">Model Paketleme (joblib Export)</h2>
+        </div>
+    </div>
+
+    <div class="log-grid">
+        <div class="log-panel">
+            <div style="color:#4ade80; font-size:0.85rem; font-weight:700; text-transform:uppercase; letter-spacing:0.05em; margin-bottom:15px; padding-left:12px;">📦 Export Logu</div>
+            <div class="log-row" style="padding-left:12px;">
+                <span class="log-key">Model Dosyası</span>
+                <span class="log-val" style="color:#38bdf8; font-size:0.8rem;">csgo_champion_pipeline.joblib</span>
+            </div>
+            <div class="log-row" style="padding-left:12px;">
+                <span class="log-key">Dosya Boyutu</span>
+                <span class="log-val">42.39 MB</span>
+            </div>
+            <div class="log-row" style="padding-left:12px;">
+                <span class="log-key">Kayıt Süresi</span>
+                <span class="log-val">5.701 sn</span>
+            </div>
+            <div class="log-row" style="padding-left:12px;">
+                <span class="log-key">Sıkıştırma</span>
+                <span class="export-badge">compress=3</span>
+            </div>
+            <div class="log-row" style="padding-left:12px;">
+                <span class="log-key">Yükleme Testi</span>
+                <span class="log-val" style="color:#4ade80;">✅ LOAD_OK</span>
+            </div>
+        </div>
+
+        <div class="log-panel">
+            <div style="color:#4ade80; font-size:0.85rem; font-weight:700; text-transform:uppercase; letter-spacing:0.05em; margin-bottom:15px; padding-left:12px;">📄 model_metadata.json</div>
+            <div class="json-block">
+                <span class="json-key">"model_name"</span>: <span class="json-str">"ExtraTreesClassifier"</span>,<br>
+                <span class="json-key">"n_estimators"</span>: <span class="json-num">200</span>,<br>
+                <span class="json-key">"accuracy"</span>: <span class="json-num">0.8173</span>,<br>
+                <span class="json-key">"macro_f1"</span>: <span class="json-num">0.8172</span>,<br>
+                <span class="json-key">"roc_auc"</span>: <span class="json-num">0.9049</span>,<br>
+                <span class="json-key">"features_count"</span>: <span class="json-num">64</span>,<br>
+                <span class="json-key">"train_samples"</span>: <span class="json-num">23,969</span>,<br>
+                <span class="json-key">"test_samples"</span>: <span class="json-num">5,993</span>
+            </div>
+        </div>
+    </div>
+
+    <div style="margin-top:20px; background:rgba(34,197,94,0.05); border:1px solid rgba(34,197,94,0.2); border-radius:10px; padding:16px; display:flex; gap:12px; align-items:center;">
+        <span style="font-size:1.4rem;">💡</span>
+        <p style="margin:0; color:#cbd5e1; font-size:0.95rem; line-height:1.6;">
+            <strong style="color:#4ade80;">Üretim Notu:</strong> Joblib dosyası hem <strong>preprocessing pipeline'ını</strong> hem de <strong>eğitilmiş modeli</strong> tek obje olarak içerir. 
+            Bu sayede üretim ortamında <code style="color:#22c55e; background:rgba(34,197,94,0.1); padding:2px 5px; border-radius:4px; font-family:'JetBrains Mono';">loaded_model.predict(X_new)</code> ile veri ölçekleme ve encoding işlemleri otomatik uygulanır.
+        </p>
+    </div>
+</div>
+</body></html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><script src="https://cdn.plot.ly/plotly-2.32.0.min.js"></script></head><body>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap');
+    .ev-biz { background:linear-gradient(145deg,#020617 0%,#0f172a 100%); padding:40px; border-radius:20px;
+        color:#f8fafc; font-family:'Inter',sans-serif; border:1px solid rgba(168,85,247,0.3); }
+    .ev-criteria-row { display:flex; gap:16px; align-items:flex-start; padding:18px 0; border-bottom:1px solid rgba(255,255,255,0.05); }
+    .ev-criteria-row:last-child { border-bottom:none; }
+    .ev-criteria-icon { font-size:1.5rem; background:rgba(168,85,247,0.1); padding:10px;
+        border-radius:10px; border:1px solid rgba(168,85,247,0.2); flex-shrink:0; }
+    .ev-criteria-body h4 { margin:0 0 6px 0; color:#c084fc; font-size:1rem; font-weight:700; }
+    .ev-criteria-body p  { margin:0; color:#cbd5e1; font-size:0.9rem; line-height:1.7; }
+    .ev-criteria-body strong { color:#f8fafc; }
+    .ev-badge-pass { background:rgba(34,197,94,0.15); color:#22c55e; border:1px solid rgba(34,197,94,0.3);
+        padding:3px 10px; border-radius:6px; font-size:0.8rem; font-weight:700; margin-left:8px; }
+    .ev-badge-partial { background:rgba(251,191,36,0.15); color:#fbbf24; border:1px solid rgba(251,191,36,0.3);
+        padding:3px 10px; border-radius:6px; font-size:0.8rem; font-weight:700; margin-left:8px; }
+    .ev-badge-target { background:rgba(34,211,238,0.15); color:#22d3ee; border:1px solid rgba(34,211,238,0.3);
+        padding:3px 10px; border-radius:6px; font-size:0.8rem; font-weight:700; margin-left:8px; }
+</style>
+<div class="ev-biz">
+    <div style="display:flex; align-items:center; gap:12px; margin-bottom:25px; border-bottom:1px solid rgba(168,85,247,0.2); padding-bottom:15px;">
+        <span style="font-size:1.8rem; background:rgba(168,85,247,0.15); padding:10px; border-radius:12px; border:1px solid rgba(168,85,247,0.3);">⚖️</span>
+        <div>
+            <div style="color:#a855f7; font-family:'JetBrains Mono',monospace; font-size:0.8rem; font-weight:800; text-transform:uppercase; letter-spacing:0.1em; margin-bottom:4px;">CRISP-DM Business Alignment</div>
+            <h2 style="margin:0; font-size:1.8rem; font-weight:800; color:#f8fafc;">02 — İş Hedefi Başarı Değerlendirmesi</h2>
+        </div>
+    </div>
+    <p style="color:#cbd5e1; font-size:0.95rem; line-height:1.6; margin-bottom:25px;">
+        Faz 1'de belirlenen başarı kriterleri ile Faz 4'te elde edilen gerçek performans aşağıda karşılaştırılmaktadır.
+        Her kriter, proje iş değeri açısından yorumlanmaktadır.
+    </p>
+
+    <div class="ev-criteria-row">
+        <div class="ev-criteria-icon">🎯</div>
+        <div class="ev-criteria-body">
+            <h4>Kriter 1: Accuracy ≥ %75 <span class="ev-badge-pass">✓ KARŞILANDI</span></h4>
+            <p>Hedef eşik <strong>%75</strong> olarak belirlenmişti. Extra Trees modeli <strong>%81.17</strong> ile bu eşiği
+            yaklaşık <strong>6 puan</strong> aşmıştır. Bu, round başına alınan ekonomik kararların (eco / force-buy)
+            3'te 2'sinden fazlasında doğru yönlendirme yapılabileceği anlamına gelir.</p>
+        </div>
+    </div>
+
+    <div class="ev-criteria-row">
+        <div class="ev-criteria-icon">⚡</div>
+        <div class="ev-criteria-body">
+            <h4>Kriter 2: Dengeli Precision & Recall <span class="ev-badge-pass">✓ KARŞILANDI</span></h4>
+            <p>Faz 1'de "sadece Accuracy değil; hatalı ekonomik kararların maliyetini minimize eden dengeli skor"
+            hedeflenmişti. Precision <strong>0.8101</strong> ve Recall <strong>0.8068</strong> değerleriyle
+            iki metrik arasında yalnızca <strong>0.0033</strong> fark vardır — model CT ve T yanılgılarını
+            eşit ölçüde kontrol altına almıştır.</p>
+        </div>
+    </div>
+
+    <div class="ev-criteria-row">
+        <div class="ev-criteria-icon">📈</div>
+        <div class="ev-criteria-body">
+            <h4>Kriter 3: ROC-AUC > 0.85 <span class="ev-badge-pass">✓ KARŞILANDI</span></h4>
+            <p>ROC-AUC <strong>0.9034</strong> ile %85 eşiğini aşmıştır. Bu, modelin olasılıksal çıktılarının
+            gerçek sınıf dağılımını güçlü biçimde ayırt edebildiğini gösterir ve
+            ilerleyen versiyonlarda eşik (threshold) ayarıyla daha esnek politikalar üretilmesine olanak tanır.</p>
+        </div>
+    </div>
+
+    <div class="ev-criteria-row">
+        <div class="ev-criteria-icon">⏱️</div>
+        <div class="ev-criteria-body">
+            <h4>Kriter 4: Gerçek Zamanlı Uyumluluk <span class="ev-badge-partial">~ KISMEN</span></h4>
+            <p>Extra Trees eğitim süresi <strong>~6 saniye</strong> (100K örnek). Tahmin süresi &lt;1ms/örnek
+            olduğundan <strong>canlı round tahmini</strong> için uygundur. Ancak modelin yeniden eğitilmesi
+            (yeni sezon verisi ile güncelleme) saatler alabilir — bu kısıt Faz 6'da ele alınmalıdır.</p>
+        </div>
+    </div>
+
+    <div style="margin-top:20px; background:rgba(34,211,238,0.05); border:1px solid rgba(34,211,238,0.2); border-radius:12px; padding:20px;">
+        <h4 style="margin:0 0 10px 0; color:#22d3ee; font-size:1rem; font-weight:700;">🏆 Genel Değerlendirme</h4>
+        <p style="margin:0; color:#cbd5e1; font-size:0.9rem; line-height:1.7;">
+            Tüm nicel başarı kriterleri karşılanmış, biri ise kısmen karşılanmıştır.
+            CRISP-DM perspektifinden bu sonuç, modelin <strong>Deployment (Faz 6)</strong> fazına
+            taşınmaya hazır olduğunu göstermektedir. Kısmi karşılanma durumu ise
+            yalnızca periyodik yeniden eğitim için bir operasyonel kısıt olup model kalitesini değil,
+            bakım maliyetini etkiler.
+        </p>
+    </div>
+</div>
+</body></html>

@@ -1,0 +1,243 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><script src="https://cdn.plot.ly/plotly-2.32.0.min.js"></script></head><body>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap');
+    
+    .section-container {
+        background: linear-gradient(145deg, #020617 0%, #0f172a 100%);
+        padding: 40px;
+        border-radius: 20px;
+        color: #f8fafc;
+        font-family: 'Inter', sans-serif;
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05), 0 15px 25px -5px rgba(0, 0, 0, 0.4);
+        border: 1px solid rgba(14, 165, 233, 0.3);
+    }
+
+    .section-header {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        margin-bottom: 25px;
+        border-bottom: 1px solid rgba(14, 165, 233, 0.2);
+        padding-bottom: 15px;
+    }
+
+    .step-badge {
+        background: #0ea5e9;
+        color: #0f172a;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 1.2rem;
+        font-weight: 800;
+        width: 48px;
+        height: 48px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(14, 165, 233, 0.4);
+    }
+
+    .analyst-box {
+        background: linear-gradient(90deg, rgba(14, 165, 233, 0.1) 0%, transparent 100%);
+        border-left: 4px solid #0ea5e9;
+        padding: 20px 25px;
+        border-radius: 0 12px 12px 0;
+        margin-bottom: 30px;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .code-wrapper {
+        background: #020617;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 12px;
+        overflow: hidden;
+        margin-bottom: 25px;
+    }
+
+    .code-header {
+        background: rgba(15, 23, 42, 0.8);
+        padding: 10px 15px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.85rem;
+        color: #94a3b8;
+    }
+
+    .code-dots span {
+        display: inline-block;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+    }
+
+    .code-content {
+        padding: 20px;
+        margin: 0;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.9rem;
+        line-height: 1.5;
+        color: #e2e8f0;
+        overflow-x: auto;
+    }
+
+    .keyword { color: #c678dd; }
+    .string { color: #98c379; }
+    .comment { color: #5c6370; font-style: italic; }
+    .function { color: #61afef; }
+    .operator { color: #56b6c2; }
+    
+    /* Yeni Tablo Tasarımı */
+    .stats-table-wrapper {
+        background: rgba(15, 23, 42, 0.6);
+        border-radius: 12px;
+        border: 1px solid rgba(14, 165, 233, 0.2);
+        overflow: hidden;
+        margin-top: 15px;
+    }
+
+    .stats-table {
+        width: 100%;
+        border-collapse: collapse;
+        text-align: left;
+    }
+
+    .stats-table th {
+        background: rgba(14, 165, 233, 0.1);
+        color: #38bdf8;
+        padding: 14px 20px;
+        font-weight: 600;
+        font-size: 0.95rem;
+        border-bottom: 1px solid rgba(14, 165, 233, 0.2);
+        letter-spacing: 0.02em;
+    }
+
+    .stats-table td {
+        padding: 12px 20px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        color: #cbd5e1;
+        font-size: 0.9rem;
+        transition: background 0.2s ease;
+    }
+
+    .stats-table tr:last-child td {
+        border-bottom: none;
+    }
+
+    .stats-table tr:hover td {
+        background: rgba(14, 165, 233, 0.05);
+        color: #f8fafc;
+    }
+
+    .val-cell {
+        font-family: 'JetBrains Mono', monospace;
+        color: #0ea5e9;
+        font-weight: 700;
+    }
+</style>
+
+<div class="section-container">
+    
+    <div class="section-header">
+        <div class="step-badge">01</div>
+        <div>
+            <div style="color: #0ea5e9; font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 4px;">Data Understanding</div>
+            <h2 style="margin: 0; font-size: 1.8rem; font-weight: 800; color: #f8fafc; letter-spacing: -0.01em;">
+                Veri Yükleme ve Genel Bakış
+            </h2>
+        </div>
+    </div>
+
+    <div class="analyst-box">
+        <div style="font-size: 1.8rem;">💡</div>
+        <div>
+            <h4 style="margin: 0 0 6px 0; color: #38bdf8; font-size: 1rem; font-weight: 700;">Veri Analisti Perspektifi</h4>
+            <p style="margin: 0; color: #cbd5e1; font-size: 0.95rem; line-height: 1.6;">
+                Analizin ilk adımı, elimizdeki malzemenin boyutunu ve sınırlarını keşfetmektir. CS:GO gibi karmaşık bir oyunda onlarca farklı özellik bulunur. Değişkenleri <strong>core (çekirdek)</strong>, <strong>weapon (silah)</strong> ve <strong>grenade (bomba)</strong> olarak mantıksal gruplara ayırmak, veri setinin karmaşıklığını yönetmek ve ilerideki modelleme adımlarında işimizi büyük ölçüde kolaylaştırmak için harika bir stratejidir.
+            </p>
+        </div>
+    </div>
+
+    <div class="code-wrapper">
+        <div class="code-header">
+            <div class="code-dots">
+                <span style="background: #ff5f56;"></span>
+                <span style="background: #ffbd2e;"></span>
+                <span style="background: #27c93f;"></span>
+            </div>
+            <span style="margin-left: 10px;">python</span>
+        </div>
+        <pre class="code-content"><code><span class="keyword">import</span> pandas <span class="keyword">as</span> pd
+<span class="keyword">import</span> numpy <span class="keyword">as</span> np
+<span class="keyword">import</span> plotly.express <span class="keyword">as</span> px
+<span class="keyword">import</span> plotly.graph_objects <span class="keyword">as</span> go
+<span class="keyword">from</span> plotly.subplots <span class="keyword">import</span> make_subplots
+<span class="keyword">import</span> warnings
+warnings.<span class="function">filterwarnings</span>(<span class="string">'ignore'</span>)
+
+<span class="comment"># Veri setini yükleme</span>
+df <span class="operator">=</span> pd.<span class="function">read_csv</span>(<span class="string">'YBS3259_CSGO_Final_Verisi.csv'</span>)
+
+<span class="comment"># Sütun gruplarını ayırma</span>
+weapon_cols  <span class="operator">=</span> [c <span class="keyword">for</span> c <span class="keyword">in</span> df.columns <span class="keyword">if</span> <span class="string">'weapon'</span> <span class="keyword">in</span> c]
+grenade_cols <span class="operator">=</span> [c <span class="keyword">for</span> c <span class="keyword">in</span> df.columns <span class="keyword">if</span> <span class="string">'grenade'</span> <span class="keyword">in</span> c]
+core_cols    <span class="operator">=</span> [<span class="string">'time_left'</span>,<span class="string">'ct_score'</span>,<span class="string">'t_score'</span>,<span class="string">'bomb_planted'</span>,
+                <span class="string">'ct_health'</span>,<span class="string">'t_health'</span>,<span class="string">'ct_armor'</span>,<span class="string">'t_armor'</span>,
+                <span class="string">'ct_money'</span>,<span class="string">'t_money'</span>,<span class="string">'ct_helmets'</span>,<span class="string">'t_helmets'</span>,
+                <span class="string">'ct_defuse_kits'</span>,<span class="string">'ct_players_alive'</span>,<span class="string">'t_players_alive'</span>]</code></pre>
+    </div>
+
+    <div style="margin-bottom: 10px; font-family: 'Inter', sans-serif; font-size: 0.95rem; color: #f8fafc; font-weight: 600; display: flex; align-items: center; gap: 8px;">
+        <span style="color: #0ea5e9; font-size: 1.2rem;">📊</span> CS:GO Veri Seti — Genel Bakış
+    </div>
+    
+    <div class="stats-table-wrapper">
+        <table class="stats-table">
+            <thead>
+                <tr>
+                    <th style="width: 50%;">Veri Özelliği</th>
+                    <th style="width: 50%;">Değer / Detay</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Satır (Gözlem)</td>
+                    <td class="val-cell">122,410</td>
+                </tr>
+                <tr>
+                    <td>Sütun (Özellik)</td>
+                    <td class="val-cell">96 <span style="color: #94a3b8; font-size: 0.8rem; font-weight: 400;">(+1 Hedef)</span></td>
+                </tr>
+                <tr>
+                    <td>Hedef Değişken</td>
+                    <td class="val-cell">round_winner <span style="color: #94a3b8; font-size: 0.8rem; font-weight: 400;">(CT / T)</span></td>
+                </tr>
+                <tr>
+                    <td>Çekirdek Sütunlar (Core)</td>
+                    <td class="val-cell">15</td>
+                </tr>
+                <tr>
+                    <td>Silah Sütunları (Weapon)</td>
+                    <td class="val-cell">66</td>
+                </tr>
+                <tr>
+                    <td>Bomba Sütunları (Grenade)</td>
+                    <td class="val-cell">13</td>
+                </tr>
+                <tr>
+                    <td>Kategorik Sütunlar</td>
+                    <td class="val-cell" style="color: #e2e8f0; font-weight: 500;">map, bomb_planted</td>
+                </tr>
+                <tr>
+                    <td>Toplam Eksik Değer</td>
+                    <td class="val-cell" style="color: #27c93f;">0</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>
+</body></html>

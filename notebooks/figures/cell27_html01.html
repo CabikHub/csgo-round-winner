@@ -1,0 +1,152 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><script src="https://cdn.plot.ly/plotly-2.32.0.min.js"></script></head><body>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap');
+    
+    .phase3-container {
+        background: linear-gradient(145deg, #020617 0%, #0f172a 100%);
+        padding: 40px;
+        border-radius: 20px;
+        color: #f8fafc;
+        font-family: 'Inter', sans-serif;
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05), 0 15px 35px -5px rgba(0, 0, 0, 0.5);
+        border: 1px solid rgba(16, 185, 129, 0.3); /* Zümrüt Yeşili Vurgu */
+    }
+
+    .analyst-box-p3 {
+        background: linear-gradient(90deg, rgba(16, 185, 129, 0.1) 0%, transparent 100%);
+        border-left: 4px solid #10b981;
+        padding: 20px 25px;
+        border-radius: 0 12px 12px 0;
+        margin-bottom: 35px;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .toc-grid-p3 {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+    }
+
+    .toc-item-p3 {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        padding: 16px 20px;
+        background: rgba(15, 23, 42, 0.6);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        border-radius: 14px;
+        color: #94a3b8;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        cursor: default;
+    }
+
+    .toc-item-p3:hover {
+        background: rgba(16, 185, 129, 0.08);
+        border-color: rgba(16, 185, 129, 0.3);
+        transform: translateX(6px);
+        color: #f8fafc;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    .toc-num-p3 {
+        background: #0f172a;
+        color: #10b981;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.9rem;
+        font-weight: 700;
+        width: 36px;
+        height: 36px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 10px;
+        border: 1px solid rgba(16, 185, 129, 0.3);
+        flex-shrink: 0;
+        transition: background 0.3s, color 0.3s, border-color 0.3s;
+    }
+    
+    .toc-item-p3:hover .toc-num-p3 {
+        background: #10b981;
+        color: #0f172a;
+        border-color: #10b981;
+    }
+    
+    .toc-title-p3 {
+        font-size: 0.95rem;
+        font-weight: 600;
+        letter-spacing: 0.02em;
+    }
+</style>
+
+<div class="phase3-container">
+    
+    <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 20px;">
+        <span style="font-size: 2.2rem; background: rgba(16, 185, 129, 0.15); padding: 10px; border-radius: 12px; border: 1px solid rgba(16, 185, 129, 0.3); box-shadow: 0 0 15px rgba(16, 185, 129, 0.2);">🛠️</span>
+        <div>
+            <div style="color: #10b981; font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 4px;">CRISP-DM Adım 03</div>
+            <h2 style="margin: 0; font-size: 2.2rem; font-weight: 900; background: linear-gradient(to right, #34d399, #059669); -webkit-background-clip: text; -webkit-text-fill-color: transparent; letter-spacing: -0.02em;">
+                FAZ 3 – Data Preparation
+            </h2>
+            <div style="color: #94a3b8; font-family: 'Inter', sans-serif; font-size: 0.95rem; margin-top: 4px; font-weight: 500;">
+                Veri Hazırlama & Pipeline Tasarımı
+            </div>
+        </div>
+    </div>
+
+    <div class="analyst-box-p3">
+        <div style="font-size: 1.8rem;">⚙️</div>
+        <div>
+            <h4 style="margin: 0 0 6px 0; color: #34d399; font-size: 1rem; font-weight: 700;">Veri Mühendisi Perspektifi</h4>
+            <p style="margin: 0; color: #cbd5e1; font-size: 0.95rem; line-height: 1.6;">
+                Eksik değer yönetimi, aykırı değer stratejisi, encoding, ölçeklendirme, feature engineering ve <strong>veri sızıntısını (data leakage) önleyen sklearn Pipeline</strong> yapısı bu fazda kurulmaktadır. Tüm işlemler tekrar üretilebilir (reproducible) ve canlı ortama (production) çıkmaya hazır biçimde tasarlanmıştır.
+            </p>
+        </div>
+    </div>
+
+    <h3 style="margin: 0 0 15px 0; font-size: 1.15rem; font-weight: 700; color: #f8fafc; display: flex; align-items: center; gap: 8px;">
+        <span style="color: #10b981;">📑</span> İçindekiler Paneli
+    </h3>
+
+    <div class="toc-grid-p3">
+        <div class="toc-item-p3">
+            <div class="toc-num-p3">01</div>
+            <div class="toc-title-p3">Kütüphaneler ve Veri Yükleme</div>
+        </div>
+        <div class="toc-item-p3">
+            <div class="toc-num-p3">02</div>
+            <div class="toc-title-p3">Veri Temizleme — Seyrek & Gereksiz Sütunlar</div>
+        </div>
+        <div class="toc-item-p3">
+            <div class="toc-num-p3">03</div>
+            <div class="toc-title-p3">Feature Engineering — Yeni Değişkenler</div>
+        </div>
+        <div class="toc-item-p3">
+            <div class="toc-num-p3">04</div>
+            <div class="toc-title-p3">Train / Test Ayrımı (Stratified Split)</div>
+        </div>
+        <div class="toc-item-p3">
+            <div class="toc-num-p3">05</div>
+            <div class="toc-title-p3">Preprocessing Pipeline Tasarımı</div>
+        </div>
+        <div class="toc-item-p3">
+            <div class="toc-num-p3">06</div>
+            <div class="toc-title-p3">Pipeline Doğrulama ve Görselleştirme</div>
+        </div>
+        <div class="toc-item-p3">
+            <div class="toc-num-p3">07</div>
+            <div class="toc-title-p3">İşlenmiş Veri Özeti</div>
+        </div>
+        <div class="toc-item-p3">
+            <div class="toc-num-p3">08</div>
+            <div class="toc-title-p3">Pipeline Kaydetme</div>
+        </div>
+        <div class="toc-item-p3" style="grid-column: 1 / -1; border-color: rgba(16, 185, 129, 0.4); background: rgba(16, 185, 129, 0.05);">
+            <div class="toc-num-p3" style="background: #10b981; color: #0f172a; border-color: #10b981;">09</div>
+            <div class="toc-title-p3" style="color: #34d399; font-weight: 700;">Faz 3 Özet ve Bulgular</div>
+        </div>
+    </div>
+
+</div>
+</body></html>

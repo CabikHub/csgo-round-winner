@@ -1,0 +1,86 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><script src="https://cdn.plot.ly/plotly-2.32.0.min.js"></script></head><body>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap');
+    .dep-section {
+        background: linear-gradient(145deg, #020617 0%, #0f172a 100%);
+        padding: 40px; border-radius: 20px; color: #f8fafc;
+        font-family: 'Inter', sans-serif;
+        box-shadow: inset 0 1px 0 rgba(255,255,255,0.05), 0 15px 25px -5px rgba(0,0,0,0.4);
+        border: 1px solid rgba(34,197,94,0.3);
+    }
+    .dep-step-badge {
+        background: #22c55e; color: #0f172a;
+        font-family: 'JetBrains Mono', monospace; font-size: 1.2rem; font-weight: 800;
+        width: 48px; height: 48px; display: flex; align-items: center; justify-content: center;
+        border-radius: 12px; box-shadow: 0 4px 15px rgba(34,197,94,0.4);
+    }
+    .dep-analyst {
+        background: linear-gradient(90deg, rgba(34,197,94,0.1) 0%, transparent 100%);
+        border-left: 4px solid #22c55e; padding: 20px 25px; border-radius: 0 12px 12px 0;
+        margin-bottom: 25px; display: flex; align-items: center; gap: 15px;
+    }
+    .metric-grid {
+        display: grid; grid-template-columns: repeat(5, 1fr); gap: 15px; margin-top: 20px;
+    }
+    .metric-card {
+        background: rgba(15,23,42,0.5); border: 1px solid rgba(255,255,255,0.05);
+        border-radius: 12px; padding: 18px; text-align: center; position: relative; overflow: hidden;
+        transition: transform 0.2s, background 0.2s;
+    }
+    .metric-card:hover { transform: translateY(-3px); background: rgba(30,41,59,0.7); }
+    .mc-label { color: #94a3b8; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; font-weight: 700; margin-bottom: 8px; }
+    .mc-value { font-family: 'JetBrains Mono', monospace; font-size: 1.4rem; font-weight: 800; }
+    .status-ok {
+        background: rgba(34,197,94,0.1); border: 1px solid rgba(34,197,94,0.3);
+        border-radius: 8px; padding: 12px 16px; margin-top: 20px;
+        display: flex; align-items: center; gap: 12px; color: #4ade80; font-weight: 600; font-size: 0.95rem;
+    }
+</style>
+<div class="dep-section">
+    <div style="display:flex; align-items:center; gap:15px; margin-bottom:25px; border-bottom:1px solid rgba(34,197,94,0.2); padding-bottom:15px;">
+        <div class="dep-step-badge">01</div>
+        <div>
+            <div style="color:#4ade80; font-family:'JetBrains Mono',monospace; font-size:0.85rem; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; margin-bottom:4px;">Initialization</div>
+            <h2 style="margin:0; font-size:1.8rem; font-weight:800; color:#f8fafc;">Kütüphaneler & Model Yeniden Yükleme</h2>
+        </div>
+    </div>
+    <div class="dep-analyst">
+        <div style="font-size:1.8rem;">🔄</div>
+        <div>
+            <h4 style="margin:0 0 6px 0; color:#4ade80; font-size:1rem; font-weight:700;">Deployment Mühendisi Perspektifi</h4>
+            <p style="margin:0; color:#cbd5e1; font-size:0.95rem; line-height:1.6;">
+                Faz 5'te seçilen <strong>ExtraTreesClassifier</strong> şampiyonu yeniden inşa ediyoruz. 
+                Deployment fazında modelin üretim ortamına taşınmadan önce 
+                <em>son performans doğrulaması (sanity check)</em> kritik bir güvenlik adımıdır.
+            </p>
+        </div>
+    </div>
+    <div style="color:#e2e8f0; font-size:1rem; font-weight:600; margin-bottom:12px;">✅ Şampiyon Model — Test Seti Performansı (Son Doğrulama)</div>
+    <div class="metric-grid">
+        <div class="metric-card" style="border-top:3px solid #60a5fa;">
+            <div class="mc-label">Accuracy</div>
+            <div class="mc-value" style="color:#60a5fa;">0.8173</div>
+        </div>
+        <div class="metric-card" style="border-top:3px solid #c084fc;">
+            <div class="mc-label">Macro F1</div>
+            <div class="mc-value" style="color:#c084fc;">0.8172</div>
+        </div>
+        <div class="metric-card" style="border-top:3px solid #34d399;">
+            <div class="mc-label">ROC-AUC</div>
+            <div class="mc-value" style="color:#34d399;">0.9049</div>
+        </div>
+        <div class="metric-card" style="border-top:3px solid #f472b6;">
+            <div class="mc-label">Precision</div>
+            <div class="mc-value" style="color:#f472b6;">0.8172</div>
+        </div>
+        <div class="metric-card" style="border-top:3px solid #fbbf24;">
+            <div class="mc-label">Recall</div>
+            <div class="mc-value" style="color:#fbbf24;">0.8172</div>
+        </div>
+    </div>
+    <div class="status-ok">
+        <span style="font-size:1.3rem;">✅</span>
+        Model başarıyla yeniden eğitildi ve doğrulandı. Deployment için hazır.
+    </div>
+</div>
+</body></html>

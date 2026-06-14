@@ -1,0 +1,172 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><script src="https://cdn.plot.ly/plotly-2.32.0.min.js"></script></head><body>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700;800&display=swap');
+    
+    .table-container {
+        background: linear-gradient(145deg, #020617 0%, #0f172a 100%);
+        padding: 35px;
+        border-radius: 20px;
+        color: #f8fafc;
+        font-family: 'Inter', sans-serif;
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05), 0 10px 20px -5px rgba(0, 0, 0, 0.4);
+        border: 1px solid rgba(51, 65, 85, 0.6);
+        margin-bottom: 25px;
+    }
+
+    .table-header {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 25px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        padding-bottom: 15px;
+    }
+
+    .custom-table {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0;
+        margin-bottom: 25px;
+    }
+
+    .custom-table th {
+        background: rgba(30, 41, 59, 0.8);
+        color: #38bdf8;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        font-size: 0.85rem;
+        padding: 16px;
+        text-align: left;
+        border-bottom: 2px solid rgba(56, 189, 248, 0.3);
+    }
+    
+    .custom-table th:first-child { border-top-left-radius: 12px; }
+    .custom-table th:last-child { border-top-right-radius: 12px; }
+
+    .custom-table td {
+        padding: 16px;
+        background: rgba(15, 23, 42, 0.4);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        color: #cbd5e1;
+        font-size: 0.95rem;
+        transition: background 0.2s;
+    }
+
+    .custom-table tr:hover td {
+        background: rgba(56, 189, 248, 0.08);
+        color: #f8fafc;
+    }
+
+    .custom-table tr:last-child td { border-bottom: none; }
+    .custom-table tr:last-child td:first-child { border-bottom-left-radius: 12px; }
+    .custom-table tr:last-child td:last-child { border-bottom-right-radius: 12px; }
+
+    .metric-name { font-weight: 700; color: #f8fafc; }
+    .num-val { font-family: 'JetBrains Mono', monospace; font-weight: 700; }
+    .num-min { color: #f472b6; }
+    .num-pref { color: #34d399; }
+
+    .badge-yuksek {
+        background: rgba(239, 68, 68, 0.15);
+        color: #f87171;
+        border: 1px solid rgba(239, 68, 68, 0.3);
+        padding: 4px 10px;
+        border-radius: 6px;
+        font-size: 0.8rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+    }
+
+    .badge-orta {
+        background: rgba(251, 191, 36, 0.15);
+        color: #fbbf24;
+        border: 1px solid rgba(251, 191, 36, 0.3);
+        padding: 4px 10px;
+        border-radius: 6px;
+        font-size: 0.8rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+    }
+
+    .crisp-note {
+        background: rgba(167, 139, 250, 0.05);
+        border-left: 4px solid #a78bfa;
+        padding: 18px 22px;
+        border-radius: 0 12px 12px 0;
+        display: flex;
+        align-items: flex-start;
+        gap: 15px;
+    }
+</style>
+
+<div class="table-container">
+    
+    <div class="table-header">
+        <div style="background: rgba(56, 189, 248, 0.1); padding: 8px 12px; border-radius: 8px; font-size: 1.2rem;">🏆</div>
+        <h3 style="margin: 0; font-size: 1.4rem; font-weight: 800; color: #f8fafc;">Proje Başarı Kriterleri Tablosu</h3>
+    </div>
+
+    <table class="custom-table">
+        <thead>
+            <tr>
+                <th>Metrik</th>
+                <th>Minimum Hedef</th>
+                <th>Tercih Edilen Hedef</th>
+                <th>Öncelik Seviyesi</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="metric-name">Accuracy</td>
+                <td class="num-val num-min">0.75</td>
+                <td class="num-val num-pref">0.82</td>
+                <td><span class="badge-yuksek">Yüksek</span></td>
+            </tr>
+            <tr>
+                <td class="metric-name">F1-Score (macro)</td>
+                <td class="num-val num-min">0.73</td>
+                <td class="num-val num-pref">0.80</td>
+                <td><span class="badge-yuksek">Yüksek</span></td>
+            </tr>
+            <tr>
+                <td class="metric-name">ROC-AUC</td>
+                <td class="num-val num-min">0.80</td>
+                <td class="num-val num-pref">0.86</td>
+                <td><span class="badge-yuksek">Yüksek</span></td>
+            </tr>
+            <tr>
+                <td class="metric-name">Precision (CT)</td>
+                <td class="num-val num-min">0.72</td>
+                <td class="num-val num-pref">0.80</td>
+                <td><span class="badge-orta">Orta</span></td>
+            </tr>
+            <tr>
+                <td class="metric-name">Recall (CT)</td>
+                <td class="num-val num-min">0.70</td>
+                <td class="num-val num-pref">0.78</td>
+                <td><span class="badge-orta">Orta</span></td>
+            </tr>
+            <tr>
+                <td class="metric-name">Cross-Val Std</td>
+                <td class="num-val num-min">&lt; 0.02</td>
+                <td class="num-val num-pref">&lt; 0.01</td>
+                <td><span class="badge-yuksek">Yüksek</span></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="crisp-note">
+        <div style="font-size: 1.5rem;">💡</div>
+        <div>
+            <h4 style="color: #c084fc; margin: 0 0 5px 0; font-size: 1rem; font-weight: 700;">Metodolojik Notumuz (CRISP-DM)</h4>
+            <p style="margin: 0; color: #cbd5e1; line-height: 1.6; font-size: 0.95rem;">
+                Derste öğrendiğimiz üzere, bu kriterleri modelleme fazına geçmeden <strong>önce</strong> tanımladık. Amacımız modeli kurup çıkan sonuçlara göre hedef uydurmak değil; baştan belirlediğimiz bu başarı eşiklerine ulaşmak için veriyi ve modeli optimize etmektir.
+            </p>
+        </div>
+    </div>
+
+</div>
+</body></html>

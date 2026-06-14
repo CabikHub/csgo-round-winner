@@ -1,0 +1,173 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><script src="https://cdn.plot.ly/plotly-2.32.0.min.js"></script></head><body>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700;800&display=swap');
+    
+    .summary-container {
+        background: linear-gradient(145deg, #020617 0%, #0f172a 100%);
+        padding: 45px 40px;
+        border-radius: 24px;
+        color: #f8fafc;
+        font-family: 'Inter', sans-serif;
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 20px 25px -5px rgba(0, 0, 0, 0.4);
+        border: 1px solid rgba(56, 189, 248, 0.3);
+        position: relative;
+        overflow: hidden;
+    }
+
+    /* Arka plan ışıltısı */
+    .summary-container::before {
+        content: '';
+        position: absolute;
+        top: -50px; right: -50px; width: 200px; height: 200px;
+        background: radial-gradient(circle, rgba(56, 189, 248, 0.15) 0%, transparent 70%);
+        border-radius: 50%;
+        pointer-events: none;
+    }
+
+    .header-box {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        margin-bottom: 30px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        padding-bottom: 20px;
+    }
+
+    .param-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 15px;
+        margin-bottom: 35px;
+    }
+
+    .param-card {
+        background: rgba(15, 23, 42, 0.5);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        border-radius: 12px;
+        padding: 16px 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        transition: transform 0.2s, background 0.2s;
+    }
+
+    .param-card:hover {
+        background: rgba(30, 41, 59, 0.7);
+        transform: translateY(-2px);
+        border-color: rgba(56, 189, 248, 0.3);
+    }
+
+    .param-label { color: #94a3b8; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; font-weight: 700; margin-bottom: 6px; }
+    .param-value { color: #f8fafc; font-size: 1rem; font-weight: 700; font-family: 'JetBrains Mono', monospace; }
+    
+    .highlight-blue { color: #38bdf8; }
+    .highlight-purple { color: #c084fc; }
+    .highlight-green { color: #34d399; }
+
+    /* Faz 2 Geçiş Afişi */
+    .next-step-box {
+        background: linear-gradient(90deg, rgba(59, 130, 246, 0.15) 0%, rgba(167, 139, 250, 0.15) 100%);
+        border: 1px solid rgba(167, 139, 250, 0.3);
+        border-radius: 16px;
+        padding: 25px;
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        margin-bottom: 35px;
+        position: relative;
+    }
+
+    .next-step-icon {
+        background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+        width: 50px; height: 50px;
+        border-radius: 12px;
+        display: flex; align-items: center; justify-content: center;
+        font-size: 1.5rem; color: white;
+        box-shadow: 0 4px 15px rgba(139, 92, 246, 0.4);
+        flex-shrink: 0;
+    }
+
+    /* Hocanın Sözü (Rubrik Alıntısı) */
+    .quote-box {
+        text-align: center;
+        padding: 30px 40px;
+        background: rgba(0, 0, 0, 0.2);
+        border-radius: 16px;
+        border-top: 2px solid rgba(56, 189, 248, 0.2);
+        border-bottom: 2px solid rgba(56, 189, 248, 0.2);
+        position: relative;
+    }
+    
+    .quote-box::before { content: '"'; position: absolute; top: -10px; left: 20px; font-size: 4rem; color: rgba(56, 189, 248, 0.2); font-family: serif; line-height: 1; }
+    .quote-box::after { content: '"'; position: absolute; bottom: -30px; right: 20px; font-size: 4rem; color: rgba(56, 189, 248, 0.2); font-family: serif; line-height: 1; }
+
+    .quote-text {
+        font-size: 1.3rem;
+        font-weight: 500;
+        font-style: italic;
+        color: #e0f2fe;
+        margin: 0 0 15px 0;
+        line-height: 1.6;
+    }
+
+    .quote-author {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.85rem;
+        color: #38bdf8;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+    }
+</style>
+
+<div class="summary-container">
+    
+    <div class="header-box">
+        <div style="background: rgba(16, 185, 129, 0.15); color: #10b981; padding: 10px; border-radius: 10px; font-size: 1.5rem;">✅</div>
+        <div>
+            <h2 style="margin: 0; font-size: 1.8rem; font-weight: 800; color: #f8fafc;">Faz 1 — Özet ve Karar Çerçevesi</h2>
+            <div style="color: #94a3b8; font-size: 0.9rem; margin-top: 4px;">Business Understanding başarıyla tamamlandı.</div>
+        </div>
+    </div>
+
+    <div class="param-grid">
+        <div class="param-card" style="grid-column: span 2;">
+            <span class="param-label">İş Problemi</span>
+            <span class="param-value">CS:GO round anlık durumundan <span class="highlight-blue">round kazananını</span> tahmin etmek.</span>
+        </div>
+        <div class="param-card">
+            <span class="param-label">Proje Türü</span>
+            <span class="param-value highlight-purple">Binary Classification</span>
+        </div>
+        <div class="param-card">
+            <span class="param-label">Hedef Değişken</span>
+            <span class="param-value">round_winner <span style="font-size:0.8rem; color:#94a3b8;">(CT/T)</span></span>
+        </div>
+        <div class="param-card">
+            <span class="param-label">Birincil Metrik</span>
+            <span class="param-value">Macro F1 ≥ 0.73</span>
+        </div>
+        <div class="param-card">
+            <span class="param-label">İkincil Metrikler</span>
+            <span class="param-value">ROC-AUC ≥ 0.80 <br> Accuracy ≥ %75</span>
+        </div>
+        <div class="param-card" style="grid-column: span 2; border-left: 3px solid #10b981;">
+            <span class="param-label">Sınıf Dengesi Durumu</span>
+            <span class="param-value highlight-green">~%50 / %50 — Mükemmel Dengeli ✓</span>
+        </div>
+    </div>
+
+    <div class="next-step-box">
+        <div class="next-step-icon">➔</div>
+        <div>
+            <h4 style="margin: 0 0 6px 0; color: #f8fafc; font-size: 1.1rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em;">Bir Sonraki Adım: Faz 2 (Data Understanding)</h4>
+            <p style="margin: 0; color: #cbd5e1; font-size: 0.95rem; line-height: 1.6;">
+                Problemi ve başarıyı tanımladığımıza göre artık veriyi konuşturma vakti. Veri seti yapısı, eksik/aykırı değer analizleri ve değişkenlerin hedef (<code style="background: rgba(0,0,0,0.3); padding: 2px 5px; border-radius: 4px; font-family: monospace; color: #a78bfa;">round_winner</code>) ile olan korelasyonu <b>Plotly</b> grafikleriyle görselleştirilecektir.
+            </p>
+        </div>
+    </div>
+
+    
+
+</div>
+</body></html>

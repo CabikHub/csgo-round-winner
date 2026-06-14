@@ -1,0 +1,91 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><script src="https://cdn.plot.ly/plotly-2.32.0.min.js"></script></head><body>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap');
+    
+    .section-container-yorum {
+        background: linear-gradient(145deg, #020617 0%, #0f172a 100%);
+        padding: 0 40px 40px 40px;
+        border-radius: 0 0 20px 20px; /* Eğer önceki hücrenin altına ayrı ekliyorsan 20px kalsın */
+        color: #f8fafc;
+        font-family: 'Inter', sans-serif;
+        box-shadow: 0 15px 25px -5px rgba(0, 0, 0, 0.4);
+        border: 1px solid rgba(14, 165, 233, 0.3);
+        border-top: none;
+    }
+
+    .insight-box-ml {
+        background: linear-gradient(145deg, rgba(16, 185, 129, 0.05) 0%, rgba(16, 185, 129, 0.1) 100%);
+        border: 1px solid rgba(16, 185, 129, 0.3);
+        border-radius: 12px;
+        padding: 25px;
+        margin-top: 10px;
+        display: flex;
+        align-items: flex-start;
+        gap: 20px;
+        box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.2);
+    }
+
+    .insight-icon-ml {
+        font-size: 1.8rem;
+        background: rgba(16, 185, 129, 0.15);
+        padding: 14px;
+        border-radius: 14px;
+        border: 1px solid rgba(16, 185, 129, 0.3);
+        box-shadow: inset 0 0 10px rgba(16, 185, 129, 0.2);
+    }
+    
+    .ul-ml {
+        margin: 0; 
+        padding-left: 20px; 
+        color: #cbd5e1; 
+        font-size: 0.95rem; 
+        line-height: 1.8;
+    }
+    
+    .ul-ml li::marker {
+        color: #10b981;
+        font-size: 1.2em;
+    }
+
+    .code-tag {
+        color: #38bdf8; 
+        background: rgba(56, 189, 248, 0.1); 
+        padding: 3px 6px; 
+        border-radius: 6px; 
+        font-family: 'JetBrains Mono', monospace; 
+        font-size: 0.85em;
+        border: 1px solid rgba(56, 189, 248, 0.2);
+    }
+
+    .val-tag {
+        color: #10b981;
+        font-family: 'JetBrains Mono', monospace;
+        font-weight: 700;
+        font-size: 0.9em;
+    }
+    
+    .highlight-model {
+        color: #f8fafc;
+        background: linear-gradient(90deg, rgba(16, 185, 129, 0.2), transparent);
+        padding: 2px 8px;
+        border-left: 3px solid #10b981;
+        border-radius: 0 4px 4px 0;
+        font-weight: 600;
+    }
+</style>
+
+<div class="section-container-yorum">
+    <div class="insight-box-ml">
+        <div class="insight-icon-ml">🤖</div>
+        <div>
+            <h4 style="margin: 0 0 12px 0; color: #f8fafc; font-size: 1.15rem; letter-spacing: 0.02em;">Korelasyon Analizi Sonuçları ve Modelleme Kararı</h4>
+            <ul class="ul-ml">
+                <li><strong>En yüksek korelasyonlar:</strong> <span class="code-tag">ct_armor</span> (<span class="val-tag">0.33</span>), <span class="code-tag">ct_helmets</span> (<span class="val-tag">0.31</span>), <span class="code-tag">t_helmets</span> (<span class="val-tag">0.30</span>), <span class="code-tag">ct_defuse_kits</span> (<span class="val-tag">0.29</span>).</li>
+                <li>Bu özellikler, <strong style="color: #38bdf8;">ekonomik güç ve ekipman üstünlüğünün</strong> round sonucunu doğrudan etkilediğini göstermektedir.</li>
+                <li><span class="code-tag">ct_players_alive</span> ve <span class="code-tag">t_players_alive</span> arasında güçlü negatif korelasyon beklenir (biri arttıkça diğerinin avantajı azalır).</li>
+                <li style="margin-top: 12px;"><span class="highlight-model">📌 ALGORİTMA SEÇİMİ:</span> Korelasyonların <strong>0.35 altında</strong> kalması (doğrusal ilişkinin zayıf olması), Lojistik Regresyon gibi lineer modeller yerine; verideki karmaşık/doğrusal olmayan örüntüleri yakalayabilen <strong>Random Forest</strong> ve <strong>XGBoost</strong> gibi ağaç bazlı (tree-based) modellerin çok daha iyi performans göstereceğine işaret etmektedir.</li>
+            </ul>
+        </div>
+    </div>
+</div>
+</body></html>

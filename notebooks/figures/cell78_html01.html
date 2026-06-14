@@ -1,0 +1,94 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><script src="https://cdn.plot.ly/plotly-2.32.0.min.js"></script></head><body>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap');
+    .dep-section5 {
+        background: linear-gradient(145deg, #020617 0%, #0f172a 100%);
+        padding: 40px; border-radius: 20px; color: #f8fafc;
+        font-family: 'Inter', sans-serif; border: 1px solid rgba(99,102,241,0.3);
+        box-shadow: inset 0 1px 0 rgba(255,255,255,0.05), 0 15px 25px -5px rgba(0,0,0,0.4);
+    }
+    .dep-step-badge5 {
+        background: linear-gradient(135deg,#6366f1,#8b5cf6); color: #f8fafc;
+        font-family: 'JetBrains Mono', monospace; font-size: 1.2rem; font-weight: 800;
+        width: 48px; height: 48px; display: flex; align-items: center; justify-content: center;
+        border-radius: 12px; box-shadow: 0 4px 15px rgba(99,102,241,0.4);
+    }
+    .perf-grid {
+        display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; margin-top: 20px;
+    }
+    .perf-card {
+        background: rgba(15,23,42,0.5); border: 1px solid rgba(255,255,255,0.05);
+        border-radius: 12px; padding: 18px; text-align: center;
+        transition: transform 0.2s;
+    }
+    .perf-card:hover { transform: translateY(-3px); }
+    .pc-label { color: #94a3b8; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; font-weight: 700; margin-bottom: 8px; }
+    .pc-value { font-family: 'JetBrains Mono', monospace; font-size: 1.3rem; font-weight: 800; }
+    .batch-stat { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.05); font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; }
+    .batch-stat:last-child { border-bottom: none; }
+</style>
+<div class="dep-section5">
+    <div style="display:flex; align-items:center; gap:15px; margin-bottom:25px; border-bottom:1px solid rgba(99,102,241,0.2); padding-bottom:15px;">
+        <div class="dep-step-badge5">05</div>
+        <div>
+            <div style="color:#a78bfa; font-family:'JetBrains Mono',monospace; font-size:0.85rem; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; margin-bottom:4px;">Performance Benchmark</div>
+            <h2 style="margin:0; font-size:1.8rem; font-weight:800; color:#f8fafc;">Batch Tahmin & Performans Testi</h2>
+        </div>
+    </div>
+
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px;">
+        <div>
+            <div style="color:#a78bfa; font-size:0.9rem; font-weight:700; margin-bottom:12px;">📦 Batch Tahmin Hızı (5,993 örnek)</div>
+            <div style="background:#020617; border:1px solid rgba(99,102,241,0.2); border-radius:10px; padding:15px;">
+                <div class="batch-stat">
+                    <span style="color:#94a3b8;">Toplam Süre</span>
+                    <span style="color:#f8fafc; font-weight:700;">387.3 ms</span>
+                </div>
+                <div class="batch-stat">
+                    <span style="color:#94a3b8;">Örnek Başı</span>
+                    <span style="color:#4ade80; font-weight:700;">0.0646 ms</span>
+                </div>
+                <div class="batch-stat">
+                    <span style="color:#94a3b8;">Saniyede Tahmin</span>
+                    <span style="color:#38bdf8; font-weight:700;">15,475 pred/s</span>
+                </div>
+                <div class="batch-stat">
+                    <span style="color:#94a3b8;">Toplam Örnek</span>
+                    <span style="color:#f8fafc;">5,993</span>
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <div style="color:#a78bfa; font-size:0.9rem; font-weight:700; margin-bottom:12px;">⚡ Tekli Tahmin Latency Dağılımı (200 ölçüm)</div>
+            <div class="perf-grid" style="grid-template-columns: repeat(2, 1fr);">
+                <div class="perf-card" style="border-top:3px solid #4ade80;">
+                    <div class="pc-label">P50 (Medyan)</div>
+                    <div class="pc-value" style="color:#4ade80;">47.37ms</div>
+                </div>
+                <div class="perf-card" style="border-top:3px solid #fbbf24;">
+                    <div class="pc-label">P95</div>
+                    <div class="pc-value" style="color:#fbbf24;">82.02ms</div>
+                </div>
+                <div class="perf-card" style="border-top:3px solid #f97316;">
+                    <div class="pc-label">P99</div>
+                    <div class="pc-value" style="color:#f97316;">155.39ms</div>
+                </div>
+                <div class="perf-card" style="border-top:3px solid #ef4444;">
+                    <div class="pc-label">Max</div>
+                    <div class="pc-value" style="color:#ef4444;">1292.63ms</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div style="margin-top:20px; background:rgba(99,102,241,0.05); border:1px solid rgba(99,102,241,0.2); border-radius:10px; padding:16px; display:flex; gap:12px; align-items:center;">
+        <span style="font-size:1.4rem;">🚀</span>
+        <p style="margin:0; color:#cbd5e1; font-size:0.95rem; line-height:1.6;">
+            Model, <strong style="color:#4ade80;">gerçek zamanlı kullanım senaryoları</strong> için yeterli hızdadır. 
+            P50 latency değeri canlı yayın API'leri (&lt;100ms eşiği) için idealdir. 
+            Ölçek büyüdüğünde <strong>model cache</strong> ve <strong>asenkron batch processing</strong> uygulanabilir.
+        </p>
+    </div>
+</div>
+</body></html>

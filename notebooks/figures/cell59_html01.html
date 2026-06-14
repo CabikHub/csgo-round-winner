@@ -1,0 +1,72 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><script src="https://cdn.plot.ly/plotly-2.32.0.min.js"></script></head><body>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+    .gerekce-container {
+        background: linear-gradient(145deg, #0f172a 0%, #1e293b 100%);
+        padding: 35px; border-radius: 20px; color: #f8fafc; font-family: 'Inter', sans-serif;
+        border: 1px solid rgba(139,92,246,0.4);
+        box-shadow: 0 0 30px rgba(139,92,246,0.1);
+    }
+    .gerekce-row {
+        display: flex; gap: 16px; align-items: flex-start;
+        padding: 18px 0; border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .gerekce-row:last-child { border-bottom: none; padding-bottom: 0; }
+    .gerekce-icon {
+        font-size: 1.6rem; background: rgba(139,92,246,0.15); padding: 10px;
+        border-radius: 10px; border: 1px solid rgba(139,92,246,0.2); flex-shrink: 0;
+    }
+    .gerekce-content h4 { margin: 0 0 6px 0; color: #a78bfa; font-size: 1rem; font-weight: 700; }
+    .gerekce-content p  { margin: 0; color: #cbd5e1; font-size: 0.9rem; line-height: 1.7; }
+    .gerekce-content strong { color: #f8fafc; background: rgba(139,92,246,0.2); padding: 1px 5px; border-radius: 4px; }
+</style>
+<div class="gerekce-container">
+    <h2 style="margin:0 0 25px 0; font-size:1.6rem; font-weight:900;
+        background:linear-gradient(to right,#a78bfa,#818cf8); -webkit-background-clip:text; -webkit-text-fill-color:transparent;">
+        🏆 Neden Extra Trees? — Model Seçim Gerekçesi
+    </h2>
+
+    <div class="gerekce-row">
+        <div class="gerekce-icon">📊</div>
+        <div class="gerekce-content">
+            <h4>En Yüksek Metrikler</h4>
+            <p>Extra Trees, <strong>ROC-AUC = 0.9034</strong> ve <strong>Accuracy = 0.8117</strong> ile 11 model arasında
+            açık ara birinci sıraya yerleşmiştir. F1-score ve Precision-Recall dengesi de tatmin edicidir.</p>
+        </div>
+    </div>
+
+    <div class="gerekce-row">
+        <div class="gerekce-icon">⚡</div>
+        <div class="gerekce-content">
+            <h4>Hız / Performans Dengesi</h4>
+            <p>Sadece <strong>~4 saniye</strong> eğitim süresinde Random Forest'ı geride bırakmaktadır. Ağaç bölme noktaları
+            rastgele seçildiği için hem hızlı hem de düşük varyanslıdır.</p>
+        </div>
+    </div>
+
+    <div class="gerekce-row">
+        <div class="gerekce-icon">🎮</div>
+        <div class="gerekce-content">
+            <h4>İş Bağlamı — Hata Maliyet Analizi</h4>
+            <p>
+                <strong>Yanlış Negatif (FN):</strong> CT kazanacak bir raund T kazanacak diye tahmin edilir →
+                eco round kararı yanlış verilir, ekonomi boşa harcanır.<br><br>
+                <strong>Yanlış Pozitif (FP):</strong> T kazanacak raund CT kazanacak diye tahmin edilir →
+                gereksiz force-buy kararı alınır, sonraki raund ekonomisi zarar görür.<br><br>
+                Extra Trees, <strong>Recall = 0.8068 ve Precision = 0.8101</strong> ile dengeli bir hata profili sunar;
+                tek bir hata türüne aşırı eğilim yoktur.
+            </p>
+        </div>
+    </div>
+
+    <div class="gerekce-row">
+        <div class="gerekce-icon">🌲</div>
+        <div class="gerekce-content">
+            <h4>Yorumlanabilirlik</h4>
+            <p>Feature Importance grafiği aracılığıyla hangi oyun içi değişkenlerin (sağlık farkı, ekonomi farkı,
+            oyuncu sayısı farkı) kararı yönlendirdiği <strong>yorumlanabilir</strong> biçimde açıklanabilmektedir.
+            Bu özellik, antrenör ve analist kullanımına uygundur.</p>
+        </div>
+    </div>
+</div>
+</body></html>

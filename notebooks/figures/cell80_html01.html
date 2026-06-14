@@ -1,0 +1,86 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><script src="https://cdn.plot.ly/plotly-2.32.0.min.js"></script></head><body>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap');
+    .dep-section7 {
+        background: linear-gradient(145deg, #020617 0%, #0f172a 100%);
+        padding: 40px; border-radius: 20px; color: #f8fafc;
+        font-family: 'Inter', sans-serif; border: 1px solid rgba(245,158,11,0.3);
+        box-shadow: inset 0 1px 0 rgba(255,255,255,0.05), 0 15px 25px -5px rgba(0,0,0,0.4);
+    }
+    .dep-step-badge7 {
+        background: #f59e0b; color: #0f172a;
+        font-family: 'JetBrains Mono', monospace; font-size: 1.2rem; font-weight: 800;
+        width: 48px; height: 48px; display: flex; align-items: center; justify-content: center;
+        border-radius: 12px; box-shadow: 0 4px 15px rgba(245,158,11,0.4);
+    }
+    .iter-grid {
+        display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-top: 20px;
+    }
+    .iter-card {
+        background: rgba(15,23,42,0.5); border: 1px solid rgba(245,158,11,0.2);
+        border-left: 4px solid #f59e0b; border-radius: 12px; padding: 20px;
+        transition: transform 0.2s, background 0.2s;
+    }
+    .iter-card:hover { transform: translateY(-3px); background: rgba(30,41,59,0.7); }
+    .ic-title { color: #fcd34d; font-size: 1rem; font-weight: 700; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+    .ic-items { margin: 0; padding-left: 18px; color: #cbd5e1; font-size: 0.9rem; line-height: 1.8; }
+    .ic-items li::marker { color: #f59e0b; }
+    .priority-badge {
+        display: inline-block; padding: 2px 8px; border-radius: 4px;
+        font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; font-weight: 700;
+        margin-left: 8px;
+    }
+    .p-high { background: rgba(239,68,68,0.15); color: #ef4444; border: 1px solid rgba(239,68,68,0.3); }
+    .p-med  { background: rgba(245,158,11,0.15); color: #f59e0b; border: 1px solid rgba(245,158,11,0.3); }
+    .p-low  { background: rgba(34,197,94,0.15); color: #22c55e; border: 1px solid rgba(34,197,94,0.3); }
+</style>
+<div class="dep-section7">
+    <div style="display:flex; align-items:center; gap:15px; margin-bottom:25px; border-bottom:1px solid rgba(245,158,11,0.2); padding-bottom:15px;">
+        <div class="dep-step-badge7">07</div>
+        <div>
+            <div style="color:#fcd34d; font-family:'JetBrains Mono',monospace; font-size:0.85rem; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; margin-bottom:4px;">Next Iteration</div>
+            <h2 style="margin:0; font-size:1.8rem; font-weight:800; color:#f8fafc;">İyileştirme Önerileri & Sonraki Adımlar</h2>
+        </div>
+    </div>
+
+    <p style="color:#cbd5e1; font-size:0.95rem; line-height:1.6; margin-bottom:20px;">
+        CRISP-DM döngüsünün en önemli özelliği tekrarlı (iterative) yapısıdır. Mevcut model başarıyla deploy edilmiş olsa da 
+        aşağıdaki iyileştirmeler bir sonraki iterasyonda modelin sınırlarını daha da genişletecektir:
+    </p>
+
+    <div class="iter-grid">
+        <div class="iter-card">
+            <div class="ic-title">📊 Veri Zenginleştirme <span class="priority-badge p-high">YÜK ÖNCELIK</span></div>
+            <ul class="ic-items">
+                <li>CS2 meta verileriyle veri setini güncelleştir (silah dengesi değişimleri)</li>
+                <li>Round başlangıcına ek olarak zaman serisi verisini (anlık snapshot yerine akış) modele dahil et</li>
+                <li>Profesyonel ve amatör maç verilerini ayrı ayrı eğit, karşılaştır</li>
+            </ul>
+        </div>
+        <div class="iter-card">
+            <div class="ic-title">🧠 Model İyileştirme <span class="priority-badge p-high">YÜK ÖNCELIK</span></div>
+            <ul class="ic-items">
+                <li>Bayesian Hyperparameter Optimization (Optuna) ile ExtraTrees tuning'i yap</li>
+                <li>LSTM veya Transformer tabanlı sequence model ile zaman serisi dene</li>
+                <li>Model kalibrasyonu (CalibratedClassifierCV) ile güven skorlarını iyileştir</li>
+            </ul>
+        </div>
+        <div class="iter-card">
+            <div class="ic-title">🔍 Yorumlanabilirlik <span class="priority-badge p-med">ORTA ÖNCELIK</span></div>
+            <ul class="ic-items">
+                <li>SHAP (SHapley Additive exPlanations) ile her tahmin için açıklama üret</li>
+                <li>Koç arayüzüne "Bu round'u CT'nin kazanmasını hangi 3 faktör sağladı?" açıklaması ekle</li>
+                <li>Global Feature Importance'ı interactive Plotly grafikle sunmaya devam et</li>
+            </ul>
+        </div>
+        <div class="iter-card">
+            <div class="ic-title">⚡ Altyapı & MLOps <span class="priority-badge p-low">UZUN VADE</span></div>
+            <ul class="ic-items">
+                <li>MLflow veya Weights&Biases ile experiment tracking kur</li>
+                <li>GitHub Actions CI/CD pipeline'ı: otomatik test → model yeniden eğitim → deploy</li>
+                <li>Model drift monitoring: yeni meta sonrası performans düşüşünü otomatik algıla</li>
+            </ul>
+        </div>
+    </div>
+</div>
+</body></html>

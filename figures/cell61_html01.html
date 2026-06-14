@@ -1,0 +1,100 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><script src="https://cdn.plot.ly/plotly-2.32.0.min.js"></script></head><body>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;700&display=swap');
+    .summary-container {
+        background: linear-gradient(145deg, #0f172a 0%, #1e293b 100%);
+        padding: 40px; border-radius: 24px; color: #f8fafc; font-family: 'Inter', sans-serif;
+        border: 1px solid rgba(139,92,246,0.4);
+        box-shadow: inset 0 1px 0 rgba(255,255,255,0.05), 0 0 40px rgba(139,92,246,0.12);
+        position: relative; overflow: hidden;
+    }
+    .summary-container::before {
+        content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
+        background: linear-gradient(90deg, #6366f1, #8b5cf6, #a78bfa, #c084fc);
+    }
+    .metric-card {
+        background: rgba(99,102,241,0.1); border: 1px solid rgba(99,102,241,0.3);
+        border-radius: 14px; padding: 20px; text-align: center;
+    }
+    .metric-val { font-family: 'JetBrains Mono', monospace; font-size: 2rem; font-weight: 900; color: #a78bfa; }
+    .metric-lbl { color: #94a3b8; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin-top: 6px; }
+    .finding-row {
+        display: flex; gap: 12px; align-items: flex-start; padding: 14px 0;
+        border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .finding-row:last-child { border-bottom: none; }
+    .finding-badge {
+        background: rgba(139,92,246,0.2); border: 1px solid rgba(139,92,246,0.4);
+        color: #a78bfa; font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; font-weight: 800;
+        padding: 4px 10px; border-radius: 6px; flex-shrink: 0; margin-top: 2px;
+    }
+</style>
+
+<div class="summary-container">
+    <div style="display:flex; align-items:center; gap:15px; margin-bottom:30px;">
+        <span style="font-size:2.2rem; background:rgba(139,92,246,0.15); padding:12px; border-radius:14px; border:1px solid rgba(139,92,246,0.3);">🎯</span>
+        <div>
+            <div style="color:#8b5cf6; font-family:'JetBrains Mono',monospace; font-size:0.8rem; font-weight:800; text-transform:uppercase; letter-spacing:0.1em;">CRISP-DM Adım 04 Tamamlandı</div>
+            <h2 style="margin:4px 0 0 0; font-size:2rem; font-weight:900;
+                background:linear-gradient(to right,#a78bfa,#818cf8); -webkit-background-clip:text; -webkit-text-fill-color:transparent;">
+                Faz 4 — Modeling Özeti
+            </h2>
+        </div>
+    </div>
+
+    <div style="display:grid; grid-template-columns:repeat(5,1fr); gap:14px; margin-bottom:30px;">
+        <div class="metric-card"><div class="metric-val">11</div><div class="metric-lbl">Model Denendi</div></div>
+        <div class="metric-card"><div class="metric-val">0.81</div><div class="metric-lbl">En İyi Accuracy</div></div>
+        <div class="metric-card"><div class="metric-val">0.90</div><div class="metric-lbl">En İyi AUC</div></div>
+        <div class="metric-card"><div class="metric-val">5-CV</div><div class="metric-lbl">Cross Validation</div></div>
+        <div class="metric-card"><div class="metric-val">ET</div><div class="metric-lbl">Kazanan Model</div></div>
+    </div>
+
+    <h3 style="margin:0 0 16px 0; font-size:1.1rem; font-weight:800; color:#f8fafc;">📌 Temel Bulgular</h3>
+
+    <div class="finding-row">
+        <div class="finding-badge">01</div>
+        <div style="color:#cbd5e1; font-size:0.9rem; line-height:1.7;">
+            <strong style="color:#f8fafc;">Extra Trees</strong> tüm metrikler bazında en yüksek performansı göstermiş, ROC-AUC = 0.9034 ile
+            Gradient Boosting ailesini bile geride bırakmıştır.
+        </div>
+    </div>
+    <div class="finding-row">
+        <div class="finding-badge">02</div>
+        <div style="color:#cbd5e1; font-size:0.9rem; line-height:1.7;">
+            Ensemble modeller (Extra Trees, Random Forest, XGBoost, LightGBM) lineer ve basit modellere kıyasla
+            <strong style="color:#f8fafc;">%5–8 daha yüksek ROC-AUC</strong> sunmaktadır.
+        </div>
+    </div>
+    <div class="finding-row">
+        <div class="finding-badge">03</div>
+        <div style="color:#cbd5e1; font-size:0.9rem; line-height:1.7;">
+            Feature Importance analizinde <strong style="color:#f8fafc;">health_diff, money_diff ve player_diff</strong>
+            gibi Faz 3'te üretilen fark değişkenleri en güçlü tahmin sinyellerini oluşturmaktadır.
+        </div>
+    </div>
+    <div class="finding-row">
+        <div class="finding-badge">04</div>
+        <div style="color:#cbd5e1; font-size:0.9rem; line-height:1.7;">
+            5-Fold Cross-Validation sonuçları düşük standart sapma göstermekte; model overfitting olmadığını
+            ve <strong style="color:#f8fafc;">genelleştirme kapasitesinin güçlü</strong> olduğunu ortaya koymaktadır.
+        </div>
+    </div>
+    <div class="finding-row">
+        <div class="finding-badge">05</div>
+        <div style="color:#cbd5e1; font-size:0.9rem; line-height:1.7;">
+            Nihai model ve preprocessing pipeline <strong style="color:#f8fafc;">models/best_model.joblib</strong> olarak
+            kaydedildi. Faz 6 Deployment aşamasında bu dosya doğrudan yüklenecektir.
+        </div>
+    </div>
+    <div class="finding-row">
+        <div class="finding-badge">FAZ5</div>
+        <div style="color:#cbd5e1; font-size:0.9rem; line-height:1.7;">
+            Bir sonraki adım: <strong style="color:#f8fafc;">Faz 5 — Evaluation</strong>. Confusion matrix, ROC eğrisi ve
+            cross-validation bulguları iş riski bağlamında derinlemesine yorumlanacak; overfitting ve sınıf dengesi
+            eleştirel biçimde tartışılacaktır.
+        </div>
+    </div>
+
+</div>
+</body></html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><script src="https://cdn.plot.ly/plotly-2.32.0.min.js"></script></head><body>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap');
+    .ev-cm-box { background:linear-gradient(145deg,#020617 0%,#0f172a 100%); padding:35px; border-radius:20px;
+        color:#f8fafc; font-family:'Inter',sans-serif; border:1px solid rgba(244,63,94,0.3); margin-top:20px; }
+    .ev-cm-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin-bottom:25px; }
+    .ev-cm-stat { background:rgba(15,23,42,0.7); border:1px solid rgba(255,255,255,0.08); border-radius:12px; padding:16px; text-align:center; }
+    .ev-cm-val { font-family:'JetBrains Mono',monospace; font-size:1.8rem; font-weight:900; }
+    .ev-cm-lbl { color:#94a3b8; font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:0.07em; margin-top:4px; }
+    .ev-error-row { display:flex; gap:16px; align-items:flex-start; padding:16px 0; border-bottom:1px solid rgba(255,255,255,0.05); }
+    .ev-error-row:last-child { border-bottom:none; }
+</style>
+<div class="ev-cm-box">
+    <h3 style="margin:0 0 20px 0; font-size:1.4rem; font-weight:800; color:#f8fafc; display:flex; align-items:center; gap:10px;">
+        <span style="color:#f43f5e;">03</span> Confusion Matrix — Derinlemesine Hata Analizi
+    </h3>
+    <div class="ev-cm-grid">
+        <div class="ev-cm-stat"><div class="ev-cm-val" style="color:#22c55e;">2,486</div><div class="ev-cm-lbl">Doğru Negatif (TN)</div></div>
+        <div class="ev-cm-stat"><div class="ev-cm-val" style="color:#ef4444;">559</div><div class="ev-cm-lbl">Yanlış Pozitif (FP)</div></div>
+        <div class="ev-cm-stat"><div class="ev-cm-val" style="color:#f59e0b;">571</div><div class="ev-cm-lbl">Yanlış Negatif (FN)</div></div>
+        <div class="ev-cm-stat"><div class="ev-cm-val" style="color:#38bdf8;">2,384</div><div class="ev-cm-lbl">Doğru Pozitif (TP)</div></div>
+    </div>
+    <div class="ev-error-row">
+        <div style="font-size:1.5rem; background:rgba(239,68,68,0.1); padding:10px; border-radius:10px; flex-shrink:0;">💸</div>
+        <div>
+            <h4 style="margin:0 0 6px 0; color:#f87171; font-size:1rem; font-weight:700;">Yanlış Pozitif (FP) — 559 örnek (%18.4)</h4>
+            <p style="margin:0; color:#cbd5e1; font-size:0.9rem; line-height:1.6;">
+                <strong>T raundunu CT kazanacak diye tahmin etme.</strong>
+                Koç, CT tarafının kazanacağını düşünerek ekibine "force-buy" kararı aldırır;
+                oysa rakip T zaten avantajlıdır. Sonuç: <strong>gereksiz silah harcaması → ekonomi çöküşü.</strong>
+            </p>
+        </div>
+    </div>
+    <div class="ev-error-row">
+        <div style="font-size:1.5rem; background:rgba(245,158,11,0.1); padding:10px; border-radius:10px; flex-shrink:0;">🎮</div>
+        <div>
+            <h4 style="margin:0 0 6px 0; color:#fbbf24; font-size:1rem; font-weight:700;">Yanlış Negatif (FN) — 571 örnek (%19.3)</h4>
+            <p style="margin:0; color:#cbd5e1; font-size:0.9rem; line-height:1.6;">
+                <strong>CT raundunu T kazanacak diye tahmin etme.</strong>
+                Koç, CT tarafının zayıf göründüğünü düşünür ve "eco round" kararı alır;
+                oysa CT güçlüdür. Sonuç: <strong>kazanılabilir raund boşa verilir.</strong>
+                İki hata türü arasındaki maliyet farkı oyun bağlamında tartışılabilir olup 
+                eşik ayarıyla yönetilebilir (Bkz. Bölüm 04).
+            </p>
+        </div>
+    </div>
+</div>
+</body></html>

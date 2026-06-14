@@ -1,0 +1,13 @@
+{
+  "model_name": "ExtraTreesClassifier",
+  "n_estimators": 200,
+  "accuracy": 0.8173,
+  "macro_f1": 0.8172,
+  "roc_auc": 0.9049,
+  "precision": 0.8172,
+  "recall": 0.8172,
+  "features_count": 64,
+  "train_samples": 23969,
+  "test_samples": 5993,
+  "saved_path": "models\\csgo_champion_pipeline.joblib"
+}

@@ -1,0 +1,187 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><script src="https://cdn.plot.ly/plotly-2.32.0.min.js"></script></head><body>
+<style>
+    .section-container-bottom {
+        background: linear-gradient(145deg, #020617 0%, #0f172a 100%);
+        padding: 0 40px 40px 40px;
+        border-radius: 0 0 20px 20px;
+        color: #f8fafc;
+        font-family: 'Inter', sans-serif;
+        box-shadow: 0 15px 25px -5px rgba(0, 0, 0, 0.4);
+        border: 1px solid rgba(14, 165, 233, 0.3);
+        border-top: none;
+    }
+
+    .grid-panels {
+        display: grid;
+        grid-template-columns: 1fr 1.5fr;
+        gap: 20px;
+        margin-top: 15px;
+    }
+
+    .stats-table-wrapper {
+        background: rgba(15, 23, 42, 0.6);
+        border-radius: 12px;
+        border: 1px solid rgba(14, 165, 233, 0.2);
+        overflow: hidden;
+    }
+
+    .panel-header {
+        background: rgba(14, 165, 233, 0.1);
+        color: #38bdf8;
+        padding: 12px 20px;
+        font-weight: 600;
+        font-size: 0.95rem;
+        border-bottom: 1px solid rgba(14, 165, 233, 0.2);
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .stats-table {
+        width: 100%;
+        border-collapse: collapse;
+        text-align: left;
+    }
+
+    .stats-table th {
+        padding: 12px 20px;
+        color: #94a3b8;
+        font-size: 0.85rem;
+        font-weight: 600;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        background: rgba(0,0,0,0.2);
+    }
+
+    .stats-table td {
+        padding: 10px 20px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        color: #cbd5e1;
+        font-size: 0.85rem;
+    }
+
+    .stats-table tr:hover td {
+        background: rgba(14, 165, 233, 0.05);
+    }
+    
+    .insight-box-distribution {
+        background: linear-gradient(145deg, rgba(245, 158, 11, 0.05) 0%, rgba(245, 158, 11, 0.1) 100%);
+        border: 1px solid rgba(245, 158, 11, 0.3);
+        border-radius: 12px;
+        padding: 20px 25px;
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    }
+
+    .ul-dist {
+        margin: 0; 
+        padding-left: 20px; 
+        color: #cbd5e1; 
+        font-size: 0.9rem; 
+        line-height: 1.8;
+    }
+    
+    .ul-dist li::marker {
+        color: #f59e0b;
+    }
+    
+    .code-tag {
+        color: #f59e0b; 
+        background: rgba(245, 158, 11, 0.1); 
+        padding: 2px 6px; 
+        border-radius: 4px; 
+        font-family: 'JetBrains Mono', monospace; 
+        font-size: 0.9em;
+        border: 1px solid rgba(245, 158, 11, 0.2);
+    }
+</style>
+
+<div class="section-container-bottom">
+    
+    <div class="grid-panels">
+        
+        <div class="stats-table-wrapper">
+            <div class="panel-header"><span>📐</span> Çarpıklık (Skewness) Değerleri</div>
+            <table class="stats-table">
+                <thead>
+                    <tr>
+                        <th>Değişken</th>
+                        <th style="text-align: right;">Skewness</th>
+                        <th style="text-align: center;">Durum</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr>
+                        <td style="font-family: 'JetBrains Mono', monospace; font-weight: 600; color: #f8fafc;">time_left</td>
+                        <td style="text-align: right; color: #bae6fd; font-family: 'JetBrains Mono', monospace;">+0.16</td>
+                        <td style="text-align: center;"><span style="background: rgba(34, 197, 94, 0.15); color: #22c55e; padding: 3px 8px; border-radius: 6px; font-size: 0.75rem; font-weight: 700; border: 1px solid rgba(34, 197, 94, 0.3);">✅ NORMAL</span></td>
+                    </tr>
+    
+                    <tr>
+                        <td style="font-family: 'JetBrains Mono', monospace; font-weight: 600; color: #f8fafc;">ct_health</td>
+                        <td style="text-align: right; color: #ef4444; font-family: 'JetBrains Mono', monospace;">-1.36</td>
+                        <td style="text-align: center;"><span style="background: rgba(239, 68, 68, 0.15); color: #ef4444; padding: 3px 8px; border-radius: 6px; font-size: 0.75rem; font-weight: 700; border: 1px solid rgba(239, 68, 68, 0.3);">⚠️ ÇARPIK</span></td>
+                    </tr>
+    
+                    <tr>
+                        <td style="font-family: 'JetBrains Mono', monospace; font-weight: 600; color: #f8fafc;">t_health</td>
+                        <td style="text-align: right; color: #ef4444; font-family: 'JetBrains Mono', monospace;">-1.30</td>
+                        <td style="text-align: center;"><span style="background: rgba(239, 68, 68, 0.15); color: #ef4444; padding: 3px 8px; border-radius: 6px; font-size: 0.75rem; font-weight: 700; border: 1px solid rgba(239, 68, 68, 0.3);">⚠️ ÇARPIK</span></td>
+                    </tr>
+    
+                    <tr>
+                        <td style="font-family: 'JetBrains Mono', monospace; font-weight: 600; color: #f8fafc;">ct_armor</td>
+                        <td style="text-align: right; color: #bae6fd; font-family: 'JetBrains Mono', monospace;">-0.54</td>
+                        <td style="text-align: center;"><span style="background: rgba(34, 197, 94, 0.15); color: #22c55e; padding: 3px 8px; border-radius: 6px; font-size: 0.75rem; font-weight: 700; border: 1px solid rgba(34, 197, 94, 0.3);">✅ NORMAL</span></td>
+                    </tr>
+    
+                    <tr>
+                        <td style="font-family: 'JetBrains Mono', monospace; font-weight: 600; color: #f8fafc;">t_armor</td>
+                        <td style="text-align: right; color: #bae6fd; font-family: 'JetBrains Mono', monospace;">-0.48</td>
+                        <td style="text-align: center;"><span style="background: rgba(34, 197, 94, 0.15); color: #22c55e; padding: 3px 8px; border-radius: 6px; font-size: 0.75rem; font-weight: 700; border: 1px solid rgba(34, 197, 94, 0.3);">✅ NORMAL</span></td>
+                    </tr>
+    
+                    <tr>
+                        <td style="font-family: 'JetBrains Mono', monospace; font-weight: 600; color: #f8fafc;">ct_money</td>
+                        <td style="text-align: right; color: #ef4444; font-family: 'JetBrains Mono', monospace;">+1.85</td>
+                        <td style="text-align: center;"><span style="background: rgba(239, 68, 68, 0.15); color: #ef4444; padding: 3px 8px; border-radius: 6px; font-size: 0.75rem; font-weight: 700; border: 1px solid rgba(239, 68, 68, 0.3);">⚠️ ÇARPIK</span></td>
+                    </tr>
+    
+                    <tr>
+                        <td style="font-family: 'JetBrains Mono', monospace; font-weight: 600; color: #f8fafc;">t_money</td>
+                        <td style="text-align: right; color: #ef4444; font-family: 'JetBrains Mono', monospace;">+11.36</td>
+                        <td style="text-align: center;"><span style="background: rgba(239, 68, 68, 0.15); color: #ef4444; padding: 3px 8px; border-radius: 6px; font-size: 0.75rem; font-weight: 700; border: 1px solid rgba(239, 68, 68, 0.3);">⚠️ ÇARPIK</span></td>
+                    </tr>
+    
+                    <tr>
+                        <td style="font-family: 'JetBrains Mono', monospace; font-weight: 600; color: #f8fafc;">ct_score</td>
+                        <td style="text-align: right; color: #bae6fd; font-family: 'JetBrains Mono', monospace;">+0.52</td>
+                        <td style="text-align: center;"><span style="background: rgba(34, 197, 94, 0.15); color: #22c55e; padding: 3px 8px; border-radius: 6px; font-size: 0.75rem; font-weight: 700; border: 1px solid rgba(34, 197, 94, 0.3);">✅ NORMAL</span></td>
+                    </tr>
+    
+                    <tr>
+                        <td style="font-family: 'JetBrains Mono', monospace; font-weight: 600; color: #f8fafc;">t_score</td>
+                        <td style="text-align: right; color: #bae6fd; font-family: 'JetBrains Mono', monospace;">+0.48</td>
+                        <td style="text-align: center;"><span style="background: rgba(34, 197, 94, 0.15); color: #22c55e; padding: 3px 8px; border-radius: 6px; font-size: 0.75rem; font-weight: 700; border: 1px solid rgba(34, 197, 94, 0.3);">✅ NORMAL</span></td>
+                    </tr>
+    
+                </tbody>
+            </table>
+        </div>
+
+        <div class="insight-box-distribution">
+            <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 15px;">
+                <span style="font-size: 1.5rem; background: rgba(245, 158, 11, 0.15); padding: 8px; border-radius: 10px; border: 1px solid rgba(245, 158, 11, 0.2);">💡</span>
+                <h4 style="margin: 0; color: #f8fafc; font-size: 1.05rem;">Dağılım İncelemesi ve Strateji</h4>
+            </div>
+            <ul class="ul-dist">
+                <li><span class="code-tag">ct_money</span> ve <span class="code-tag">t_money</span>: <strong>Sağa çarpık</strong> (sağ kuyruk uzun) — ekonomik eşitsizlik round'lara göre ciddi değişiklik gösteriyor.</li>
+                <li><span class="code-tag">ct_health</span> ve <span class="code-tag">t_health</span>: Maximum değerde (500) yığılma var → round başı verisi çokça yer alıyor.</li>
+                <li><span class="code-tag">ct_score</span> ve <span class="code-tag">t_score</span>: 0-32 arasında, <strong>uniform</strong> benzeri bir dağılım → tüm skor durumları veri setinde dengeli temsil ediliyor.</li>
+                <li><span class="code-tag">time_left</span>: <strong>Bimodal</strong> görünüm — round ortası ile başlangıç/bitiş snapshot'ları birlikte yer alıyor.</li>
+                <li style="margin-top: 10px; color: #f8fafc; font-weight: 500;">📌 <strong>Aksiyon:</strong> Makine öğrenmesi modellerinin stabil çalışması için ölçeklendirme (StandardScaler / MinMaxScaler) işlemleri doğrudan <strong>Faz 3'te</strong> pipeline içinde uygulanacaktır.</li>
+            </ul>
+        </div>
+
+    </div>
+</div>
+</body></html>

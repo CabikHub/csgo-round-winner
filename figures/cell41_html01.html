@@ -1,0 +1,250 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><script src="https://cdn.plot.ly/plotly-2.32.0.min.js"></script></head><body>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap');
+    
+    .section-container-final {
+        background: linear-gradient(145deg, #020617 0%, #0f172a 100%);
+        padding: 40px;
+        border-radius: 20px;
+        color: #f8fafc;
+        font-family: 'Inter', sans-serif;
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05), 0 15px 35px -5px rgba(0, 0, 0, 0.5);
+        border: 1px solid rgba(16, 185, 129, 0.4); /* Final için Zümrüt vurgu */
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .section-container-final::before {
+        content: '';
+        position: absolute;
+        top: -50%; left: -50%; width: 200%; height: 200%;
+        background: radial-gradient(circle, rgba(16, 185, 129, 0.05) 0%, transparent 60%);
+        pointer-events: none;
+    }
+
+    .section-header-final {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        margin-bottom: 30px;
+        border-bottom: 1px solid rgba(16, 185, 129, 0.2);
+        padding-bottom: 15px;
+        position: relative;
+    }
+
+    .step-badge-final {
+        background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+        color: #0f172a;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 1.2rem;
+        font-weight: 800;
+        width: 48px;
+        height: 48px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(16, 185, 129, 0.5);
+    }
+
+    .summary-table-wrapper {
+        background: rgba(15, 23, 42, 0.7);
+        border-radius: 12px;
+        border: 1px solid rgba(16, 185, 129, 0.2);
+        overflow: hidden;
+        margin-bottom: 30px;
+    }
+
+    .summary-table {
+        width: 100%;
+        border-collapse: collapse;
+        text-align: left;
+    }
+
+    .summary-table th {
+        padding: 16px 20px;
+        color: #34d399;
+        font-size: 0.9rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        border-bottom: 1px solid rgba(16, 185, 129, 0.2);
+        background: rgba(16, 185, 129, 0.05);
+    }
+
+    .summary-table td {
+        padding: 14px 20px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        color: #e2e8f0;
+        font-size: 0.95rem;
+        vertical-align: middle;
+    }
+
+    .summary-table tr:last-child td { border-bottom: none; }
+    .summary-table tr:hover td { background: rgba(16, 185, 129, 0.05); }
+
+    .tag-action {
+        background: rgba(56, 189, 248, 0.1);
+        color: #38bdf8;
+        padding: 4px 10px;
+        border-radius: 6px;
+        border: 1px solid rgba(56, 189, 248, 0.2);
+        font-weight: 600;
+        font-size: 0.85rem;
+        display: inline-block;
+    }
+
+    .feature-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 15px;
+        margin-bottom: 30px;
+    }
+
+    .feature-card {
+        background: rgba(255, 255, 255, 0.02);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        border-radius: 10px;
+        padding: 15px;
+        text-align: center;
+        transition: transform 0.3s, border-color 0.3s;
+    }
+
+    .feature-card:hover {
+        transform: translateY(-2px);
+        border-color: rgba(16, 185, 129, 0.4);
+    }
+
+    .feature-val {
+        font-size: 2rem;
+        font-weight: 800;
+        font-family: 'JetBrains Mono', monospace;
+        margin-bottom: 5px;
+    }
+    
+    .feature-lbl {
+        font-size: 0.8rem;
+        color: #94a3b8;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        line-height: 1.4;
+    }
+
+    .next-step-banner {
+        background: linear-gradient(135deg, rgba(139, 92, 246, 0.15) 0%, rgba(139, 92, 246, 0.05) 100%);
+        border: 1px solid rgba(139, 92, 246, 0.4);
+        border-left: 4px solid #8b5cf6;
+        padding: 20px 25px;
+        border-radius: 8px;
+        display: flex;
+        align-items: flex-start;
+        gap: 20px;
+    }
+</style>
+
+<div class="section-container-final">
+    <div class="section-header-final">
+        <div class="step-badge-final">09</div>
+        <div>
+            <div style="color: #34d399; font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 4px;">Executive Summary</div>
+            <h2 style="margin: 0; font-size: 1.8rem; font-weight: 800; color: #f8fafc; letter-spacing: -0.01em;">
+                Faz 3 Özet ve Bulgular (Pipeline Mimarisi)
+            </h2>
+        </div>
+    </div>
+
+    <h3 style="margin: 0 0 15px 0; font-size: 1.1rem; color: #cbd5e1; display: flex; align-items: center; gap: 8px;">
+        <span style="color: #10b981;">📋</span> Yapılan İşlemler ve Veri Mühendisliği Kararları
+    </h3>
+    <div class="summary-table-wrapper">
+        <table class="summary-table">
+            <thead>
+                <tr>
+                    <th style="width: 20%;">Uygulanan Adım</th>
+                    <th style="width: 40%;">Gerçekleştirilen İşlem</th>
+                    <th style="width: 40%;">Mühendislik Gerekçesi (Rationale)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><span class="tag-action">Satır Silme</span></td>
+                    <td><code style="color:#ef4444; background:rgba(239,68,68,0.1); padding:2px 5px; border-radius:4px;">de_cache</code> haritası (38 gözlem) tamamen kaldırıldı.</td>
+                    <td style="color: #94a3b8;">İstatistiksel açıdan yetersiz temsil; modelin harita bazlı yanlılık (bias) geliştirmesini engellemek.</td>
+                </tr>
+                <tr>
+                    <td><span class="tag-action">Sütun Silme</span></td>
+                    <td>38 adet seyrek (sparse) silah sütunu veri setinden düşürüldü.</td>
+                    <td style="color: #94a3b8;">Doluluk oranı %1'in altında (Zero-variance); hesaplama maliyetini düşürmek ve model gürültüsünü (noise) azaltmak.</td>
+                </tr>
+                <tr>
+                    <td><span class="tag-action">Feature Engineering</span></td>
+                    <td>Takımlar arası farkı temsil eden 7 yeni türetilmiş (Diff) değişken üretildi.</td>
+                    <td style="color: #94a3b8;">Modelin "göreli üstünlüğü" doğrudan öğrenmesini sağlamak ve çoklu-doğrusallık (multicollinearity) problemini kırmak.</td>
+                </tr>
+                <tr>
+                    <td><span class="tag-action">Stratified Split</span></td>
+                    <td>Veri %80 Eğitim (Train) ve %20 Test olarak bölündü.</td>
+                    <td style="color: #94a3b8;">Her iki veri setinde de sınıf dağılımı (CT: %49.2) milimetrik olarak korunarak dengeli öğrenme sağlandı.</td>
+                </tr>
+                <tr>
+                    <td><span class="tag-action">Eksik Değer Yönetimi</span></td>
+                    <td>Medyan (Median) Imputation işlemi pipeline içine gömüldü.</td>
+                    <td style="color: #94a3b8;">Imputer sadece Train setinden öğrenerek, Test verisine yönelik olası Veri Sızıntısını (Data Leakage) engelledi.</td>
+                </tr>
+                <tr>
+                    <td><span class="tag-action">Ölçeklendirme 1</span></td>
+                    <td><code style="color:#f59e0b; background:rgba(245,158,11,0.1); padding:2px 5px; border-radius:4px;">RobustScaler</code> → Para ve Sağlık sütunlarına uygulandı.</td>
+                    <td style="color: #94a3b8;">IQR (Çeyrekler Arası Açıklık) tabanlı olduğu için yüksek "outlier" (aykırı) değerlere karşı maksimum direnç.</td>
+                </tr>
+                <tr>
+                    <td><span class="tag-action">Ölçeklendirme 2</span></td>
+                    <td><code style="color:#10b981; background:rgba(16,185,129,0.1); padding:2px 5px; border-radius:4px;">StandardScaler</code> → Geri kalan tüm sayısal sütunlara uygulandı.</td>
+                    <td style="color: #94a3b8;">Normal veya uniform dağılıma yakın (ör: zırh, kask, oyuncu farkı) verileri (µ=0, σ=1) merkezine çekmek.</td>
+                </tr>
+                <tr>
+                    <td><span class="tag-action">Encoding (Kategorik)</span></td>
+                    <td><code style="color:#a78bfa; background:rgba(139,92,246,0.1); padding:2px 5px; border-radius:4px;">OneHotEncoder</code> → Kalan 8 harita formatına uygulandı.</td>
+                    <td style="color: #94a3b8;">Algoritmaların kategorik metinleri matematiksel uzaklık (1-0 vektörleri) olarak işleyebilmesini sağlamak.</td>
+                </tr>
+                <tr>
+                    <td><span class="tag-action">Model Serialization</span></td>
+                    <td>Tüm Pipeline ve veri matrisleri diske yazıldı (<code style="color:#cbd5e1;">.joblib</code> / <code style="color:#cbd5e1;">.csv</code>).</td>
+                    <td style="color: #94a3b8;">Faz 4 (Modelleme) ile Faz 6 (Deployment) arasında kusursuz bir uyum ve taşıma (portability) güvenliği kurmak.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <h3 style="margin: 0 0 15px 0; font-size: 1.1rem; color: #cbd5e1; display: flex; align-items: center; gap: 8px;">
+        <span style="color: #f59e0b;">🧬</span> Nihai Veri (Feature) Dağılım Profili
+    </h3>
+    <div class="feature-grid">
+        <div class="feature-card" style="border-top: 3px solid #f59e0b;">
+            <div class="feature-val" style="color: #f59e0b;">6</div>
+            <div class="feature-lbl">RobustScaler<br>(Para & Sağlık)</div>
+        </div>
+        <div class="feature-card" style="border-top: 3px solid #38bdf8;">
+            <div class="feature-val" style="color: #38bdf8;">57</div>
+            <div class="feature-lbl">StandardScaler<br>(Diğer Sayısal)</div>
+        </div>
+        <div class="feature-card" style="border-top: 3px solid #a78bfa;">
+            <div class="feature-val" style="color: #a78bfa;">7</div>
+            <div class="feature-lbl">OneHotEncoder<br>(Harita Dummy)</div>
+        </div>
+        <div class="feature-card" style="background: rgba(16, 185, 129, 0.05); border: 1px solid rgba(16, 185, 129, 0.3); border-top: 3px solid #10b981;">
+            <div class="feature-val" style="color: #10b981;">70</div>
+            <div class="feature-lbl" style="color: #34d399; font-weight: 700;">Toplam İşlenmiş<br>Feature (Sütun)</div>
+        </div>
+    </div>
+
+    <div class="next-step-banner">
+        <div style="font-size: 2.2rem; margin-top: -5px;">🚀</div>
+        <div>
+            <h4 style="margin: 0 0 8px 0; color: #c4b5fd; font-size: 1.15rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em;">Bir Sonraki Adım: Faz 4 — Modeling (Modelleme)</h4>
+            <p style="margin: 0; color: #e2e8f0; font-size: 0.95rem; line-height: 1.6;">
+                Mühendislik testlerinden başarıyla geçen işlenmiş veri (Processed Data) üzerinde en az <strong>10 farklı makine öğrenmesi sınıflandırma algoritması (LR, RF, XGBoost, LightGBM vb.)</strong> denenecektir. Modeller, K-Fold Cross-Validation stratejisiyle hiperparametre optimizasyonuna sokulacak; seçim süreci yalnızca doğruluk (Accuracy) ile değil, <em>veri yapısı, iş bağlamı ve yorumlanabilirlik</em> kriterleriyle de jüriye (hocaya) gerekçelendirilecektir.
+            </p>
+        </div>
+    </div>
+</div>
+</body></html>
